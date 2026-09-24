@@ -1,157 +1,98 @@
 # Contributing to the SFU SAT Website
 
-This repository is maintained by SFU Satellite Design Team members. Keep changes understandable enough that a future student maintainer can pick up the project without needing the original developer.
+Keep changes simple enough that another student can understand and maintain them later.
 
-## Local setup
+## Start from the latest main branch
 
 ```bash
-git clone https://github.com/jumiknows/sfusat_website.git
-cd sfusat_website
-npm install
-npm start
+git checkout main
+git pull
+git checkout -b feat/short-description
 ```
 
-Normal local development uses the React development server. No Netlify CLI is required.
+Use one branch for one logical change.
 
-## Branch workflow
+Common branch names:
 
-For anything larger than a typo or a single content correction, create a short-lived branch from the latest `main`.
+`feat/new-project-page`
 
-Examples:
+`fix/mobile-navbar`
 
-- `feat/new-project-page`
-- `fix/mobile-navbar`
-- `content/update-sponsors`
-- `docs/maintainer-notes`
-- `refactor/project-data`
+`content/update-sponsors`
 
-Keep one logical change per branch.
+`docs/update-onboarding`
+
+`refactor/project-data`
 
 ## Before opening a pull request
 
 Run:
 
 ```bash
-npm run build
+npm run check
 ```
 
-Then manually check the pages you changed.
+Then check the affected pages on desktop and mobile.
 
-Verify:
+Look for broken navigation, missing images, layout problems and browser console errors.
 
-- desktop layout;
-- mobile layout;
-- route navigation;
-- images and alt text;
-- external links;
-- browser console for obvious errors.
+## Pull requests
 
-## Pull request expectations
+Explain what changed, why it changed and how you tested it.
 
-Explain:
+Add screenshots when the change is visual.
 
-1. what changed;
-2. why it changed;
-3. which pages were tested;
-4. whether routes, media, deployment, DNS, or external services are affected;
-5. any follow-up work.
-
-Screenshots are useful for visible changes.
+Keep pull requests focused. If a change contains several unrelated tasks, split it before review.
 
 ## Content changes
 
-Keep public copy factual and current.
+Confirm public information with the appropriate team lead before publishing it.
 
-Before adding or changing a sponsor, project, team member, event, role, or external claim, confirm the information with the appropriate SFU SAT lead.
+This includes sponsors, project details, member roles, recruitment information and event information.
 
-Do not put temporary planning notes, passwords, personal information, private emails, or unpublished project information into public source files.
+Do not guess member identities, titles or private information.
 
-## Images and media
+## Images
 
-Prefer compressed files with clear names.
+Use clear file names and compressed images.
 
-Good:
+Prefer names such as:
 
 ```text
 public/images/projects/aleasat-integration-test.jpg
 public/images/outreach/2026-science-world.jpg
 ```
 
-Avoid:
+Avoid camera defaults, screenshots with unclear names and duplicate final versions.
 
-```text
-IMG_3928-final-final2.jpg
-newphoto.png
-Screenshot 2026-09-01.png
-```
+## Code
 
-Use meaningful alt text for images that communicate content.
+Follow the existing React and TypeScript structure.
 
-## Code style
+Keep routes in `src/App.tsx`.
 
-The codebase uses React, TypeScript, and component-specific CSS.
+Prefer reusable components or typed data when the same structure appears several times.
 
-When editing existing pages:
+Do not add a new dependency when the existing stack already solves the problem.
 
-- follow the surrounding component style;
-- keep TypeScript strictness intact;
-- avoid duplicating large JSX blocks when typed data or a reusable component is clearer;
-- keep route registration in `src/App.tsx`;
-- avoid adding a dependency for something simple enough to solve with the existing stack;
-- remove abandoned commented-out experiments once a final approach is agreed on.
+Remove abandoned code once the final approach is agreed on.
 
 ## Deployment
 
-The production website is hosted on **GitHub Pages**.
+Do not deploy from a personal laptop.
 
-After a change is merged into `main`, deploy from an up-to-date local `main` branch:
+Changes merged into `main` are checked and deployed by GitHub Actions.
 
-```bash
-git checkout main
-git pull
-npm install
-npm run deploy
-```
+Do not edit the generated `gh-pages` branch.
 
-`npm run deploy` builds the project and publishes `build/` to the generated `gh-pages` branch.
+## Services
 
-Do not edit `gh-pages` manually and do not delete it while GitHub Pages uses it as the production source.
+GitHub Pages hosts the website.
 
-## Domain and DNS
+Squarespace manages the domain and DNS.
 
-`sfusat.org` is managed through Squarespace. Squarespace handles the domain registration and DNS; GitHub Pages serves the actual website.
-
-Only maintainers who need domain access should receive the Squarespace account permissions. Never commit credentials or payment details.
-
-## Legacy Netlify files
-
-The repository still contains `netlify.toml` and `netlify/functions/` from an older approach.
-
-They are not the current production hosting path. Do not add new Netlify-specific dependencies or workflows unless the team intentionally decides to use Netlify again.
-
-The existing contact page still references a Netlify-style function endpoint, so treat that integration as legacy until a supported backend is configured.
+The Netlify files in this repository are legacy files. Do not build new work around them unless the team intentionally returns to Netlify.
 
 ## Secrets
 
-Never commit:
-
-- GitHub tokens;
-- Squarespace credentials or recovery codes;
-- API keys;
-- SMTP passwords;
-- DNS credentials;
-- private keys;
-- production cookies or browser data.
-
-## Handover
-
-When leaving the web team, make sure another active member knows:
-
-- how to run the site locally;
-- how to deploy with `npm run deploy`;
-- that `gh-pages` is generated production output;
-- who controls GitHub Pages settings;
-- who controls `sfusat.org` and its Squarespace renewal/DNS;
-- where approved team media and sponsor assets are stored.
-
-Update [docs/MAINTENANCE.md](docs/MAINTENANCE.md) whenever one of these workflows changes.
+Keep tokens, passwords, private keys, DNS credentials, SMTP credentials and recovery codes out of GitHub.

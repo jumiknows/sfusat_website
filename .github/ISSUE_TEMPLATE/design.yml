@@ -1,0 +1,31 @@
+name: Design change
+description: Request a layout or interface update
+title: "Design: "
+
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page or component
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What needs to improve?
+      description: Describe the usability or visual problem.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Design reference
+      description: Add the relevant Figma frame, screenshot or approved reference.
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Expected result
+      description: Describe what should be checked before the issue is complete.

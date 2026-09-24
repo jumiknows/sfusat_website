@@ -1,302 +1,138 @@
 # Website Maintenance Guide
 
-This document is for the next SFU SAT website maintainer. It focuses on the tasks that are likely to happen repeatedly during the school year.
+This guide covers recurring work for the SFU SAT website.
 
-## 1. Start with the current production code
-
-Before making changes:
+## Start from main
 
 ```bash
 git checkout main
 git pull
 git checkout -b content/short-description
-npm install
+npm ci
 npm start
 ```
 
-Use a branch instead of editing `main` directly.
+Do not make normal changes directly on main.
 
-## 2. Update the home page
+## Home page
 
-Main file:
+Edit `src/components/Home.tsx`.
 
-```text
-src/components/Home.tsx
-```
+Check the hero, ALEASAT section, featured sponsors and links after changes.
 
-The home page currently contains:
+Local images are mainly under `public/images/hero/` and `public/images/sponsors/`.
 
-- the main hero;
-- ALEASAT promotion;
-- sponsor logo highlights;
-- links to Projects, Sponsors, and Contact.
+## Projects
 
-Images used locally are mostly under:
+The project grid is in `src/components/Projects.tsx`.
 
-```text
-public/images/hero/
-public/images/sponsors/
-```
+Full project pages are in `src/components/pages/`.
 
-If a home-page image changes, confirm the replacement is compressed and still looks good on mobile.
+When adding a new project page:
 
-## 3. Add or update a project
+1. Add the page component.
+2. Add its route in `src/App.tsx`.
+3. Add the project to the project grid.
+4. Add approved media.
+5. Test the route directly.
+6. Check desktop and mobile layouts.
 
-The project grid is defined in:
+## Sponsors
 
-```text
-src/components/Projects.tsx
-```
+Edit `src/components/Sponsors.tsx`.
 
-Projects are represented by a typed array with a title, image, description, and optional internal link.
+Sponsor images are under `public/images/sponsors/`.
 
-For a new full project page:
+Confirm the sponsor name, tier and approved logo before publishing changes.
 
-1. create a component under `src/components/pages/`;
-2. create the page stylesheet beside it if needed;
-3. add the route to `src/App.tsx`;
-4. add the project card to `src/components/Projects.tsx`;
-5. add local media under `public/images/projects/` or another clearly named project folder;
-6. test direct navigation to the new URL.
+Also check the featured sponsors on the home page.
 
-Keep route names short and lowercase.
+## Outreach
 
-## 4. Update ALEASAT or balloon mission pages
+Edit `src/components/Outreach.tsx`.
 
-Mission detail pages live under:
+Outreach images are under `public/images/outreach/`.
 
-```text
-src/components/pages/
-```
+Use approved event information and clear image alt text.
 
-Current pages include:
+## Team information
 
-- `Aleasat.tsx`
-- `Balloon1.tsx`
-- `Balloon2.tsx`
-- `Balloon3.tsx`
-- `CCP1.tsx`
-- `CSDC4.tsx`
-- `CSDC5.tsx`
+Edit `src/components/About.tsx`.
 
-Some of these pages currently reference media hosted outside this repository. If those external files are moved or removed, the website can break without a code change.
+Confirm names, roles, team descriptions and photos with the current team.
 
-For important long-term media, prefer stable team-owned storage and document the source.
+Do not guess a person's identity or role from a photo.
 
-## 5. Update sponsors
+## Rover
 
-Main file:
+The main files are:
 
-```text
-src/components/Sponsors.tsx
-```
+`src/components/Rover.tsx`
 
-Sponsor logo files are stored under:
+`src/components/RoverApply.tsx`
 
-```text
-public/images/sponsors/
-```
+`src/components/rover/`
 
-When changing sponsors:
+Check recruitment dates, links and competition information before each recruitment cycle.
 
-1. confirm the sponsor name and tier with the team lead responsible for sponsorship;
-2. use the approved current logo;
-3. confirm the logo usage is permitted;
-4. update the sponsor description if needed;
-5. check both the Sponsors page and Home page, because the Home page contains a separate set of featured sponsor logos.
+## Navigation
 
-Do not leave a former sponsor displayed as current unless that is intentional.
+Edit `src/components/Navbar.tsx`.
 
-## 6. Update outreach
+Routes are registered in `src/App.tsx`.
 
-Main file:
+When adding a top level page, check whether it also belongs in the main navigation.
 
-```text
-src/components/Outreach.tsx
-```
+## Contact form
 
-Outreach slideshow assets are under:
+The repository contains an older Netlify function in `netlify/functions/contact.js`.
 
-```text
-public/images/outreach/
-```
+The current production site is on GitHub Pages. GitHub Pages cannot execute that Netlify function.
 
-The event list is currently maintained directly in the component.
+Do not assume the contact backend works until the team has configured a supported service.
 
-For each new event:
+Never put SMTP passwords or API keys in frontend code.
 
-- add the event to the correct year;
-- use a concise event title and month/year where known;
-- add approved photos if available;
-- use descriptive alt text rather than generic labels when practical.
+## Checks
 
-## 7. Update team descriptions
-
-Main file:
-
-```text
-src/components/About.tsx
-```
-
-The specialized team descriptions are stored in the `teams` array in that component.
-
-When a subteam changes:
-
-- update the team name;
-- update the description;
-- update the image source;
-- verify the number shown in the team statistics still matches reality.
-
-Do not guess titles, roles, or member identities for the website. Confirm them with the member or current team leadership.
-
-## 8. Update rover recruitment
-
-Main files:
-
-```text
-src/components/Rover.tsx
-src/components/RoverApply.tsx
-src/components/rover/
-```
-
-Rover media is stored under:
-
-```text
-public/images/rover/
-public/models/
-```
-
-Check recruitment dates, application links, competition dates, and technical descriptions before each recruitment cycle.
-
-## 9. Update navigation
-
-Main file:
-
-```text
-src/components/Navbar.tsx
-```
-
-Routes themselves are registered in:
-
-```text
-src/App.tsx
-```
-
-When adding a new top-level page, update both places if it should appear in the public navigation.
-
-## 10. Contact form
-
-Frontend:
-
-```text
-src/components/Contact.tsx
-```
-
-The repository also contains this older backend:
-
-```text
-netlify/functions/contact.js
-```
-
-and the frontend currently POSTs to:
-
-```text
-/.netlify/functions/contact
-```
-
-This is a legacy Netlify integration. **GitHub Pages cannot execute Netlify Functions.**
-
-Unless the team has separately configured an external service for that endpoint, do not assume the current contact form backend works in production. The next implementation should either use a hosted form/email service that works with a static GitHub Pages site or move the backend to a separately hosted API.
-
-Do not hard-code passwords, API keys, SMTP credentials, or other secrets into the frontend.
-
-## 11. Deployment
-
-The production website is hosted on **GitHub Pages**.
-
-The repository's deployment scripts are:
-
-```json
-"predeploy": "npm run build",
-"deploy": "gh-pages -d build"
-```
-
-Deploy from the latest `main`:
+Before opening a pull request, run:
 
 ```bash
-git checkout main
-git pull
-npm install
-npm run deploy
+npm run check
 ```
 
-This performs:
+GitHub Actions repeats the automated checks on the pull request.
 
-```text
-main
-  |
-  v
-npm run build
-  |
-  v
-build/
-  |
-  v
-gh-pages -d build
-  |
-  v
-gh-pages branch
-  |
-  v
-GitHub Pages
-  |
-  v
-sfusat.org
-```
+## Deployment
 
-The `gh-pages` branch is generated production output. Do not make normal source-code edits there and do not delete it.
+Do not deploy production from a personal laptop.
 
-Before and after deployment:
+After an approved change reaches main, GitHub Actions builds the site and publishes it to the `gh-pages` branch.
 
-1. run `npm run build` successfully;
-2. check affected routes locally;
-3. deploy with `npm run deploy`;
-4. verify the `gh-pages` branch updated;
-5. open https://sfusat.org;
-6. test the changed pages on desktop and mobile.
+Do not edit the generated `gh-pages` branch.
 
-The repository still contains `netlify.toml` and `netlify/functions/`. They are legacy files and are not the current production hosting path.
+After deployment, verify https://sfusat.org and the pages that changed.
 
-## 12. Domain and service access
+## Domain
 
-The actual website host and domain provider are separate:
+GitHub Pages serves the website.
 
-- **GitHub Pages** serves the website.
-- **Squarespace** manages `sfusat.org` domain registration and DNS.
-- The current Squarespace domain plan costs about **$20 per year**.
+Squarespace manages the sfusat.org domain and DNS.
 
-At least two active team members should know who controls:
+At least two active members should know who controls repository administration, GitHub Pages settings and Squarespace access.
 
-- the GitHub repository;
-- GitHub Pages settings;
-- Squarespace domain/DNS access;
-- the annual domain renewal/payment;
-- approved team photos and sponsor media;
-- any future external service used for forms or email.
+Keep credentials and payment information outside GitHub.
 
-Keep credentials, recovery codes, and payment details outside GitHub.
+## Regular cleanup
 
-## 13. Recommended future cleanup
+Review stale issues and pull requests.
 
-The highest-value refactors are:
+Review Dependabot updates.
 
-1. move project, sponsor, outreach, and team content into typed data files instead of large JSX files;
-2. remove stale commented-out code;
-3. add CI that runs the production build and tests on pull requests;
-4. expand automated tests for navigation and interactive components;
-5. decide whether external GitHub-hosted media should move into team-controlled assets;
-6. remove obsolete Netlify configuration after verifying nothing still depends on it;
-7. replace or properly host the current contact-form backend;
-8. plan a future migration away from Create React App separately from routine content work.
+Check failed workflows.
 
-These are maintenance improvements, not prerequisites for normal website updates.
+Remove old commented code when it is no longer useful.
+
+Check important external image links.
+
+Keep onboarding and maintenance instructions current when the workflow changes.
