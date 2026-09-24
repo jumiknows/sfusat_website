@@ -4,13 +4,25 @@ Official website for the Simon Fraser University Satellite Design Team.
 
 **Live site:** https://sfusat.org
 
-This repository contains the public SFU SAT website, project pages, sponsor and outreach content, rover recruitment pages, and the contact form backend used by the site.
+The website is a React and TypeScript single-page application hosted on **GitHub Pages**. The custom `sfusat.org` domain and DNS are managed through **Squarespace** on the team's paid domain plan, currently about $20 per year.
+
+## Hosting at a glance
+
+| Responsibility | Current setup |
+| --- | --- |
+| Source code | `main` branch |
+| Website hosting | GitHub Pages |
+| Production build | `gh-pages` branch |
+| Deployment command | `npm run deploy` |
+| Custom domain | `sfusat.org` |
+| Domain and DNS management | Squarespace |
+| Domain configuration in GitHub Pages | `CNAME` containing `sfusat.org` |
+
+The `gh-pages` branch is generated deployment output. **Do not delete it and do not edit it by hand.**
 
 ## What this repository contains
 
-The site is a React and TypeScript single-page application. Most public-facing content currently lives directly in React components, while images and 3D assets live under `public/`.
-
-Main areas of the site:
+Most public-facing content currently lives directly in React components, while images and 3D assets live under `public/`.
 
 | Area | Route | Source |
 | --- | --- | --- |
@@ -36,8 +48,8 @@ Routing is defined in `src/App.tsx`.
 - React Router
 - Create React App / `react-scripts`
 - Three.js for rover-related 3D work
-- Netlify for production hosting and serverless functions
-- Nodemailer for contact-form email delivery
+- GitHub Pages for production hosting
+- Squarespace for the `sfusat.org` domain and DNS
 
 ## Repository structure
 
@@ -61,14 +73,14 @@ sfusat_website/
 │   ├── images/
 │   ├── logos/
 │   └── models/
-├── netlify/
-│   └── functions/
-│       ├── contact.js
-│       └── swagger.json
-├── netlify.toml
+├── docs/
+│   └── MAINTENANCE.md
+├── CNAME
 ├── package.json
 └── tsconfig.json
 ```
+
+The repository still contains older Netlify-related files. They are **not the current production hosting path** and should be treated as legacy until the team decides whether to remove or repurpose them.
 
 ## Local development
 
@@ -89,79 +101,105 @@ npm install
 npm start
 ```
 
-The React development server runs at:
+The development server runs at:
 
 ```text
 http://localhost:3000
 ```
 
-### Run the site with Netlify Functions
-
-The contact form calls `/.netlify/functions/contact`. Running only `npm start` does not provide that serverless endpoint.
-
-To test the frontend and Netlify Function together:
-
-```bash
-npx netlify-cli dev
-```
-
-The Netlify CLI will proxy the React app and expose the local functions endpoint.
-
-## Environment variables
-
-The contact function reads SMTP credentials from environment variables.
-
-| Variable | Required | Purpose |
-| --- | --- | --- |
-| `SMTP_HOST` | Yes | SMTP server hostname |
-| `SMTP_USER` | Yes | SMTP account username |
-| `SMTP_PASS` | Yes | SMTP account password |
-| `SMTP_PORT` | No | SMTP port. Defaults to `587` |
-
-Do not commit credentials to this repository.
-
-For production, configure these values in the Netlify project environment settings.
-
-For local Netlify testing, use local environment configuration supported by the Netlify CLI. Keep local secret files out of Git.
+No Netlify CLI or `npx netlify-cli` workflow is required for normal website development.
 
 ## Available commands
 
 | Command | Purpose |
 | --- | --- |
-| `npm start` | Start the React development server |
+| `npm start` | Start the local React development server |
 | `npm test` | Run the React test runner |
 | `npm run build` | Create the production build in `build/` |
-| `npm run deploy` | Legacy GitHub Pages deployment command |
+| `npm run deploy` | Build and publish the site to the `gh-pages` branch |
 
-The production configuration in this repository is Netlify-based. The `gh-pages` command remains in `package.json` from an older deployment path and should not be used for the production site unless the team intentionally switches hosting back to GitHub Pages.
+The `predeploy` script automatically runs `npm run build` before `gh-pages -d build`.
 
 ## Deployment
 
-Production deployment is configured by `netlify.toml`:
+Production is hosted with GitHub Pages.
 
-```toml
-[build]
-command = "npm run build"
-publish = "build"
-functions = "netlify/functions"
+The deployment flow is:
+
+```text
+main
+  |
+  | npm run deploy
+  v
+npm run build
+  |
+  v
+build/
+  |
+  | gh-pages -d build
+  v
+gh-pages branch
+  |
+  v
+GitHub Pages
+  |
+  v
+sfusat.org
 ```
 
-Netlify also redirects unknown paths to `/index.html` so React Router routes work when a visitor refreshes a project page directly.
+To deploy:
 
-The custom domain tracked by this repository is `sfusat.org`.
+```bash
+git checkout main
+git pull
+npm install
+npm run deploy
+```
 
-Before deploying a content or UI change:
+After deployment:
 
-1. Run `npm run build`.
-2. Check the affected page locally.
-3. Test desktop and mobile layouts.
-4. Check internal navigation and image paths.
-5. If the contact form changed, test it through the Netlify development environment.
-6. Open a pull request and have another team member review the change when possible.
+1. confirm the `gh-pages` branch received a new deployment commit;
+2. open https://sfusat.org;
+3. test the pages changed in the release;
+4. test at least one desktop and one mobile layout;
+5. verify direct navigation to important routes;
+6. confirm the custom domain still resolves correctly.
+
+The `gh-pages` branch contains generated files such as `index.html`, `static/`, site assets, and the production `CNAME`.
+
+## Custom domain and DNS
+
+The website itself is hosted by **GitHub Pages**.
+
+The domain `sfusat.org` and its DNS settings are managed through **Squarespace**. The team currently pays approximately **$20 per year** for the domain plan.
+
+These are separate responsibilities:
+
+```text
+Squarespace
+  domain registration + DNS
+            |
+            v
+        sfusat.org
+            |
+            v
+     GitHub Pages
+       website host
+```
+
+When website ownership changes, the new maintainer should receive the appropriate Squarespace domain/DNS access in addition to GitHub repository access.
+
+Do not put Squarespace passwords, recovery codes, or payment information in this repository.
+
+## Contact form note
+
+The current source includes an older Netlify function under `netlify/functions/contact.js`, and `Contact.tsx` still references a Netlify-style endpoint.
+
+**GitHub Pages is static hosting and does not execute Netlify Functions.** Therefore, the contact form backend should not be considered operational through GitHub Pages unless the team has separately configured an external service for that endpoint.
+
+Treat the current contact backend as legacy code until it is replaced or connected to a supported hosted service.
 
 ## Updating website content
-
-A lot of content is currently component-based rather than stored in a CMS or JSON data layer. This is important for future maintainers.
 
 Common update locations:
 
@@ -172,34 +210,36 @@ Common update locations:
 - Team descriptions: `src/components/About.tsx`
 - Rover recruitment content: `src/components/Rover.tsx` and `RoverApply.tsx`
 - Main navigation: `src/components/Navbar.tsx`
-- Contact form: `src/components/Contact.tsx`
-- Contact backend: `netlify/functions/contact.js`
-- Local site images: `public/images/`
+- Contact page: `src/components/Contact.tsx`
+- Local images: `public/images/`
 - 3D assets: `public/models/`
 
-See [docs/MAINTENANCE.md](docs/MAINTENANCE.md) for step-by-step maintenance notes.
+See [docs/MAINTENANCE.md](docs/MAINTENANCE.md) for recurring maintenance steps.
 
 ## Development workflow
 
-Please avoid making large edits directly on `main`.
-
-A simple team workflow is:
+Avoid making significant changes directly on `main`.
 
 ```text
 main
   |
   +-- feat/...
   +-- fix/...
+  +-- content/...
   +-- docs/...
        |
        v
    Pull Request
        |
        v
-  review + build check
+ review + build
        |
        v
       main
+       |
+       | npm run deploy
+       v
+   gh-pages
 ```
 
 Example branch names:
@@ -207,61 +247,62 @@ Example branch names:
 ```text
 feat/new-project-page
 fix/mobile-navbar
-docs/update-maintainer-guide
 content/update-sponsors
+docs/update-maintainer-guide
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution and review checklist.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution checklist.
 
 ## Testing checklist
 
-There is currently only a small automated test surface, so manual QA is still important.
+There is currently only a small automated test surface, so manual QA is important.
 
-For website changes, verify:
+Before deploying, verify:
 
-- the production build completes;
-- the modified route loads directly;
-- navbar links still work;
+- `npm run build` completes;
+- modified routes load correctly;
+- navbar links work;
 - desktop and mobile layouts remain usable;
-- images have meaningful `alt` text;
+- images have useful `alt` text;
 - new images are reasonably compressed;
 - external links are current;
-- forms provide success and error feedback;
+- the browser console has no obvious new errors;
 - no credentials or private team data are committed.
 
 ## Known technical debt
 
-The site works, but there are several areas worth improving over time:
+Useful future improvements include:
 
-- much of the content is embedded directly in React components;
-- repeated project and sponsor markup could move to typed data structures;
-- the current Create React App stack is aging;
-- automated tests are limited;
-- some media is loaded from external GitHub-hosted assets rather than this repository;
-- deployment history includes both GitHub Pages and Netlify conventions;
-- contact-form configuration should be reviewed whenever maintainership changes.
-
-These are good refactoring opportunities, but they do not need to block normal content updates.
+- move repeated project, sponsor, outreach, and team content into typed data files;
+- remove stale commented-out code;
+- add CI that runs the production build and tests on pull requests;
+- expand automated tests for routing and interactive components;
+- review externally hosted GitHub media and move important long-term assets under team control;
+- remove obsolete Netlify configuration after confirming nothing still depends on it;
+- replace or properly host the current contact-form backend;
+- plan a future migration away from Create React App separately from normal content updates.
 
 ## Team handover
 
-When website ownership changes, the outgoing maintainer should make sure the new maintainer has access to:
+The outgoing website maintainer should make sure the next maintainer understands and can access:
 
 - this GitHub repository;
-- the production Netlify project;
-- the `sfusat.org` domain/DNS management;
-- the SMTP account or replacement email service used by the contact form;
-- the shared source for approved team photos, project media, sponsor logos, and outreach assets.
+- GitHub Pages settings for the repository;
+- the `gh-pages` deployment workflow;
+- Squarespace access for `sfusat.org` domain registration and DNS;
+- the annual domain renewal/payment owner;
+- approved team photos, project media, and sponsor logos;
+- any external service eventually used for forms or email.
 
-Do not place account passwords or service credentials in this README, repository issues, or source code.
+Do not place account passwords or service credentials in GitHub.
 
 ## Contributing
 
-Team members are welcome to improve the site. Start with [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request for anything beyond a very small content correction.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). For anything beyond a tiny content correction, use a short-lived branch and pull request.
 
 ## License and ownership
 
-This repository is maintained for the SFU Satellite Design Team website. Website content, team media, sponsor assets, and third-party logos may have rights or usage restrictions separate from the source code. Do not assume that every image or logo in the repository is freely reusable outside the SFU SAT website.
+This repository is maintained for the SFU Satellite Design Team website. Team media, sponsor assets, and third-party logos may have usage restrictions separate from the source code.
 
 ## Contact
 
