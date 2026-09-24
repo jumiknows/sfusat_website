@@ -1,13 +1,19 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import App from './App';
+import { MemoryRouter } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Projects from './components/Projects';
 
-beforeEach(() => {
-  window.history.pushState({}, '', '/');
-});
+const renderNavbar = () => {
+  render(
+    <MemoryRouter>
+      <Navbar />
+    </MemoryRouter>
+  );
+};
 
 test('renders the main navigation', () => {
-  render(<App />);
+  renderNavbar();
 
   expect(screen.getByRole('link', { name: 'SFU SAT Home' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Projects' })).toBeInTheDocument();
@@ -18,10 +24,9 @@ test('renders the main navigation', () => {
 });
 
 test('opens and closes the navigation menu', () => {
-  render(<App />);
+  renderNavbar();
 
-  const openButton = screen.getByRole('button', { name: 'Open menu' });
-  fireEvent.click(openButton);
+  fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
 
   expect(screen.getByRole('button', { name: 'Close menu' })).toHaveAttribute(
     'aria-expanded',
@@ -36,11 +41,14 @@ test('opens and closes the navigation menu', () => {
   );
 });
 
-test('renders the projects route', () => {
-  window.history.pushState({}, '', '/projects');
-
-  render(<App />);
+test('renders the current project list', () => {
+  render(
+    <MemoryRouter>
+      <Projects />
+    </MemoryRouter>
+  );
 
   expect(screen.getByRole('heading', { name: 'Polaris' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'ALEASAT' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Balloon 1' })).toBeInTheDocument();
 });
