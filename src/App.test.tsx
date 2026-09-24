@@ -16,11 +16,12 @@ test('renders the main navigation', () => {
   renderNavbar();
 
   expect(screen.getByRole('link', { name: 'SFU SAT Home' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Projects' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Sponsors' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Outreach' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Contact Us' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Home' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Projects' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Sponsors' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Outreach' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'About' })).toBeInTheDocument();
+  expect(screen.getByRole('menuitem', { name: 'Contact Us' })).toBeInTheDocument();
 });
 
 test('opens and closes the navigation menu', () => {
