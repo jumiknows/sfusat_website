@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a useful website improvement
+title: "Feature: "
+
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What should improve?
+      description: Describe the user or team need.
+    validations:
+      required: true
+
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected result
+      description: Describe what should be true when the work is complete.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Add related pages, designs or decisions.

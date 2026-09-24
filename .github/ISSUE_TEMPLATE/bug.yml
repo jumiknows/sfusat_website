@@ -1,0 +1,34 @@
+name: Bug report
+description: Report a problem with the website
+title: "Bug: "
+
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Describe what happened and what you expected instead.
+    validations:
+      required: true
+
+  - type: input
+    id: page
+    attributes:
+      label: Page or route
+      description: Add the affected page or route if known.
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Where did you see it?
+      options:
+        - Desktop
+        - Mobile
+        - Both
+        - Not sure
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add browser details, screenshots or anything else that helps reproduce the problem.

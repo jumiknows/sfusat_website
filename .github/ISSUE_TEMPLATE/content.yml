@@ -1,0 +1,32 @@
+name: Content update
+description: Request a change to public website content
+title: "Content: "
+
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Where should the content change?
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: Requested change
+      description: Provide the exact information that should be added, removed or corrected.
+    validations:
+      required: true
+
+  - type: input
+    id: approval
+    attributes:
+      label: Who confirmed this information?
+      description: Add the team lead, member or source that confirmed the change.
+
+  - type: textarea
+    id: assets
+    attributes:
+      label: Images or files
+      description: Add the approved asset location when the change needs media.

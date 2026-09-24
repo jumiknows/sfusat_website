@@ -2,128 +2,93 @@
 
 Website for the SFU Satellite Design Team.
 
-**Live:** https://sfusat.org
+Live site: https://sfusat.org
 
-## Setup
+## Run locally
 
 ```bash
 git clone https://github.com/jumiknows/sfusat_website.git
 cd sfusat_website
-npm install
+npm ci
 npm start
 ```
 
-Local site:
-
-```text
-http://localhost:3000
-```
+Open http://localhost:3000.
 
 ## Stack
 
-- React
-- TypeScript
-- React Router
-- Three.js
-- GitHub Pages
-- Squarespace DNS
+React, TypeScript, React Router, Three.js and GitHub Pages.
 
-## Where things are
+Squarespace manages the sfusat.org domain and DNS.
 
-| Change | File |
-| --- | --- |
-| Home page | `src/components/Home.tsx` |
-| Projects | `src/components/Projects.tsx` |
-| Project pages | `src/components/pages/` |
-| Rover | `src/components/Rover.tsx` |
-| Sponsors | `src/components/Sponsors.tsx` |
-| Outreach | `src/components/Outreach.tsx` |
-| Team info | `src/components/About.tsx` |
-| Contact page | `src/components/Contact.tsx` |
-| Navigation | `src/components/Navbar.tsx` |
-| Routes | `src/App.tsx` |
-| Images | `public/images/` |
-| 3D models | `public/models/` |
+## Common files
 
-For recurring website updates, see [docs/MAINTENANCE.md](docs/MAINTENANCE.md).
+Home page: `src/components/Home.tsx`
 
-## Development workflow
+Projects: `src/components/Projects.tsx`
 
-Use a branch for normal work.
+Project pages: `src/components/pages/`
 
-```bash
-git checkout main
-git pull
-git checkout -b feat/short-description
-```
+Rover: `src/components/Rover.tsx`
 
-Before opening a pull request:
+Sponsors: `src/components/Sponsors.tsx`
+
+Outreach: `src/components/Outreach.tsx`
+
+Team information: `src/components/About.tsx`
+
+Contact page: `src/components/Contact.tsx`
+
+Navigation: `src/components/Navbar.tsx`
+
+Routes: `src/App.tsx`
+
+Images: `public/images/`
+
+3D models: `public/models/`
+
+## Before opening a pull request
+
+Run:
 
 ```bash
-npm run build
+npm run check
 ```
 
-Then check the changed page on desktop and mobile.
+Then check the pages you changed on desktop and mobile.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the team workflow.
+Pull requests also run automated checks in GitHub Actions.
 
-## Deploy
+## Deployment
 
-The website is hosted on **GitHub Pages**.
+Production is deployed automatically after a change reaches `main`.
 
-```bash
-git checkout main
-git pull
-npm install
-npm run deploy
-```
+The deployment workflow builds the site and publishes it to the `gh-pages` branch.
 
-`npm run deploy` builds the site and publishes it to the `gh-pages` branch.
+Do not edit `gh-pages` directly.
 
-**Do not edit or delete `gh-pages`.** It contains the live website build.
+## Working on the website
 
-After deploying, check:
+New contributors should start with [docs/ONBOARDING.md](docs/ONBOARDING.md).
 
-- https://sfusat.org loads
-- the pages you changed work
-- mobile layout still looks right
-- direct links to project pages work
+Team workflow and ticket guidance are in [docs/PROJECT_WORKFLOW.md](docs/PROJECT_WORKFLOW.md).
 
-## Domain
+Recurring maintenance is documented in [docs/MAINTENANCE.md](docs/MAINTENANCE.md).
 
-`sfusat.org` is managed through **Squarespace**.
-
-Squarespace handles the domain and DNS. GitHub Pages hosts the website.
-
-The Squarespace domain plan is currently about **$20 per year**.
-
-The repository `CNAME` should remain:
-
-```text
-sfusat.org
-```
-
-Do not change DNS records unless you know what the record is used for.
+Contribution rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Contact form
 
-The repo still contains an old Netlify contact backend. GitHub Pages cannot run Netlify Functions.
+The repository still contains an older Netlify contact backend. GitHub Pages cannot run Netlify Functions.
 
-The replacement is tracked in [Issue #4](https://github.com/jumiknows/sfusat_website/issues/4).
+The replacement is tracked in Issue 4.
 
 ## Custom email
 
-Planning for addresses such as `president@sfusat.org` is tracked in [Issue #6](https://github.com/jumiknows/sfusat_website/issues/6).
+Planning for sfusat.org email addresses is tracked in Issue 6.
 
-Do not change the Squarespace DNS for email until a mail provider and rollout plan are approved.
+Do not change DNS records for email until the team has approved a provider and rollout plan.
 
-## Handover
+## Security
 
-The next website maintainer should have access to:
-
-- this GitHub repository
-- GitHub Pages settings
-- Squarespace domain and DNS
-- approved team images and sponsor assets
-
-Keep passwords, recovery codes, and payment information out of GitHub.
+Never commit passwords, API keys, recovery codes, payment information or private member information.
