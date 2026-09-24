@@ -1,20 +1,6 @@
 # Contributing to the SFU SAT Website
 
-This repository is maintained by SFU Satellite Design Team members. The goal is to keep the public website easy for the next student maintainer to understand and update.
-
-## Before you start
-
-For anything larger than a typo or a single content correction, create a short-lived branch from the latest `main`.
-
-Recommended branch names:
-
-- `feat/new-project-page`
-- `fix/mobile-navbar`
-- `content/update-sponsors`
-- `docs/maintainer-notes`
-- `refactor/project-data`
-
-Keep one logical change per branch.
+This repository is maintained by SFU Satellite Design Team members. Keep changes understandable enough that a future student maintainer can pick up the project without needing the original developer.
 
 ## Local setup
 
@@ -25,11 +11,21 @@ npm install
 npm start
 ```
 
-For changes that involve the contact form or Netlify Functions:
+Normal local development uses the React development server. No Netlify CLI is required.
 
-```bash
-npx netlify-cli dev
-```
+## Branch workflow
+
+For anything larger than a typo or a single content correction, create a short-lived branch from the latest `main`.
+
+Examples:
+
+- `feat/new-project-page`
+- `fix/mobile-navbar`
+- `content/update-sponsors`
+- `docs/maintainer-notes`
+- `refactor/project-data`
+
+Keep one logical change per branch.
 
 ## Before opening a pull request
 
@@ -41,39 +37,38 @@ npm run build
 
 Then manually check the pages you changed.
 
-At minimum, verify:
+Verify:
 
 - desktop layout;
 - mobile layout;
 - route navigation;
 - images and alt text;
 - external links;
-- browser console for obvious errors;
-- contact form behavior if relevant.
+- browser console for obvious errors.
 
 ## Pull request expectations
 
-A pull request should explain:
+Explain:
 
 1. what changed;
-2. why the change was needed;
+2. why it changed;
 3. which pages were tested;
-4. whether media, routes, forms, deployment, or environment variables changed;
-5. any follow-up work that remains.
+4. whether routes, media, deployment, DNS, or external services are affected;
+5. any follow-up work.
 
-Screenshots are helpful for visual changes.
+Screenshots are useful for visible changes.
 
 ## Content changes
 
-Keep website copy factual, current, and understandable to someone outside the team.
+Keep public copy factual and current.
 
-Before adding a sponsor, project, team member, event, or external claim, verify the information with the appropriate SFU SAT lead.
+Before adding or changing a sponsor, project, team member, event, role, or external claim, confirm the information with the appropriate SFU SAT lead.
 
-Avoid putting temporary notes, internal planning comments, credentials, personal phone numbers, private email threads, or unpublished project information into public source files.
+Do not put temporary planning notes, passwords, personal information, private emails, or unpublished project information into public source files.
 
 ## Images and media
 
-Prefer files that are reasonably compressed and named for what they contain.
+Prefer compressed files with clear names.
 
 Good:
 
@@ -82,7 +77,7 @@ public/images/projects/aleasat-integration-test.jpg
 public/images/outreach/2026-science-world.jpg
 ```
 
-Avoid names such as:
+Avoid:
 
 ```text
 IMG_3928-final-final2.jpg
@@ -94,46 +89,69 @@ Use meaningful alt text for images that communicate content.
 
 ## Code style
 
-This codebase uses React, TypeScript, and component-specific CSS.
+The codebase uses React, TypeScript, and component-specific CSS.
 
 When editing existing pages:
 
-- follow the style of the surrounding component;
+- follow the surrounding component style;
 - keep TypeScript strictness intact;
-- avoid copying large blocks of nearly identical markup when a typed array or reusable component would be clearer;
-- keep routing changes centralized in `src/App.tsx`;
-- do not add dependencies for something that can be handled simply with the existing stack;
-- remove commented-out experiments once the final behavior is agreed on.
+- avoid duplicating large JSX blocks when typed data or a reusable component is clearer;
+- keep route registration in `src/App.tsx`;
+- avoid adding a dependency for something simple enough to solve with the existing stack;
+- remove abandoned commented-out experiments once a final approach is agreed on.
 
-## Secrets and service configuration
+## Deployment
+
+The production website is hosted on **GitHub Pages**.
+
+After a change is merged into `main`, deploy from an up-to-date local `main` branch:
+
+```bash
+git checkout main
+git pull
+npm install
+npm run deploy
+```
+
+`npm run deploy` builds the project and publishes `build/` to the generated `gh-pages` branch.
+
+Do not edit `gh-pages` manually and do not delete it while GitHub Pages uses it as the production source.
+
+## Domain and DNS
+
+`sfusat.org` is managed through Squarespace. Squarespace handles the domain registration and DNS; GitHub Pages serves the actual website.
+
+Only maintainers who need domain access should receive the Squarespace account permissions. Never commit credentials or payment details.
+
+## Legacy Netlify files
+
+The repository still contains `netlify.toml` and `netlify/functions/` from an older approach.
+
+They are not the current production hosting path. Do not add new Netlify-specific dependencies or workflows unless the team intentionally decides to use Netlify again.
+
+The existing contact page still references a Netlify-style function endpoint, so treat that integration as legacy until a supported backend is configured.
+
+## Secrets
 
 Never commit:
 
-- SMTP passwords;
+- GitHub tokens;
+- Squarespace credentials or recovery codes;
 - API keys;
-- Netlify tokens;
+- SMTP passwords;
 - DNS credentials;
 - private keys;
 - production cookies or browser data.
 
-The contact function expects SMTP configuration through environment variables. See the main README for the required names.
-
-## Deployment
-
-The repository currently contains Netlify production configuration and an older GitHub Pages deployment script.
-
-Treat Netlify as the production path unless the team explicitly decides otherwise.
-
-Do not run `npm run deploy` against production as part of a normal contribution without confirming the hosting plan with the current website maintainer.
-
 ## Handover
 
-If you are leaving the web team, make sure at least one active member understands:
+When leaving the web team, make sure another active member knows:
 
-- where site content lives;
-- how the site is deployed;
-- how the contact form works;
-- who has access to Netlify and domain/DNS settings;
-- where original team media and sponsor assets are stored.
+- how to run the site locally;
+- how to deploy with `npm run deploy`;
+- that `gh-pages` is generated production output;
+- who controls GitHub Pages settings;
+- who controls `sfusat.org` and its Squarespace renewal/DNS;
+- where approved team media and sponsor assets are stored.
 
-Update [docs/MAINTENANCE.md](docs/MAINTENANCE.md) when a workflow changes.
+Update [docs/MAINTENANCE.md](docs/MAINTENANCE.md) whenever one of these workflows changes.
