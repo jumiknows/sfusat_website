@@ -192,71 +192,99 @@ Frontend:
 src/components/Contact.tsx
 ```
 
-Backend:
+The repository also contains this older backend:
 
 ```text
 netlify/functions/contact.js
 ```
 
-The frontend POSTs to:
+and the frontend currently POSTs to:
 
 ```text
 /.netlify/functions/contact
 ```
 
-The backend uses SMTP environment variables:
+This is a legacy Netlify integration. **GitHub Pages cannot execute Netlify Functions.**
 
-```text
-SMTP_HOST
-SMTP_USER
-SMTP_PASS
-SMTP_PORT
-```
+Unless the team has separately configured an external service for that endpoint, do not assume the current contact form backend works in production. The next implementation should either use a hosted form/email service that works with a static GitHub Pages site or move the backend to a separately hosted API.
 
-The production recipient and SMTP configuration should be reviewed during every maintainer handover.
-
-Do not hard-code new passwords or tokens into the function.
-
-To test the full contact flow locally, run the project through Netlify CLI instead of only `npm start`.
+Do not hard-code passwords, API keys, SMTP credentials, or other secrets into the frontend.
 
 ## 11. Deployment
 
-The current repository has:
+The production website is hosted on **GitHub Pages**.
 
-```text
-netlify.toml
+The repository's deployment scripts are:
+
+```json
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
 ```
 
-with:
-
-- `npm run build` as the build command;
-- `build/` as the published output;
-- `netlify/functions` as the functions directory;
-- a fallback redirect to `index.html` for React Router.
-
-Before considering a change ready:
+Deploy from the latest `main`:
 
 ```bash
-npm run build
+git checkout main
+git pull
+npm install
+npm run deploy
 ```
 
-Then check the affected routes manually.
+This performs:
 
-The repository also still contains a GitHub Pages deployment script and a `gh-pages` branch from the older deployment approach. Do not assume those are the current production path.
+```text
+main
+  |
+  v
+npm run build
+  |
+  v
+build/
+  |
+  v
+gh-pages -d build
+  |
+  v
+gh-pages branch
+  |
+  v
+GitHub Pages
+  |
+  v
+sfusat.org
+```
+
+The `gh-pages` branch is generated production output. Do not make normal source-code edits there and do not delete it.
+
+Before and after deployment:
+
+1. run `npm run build` successfully;
+2. check affected routes locally;
+3. deploy with `npm run deploy`;
+4. verify the `gh-pages` branch updated;
+5. open https://sfusat.org;
+6. test the changed pages on desktop and mobile.
+
+The repository still contains `netlify.toml` and `netlify/functions/`. They are legacy files and are not the current production hosting path.
 
 ## 12. Domain and service access
 
-The codebase alone is not enough to operate the website.
+The actual website host and domain provider are separate:
+
+- **GitHub Pages** serves the website.
+- **Squarespace** manages `sfusat.org` domain registration and DNS.
+- The current Squarespace domain plan costs about **$20 per year**.
 
 At least two active team members should know who controls:
 
 - the GitHub repository;
-- Netlify;
-- `sfusat.org` DNS/domain settings;
-- the SMTP/email service;
-- approved team photos and sponsor media.
+- GitHub Pages settings;
+- Squarespace domain/DNS access;
+- the annual domain renewal/payment;
+- approved team photos and sponsor media;
+- any future external service used for forms or email.
 
-Keep credentials in the appropriate password manager or service access controls, not in GitHub.
+Keep credentials, recovery codes, and payment details outside GitHub.
 
 ## 13. Recommended future cleanup
 
@@ -265,9 +293,10 @@ The highest-value refactors are:
 1. move project, sponsor, outreach, and team content into typed data files instead of large JSX files;
 2. remove stale commented-out code;
 3. add CI that runs the production build and tests on pull requests;
-4. expand automated tests for navigation and forms;
+4. expand automated tests for navigation and interactive components;
 5. decide whether external GitHub-hosted media should move into team-controlled assets;
-6. remove the legacy GitHub Pages deployment path once the team confirms Netlify is permanent;
-7. plan a future migration away from Create React App rather than doing it during routine content work.
+6. remove obsolete Netlify configuration after verifying nothing still depends on it;
+7. replace or properly host the current contact-form backend;
+8. plan a future migration away from Create React App separately from routine content work.
 
 These are maintenance improvements, not prerequisites for normal website updates.
