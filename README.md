@@ -1,175 +1,271 @@
 # SFU Satellite Design Team Website
 
-[![Deployment Status](https://img.shields.io/badge/deployment-active-success)](https://jumiknows.github.io/website/)
-[![React](https://img.shields.io/badge/React-18.x-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+Official website for the Simon Fraser University Satellite Design Team.
 
-> The official website for the Simon Fraser University Satellite Design Team, showcasing our mission to educate and inspire future generations of space explorers through technological development and educational outreach.
+**Live site:** https://sfusat.org
 
-## 🚀 Live Website
+This repository contains the public SFU SAT website, project pages, sponsor and outreach content, rover recruitment pages, and the contact form backend used by the site.
 
-Visit our live website: 
-- **Primary**: [https://sfusat.org](https://sfusat.org)
-- **GitHub Pages**: [https://jumiknows.github.io/website/](https://jumiknows.github.io/website/)
+## What this repository contains
 
-## 📖 About
+The site is a React and TypeScript single-page application. Most public-facing content currently lives directly in React components, while images and 3D assets live under `public/`.
 
-The SFU Satellite Design Team is dedicated to:
-- 🛰️ **Designing and building satellites** for educational and research purposes
-- 🎓 **Educating students** in aerospace engineering and space technology
-- 🌍 **Inspiring communities** through outreach events and presentations
-- 🤝 **Collaborating with industry partners** and sponsors
+Main areas of the site:
 
-## 🏗️ Technical Stack
+| Area | Route | Source |
+| --- | --- | --- |
+| Home | `/` | `src/components/Home.tsx` |
+| Projects | `/projects` | `src/components/Projects.tsx` |
+| ALEASAT | `/projects/aleasat` | `src/components/pages/Aleasat.tsx` |
+| Balloon missions | `/projects/balloon1`, `balloon2`, `balloon3` | `src/components/pages/` |
+| CSDC missions | `/projects/csdc4`, `csdc5` | `src/components/pages/` |
+| CCP1 | `/projects/ccp1` | `src/components/pages/CCP1.tsx` |
+| Rover | `/rover` | `src/components/Rover.tsx` |
+| Rover application | `/rover/apply` | `src/components/RoverApply.tsx` |
+| Sponsors | `/sponsors` | `src/components/Sponsors.tsx` |
+| Outreach | `/outreach` | `src/components/Outreach.tsx` |
+| About | `/about` | `src/components/About.tsx` |
+| Contact | `/contact` | `src/components/Contact.tsx` |
 
-- **Frontend Framework**: React 18.x with TypeScript
-- **Styling**: CSS3 with responsive design
-- **Routing**: React Router DOM
-- **Deployment**: GitHub Pages
-- **Build Tool**: Create React App
-- **Image Optimization**: Professional asset management system
+Routing is defined in `src/App.tsx`.
 
-## 📂 Project Structure
+## Stack
 
+- React 18
+- TypeScript
+- React Router
+- Create React App / `react-scripts`
+- Three.js for rover-related 3D work
+- Netlify for production hosting and serverless functions
+- Nodemailer for contact-form email delivery
+
+## Repository structure
+
+```text
+sfusat_website/
+├── src/
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── components/
+│       ├── Home.tsx
+│       ├── Projects.tsx
+│       ├── Sponsors.tsx
+│       ├── Outreach.tsx
+│       ├── About.tsx
+│       ├── Contact.tsx
+│       ├── Rover.tsx
+│       ├── RoverApply.tsx
+│       ├── pages/              # Individual mission/project pages
+│       └── rover/              # Rover 3D/game components
+├── public/
+│   ├── images/
+│   ├── logos/
+│   └── models/
+├── netlify/
+│   └── functions/
+│       ├── contact.js
+│       └── swagger.json
+├── netlify.toml
+├── package.json
+└── tsconfig.json
 ```
-src/
-├── components/           # React components
-│   ├── Home.tsx         # Landing page with hero section
-│   ├── About.tsx        # Team information and mission
-│   ├── Projects.tsx     # Satellite projects showcase
-│   ├── Outreach.tsx     # Community outreach events
-│   ├── Sponsors.tsx     # Sponsor recognition page
-│   ├── Contact.tsx      # Contact information
-│   ├── Navbar.tsx       # Navigation component
-│   └── Footer.tsx       # Site footer
-├── App.tsx              # Main application component
-└── index.tsx            # Application entry point
 
-public/images/           # Optimized image assets
-├── hero/                # Hero section images
-├── icons/               # Site icons and logos
-├── sponsors/sponsor/    # Sponsor logos
-└── outreach/events/     # Outreach event photos
-```
-
-## 🛠️ Development Setup
+## Local development
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn package manager
+
+Install:
+
 - Git
+- Node.js 18 or newer
+- npm
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/jumiknows/website.git
-   cd website/sfusat
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm start
-   ```
-   
-   Opens [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📋 Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm start` | Runs development server on localhost:3000 |
-| `npm test` | Launches test runner in interactive mode |
-| `npm run build` | Creates optimized production build |
-| `npm run deploy` | Deploys to GitHub Pages |
-
-## 🎨 Features
-
-### ✨ Responsive Design
-- Mobile-first approach with breakpoints at 768px and 480px
-- Optimized for desktop, tablet, and mobile devices
-- Professional typography and spacing
-
-### 🖼️ Image Management
-- **Professional directory structure** for organized asset management
-- **Optimized images** (e.g., hero balloon reduced from 7.1MB to 290KB)
-- **214 total images** efficiently organized (2.2MB total)
-
-### 📱 User Experience
-- **Fast loading times** with optimized assets
-- **Smooth animations** and hover effects
-- **Interactive slideshow** for outreach events (17 photos)
-- **Professional sponsor showcase** with tier-based organization
-
-### 🏢 Sponsor Integration
-- **Platinum, Silver, Bronze** tier system
-- **Detailed sponsor profiles** with descriptions
-- **Logo showcase** on home page and dedicated sponsors page
-- **Call-to-action** for potential sponsors
-
-## 📊 Performance Metrics
-
-- **Hero Image**: 24x performance improvement (7.1MB → 290KB)
-- **Total Assets**: 214 images, 2.2MB optimized
-- **Load Time**: Significantly improved with asset optimization
-- **Mobile Performance**: Fully responsive across all devices
-
-## 🚀 Deployment
-
-The website is automatically deployed to GitHub Pages using:
+### Setup
 
 ```bash
-npm run deploy
+git clone https://github.com/jumiknows/sfusat_website.git
+cd sfusat_website
+npm install
+npm start
 ```
 
-**Deployment Process:**
-1. Builds production-ready application
-2. Pushes to `gh-pages` branch
-3. GitHub Pages serves the site at the live URL
+The React development server runs at:
 
-## 🤝 Contributing
+```text
+http://localhost:3000
+```
 
-We welcome contributions from team members! Here's how to get started:
+### Run the site with Netlify Functions
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** and test thoroughly
-4. **Commit changes**: `git commit -m "Add amazing feature"`
-5. **Push to branch**: `git push origin feature/amazing-feature`
-6. **Create Pull Request**
+The contact form calls `/.netlify/functions/contact`. Running only `npm start` does not provide that serverless endpoint.
 
-### Development Workflow
-1. Make code changes
-2. Test locally with `npm start`
-3. Commit changes: `git add . && git commit -m "description"`
-4. Push source code: `git push`
-5. Deploy to live site: `npm run deploy`
+To test the frontend and Netlify Function together:
 
-## 📧 Contact
+```bash
+npx netlify-cli dev
+```
 
-**SFU Satellite Design Team**
-- 🌐 Website: [https://sfusat.org](https://sfusat.org)
-- 📧 Email: Contact us through our website
-- 🏫 Location: Simon Fraser University, Burnaby, BC
+The Netlify CLI will proxy the React app and expose the local functions endpoint.
 
-## 📜 License
+## Environment variables
 
-This project is maintained by the SFU Satellite Design Team for educational and outreach purposes.
+The contact function reads SMTP credentials from environment variables.
 
-## 🙏 Acknowledgments
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `SMTP_HOST` | Yes | SMTP server hostname |
+| `SMTP_USER` | Yes | SMTP account username |
+| `SMTP_PASS` | Yes | SMTP account password |
+| `SMTP_PORT` | No | SMTP port. Defaults to `587` |
 
-- **Simon Fraser University** for supporting our mission
-- **Our Sponsors**: Momentus, MDA, AGI, Canadian Space Agency, and many others
-- **React Community** for the amazing framework
-- **GitHub Pages** for free hosting
+Do not commit credentials to this repository.
 
----
+For production, configure these values in the Netlify project environment settings.
 
-**Built with ❤️ by the SFU Satellite Design Team**
+For local Netlify testing, use local environment configuration supported by the Netlify CLI. Keep local secret files out of Git.
 
-*Inspiring future generations of space explorers through technology and education.*
+## Available commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start the React development server |
+| `npm test` | Run the React test runner |
+| `npm run build` | Create the production build in `build/` |
+| `npm run deploy` | Legacy GitHub Pages deployment command |
+
+The production configuration in this repository is Netlify-based. The `gh-pages` command remains in `package.json` from an older deployment path and should not be used for the production site unless the team intentionally switches hosting back to GitHub Pages.
+
+## Deployment
+
+Production deployment is configured by `netlify.toml`:
+
+```toml
+[build]
+command = "npm run build"
+publish = "build"
+functions = "netlify/functions"
+```
+
+Netlify also redirects unknown paths to `/index.html` so React Router routes work when a visitor refreshes a project page directly.
+
+The custom domain tracked by this repository is `sfusat.org`.
+
+Before deploying a content or UI change:
+
+1. Run `npm run build`.
+2. Check the affected page locally.
+3. Test desktop and mobile layouts.
+4. Check internal navigation and image paths.
+5. If the contact form changed, test it through the Netlify development environment.
+6. Open a pull request and have another team member review the change when possible.
+
+## Updating website content
+
+A lot of content is currently component-based rather than stored in a CMS or JSON data layer. This is important for future maintainers.
+
+Common update locations:
+
+- Projects and project cards: `src/components/Projects.tsx`
+- Project detail pages: `src/components/pages/`
+- Sponsors: `src/components/Sponsors.tsx`
+- Outreach photos and event history: `src/components/Outreach.tsx`
+- Team descriptions: `src/components/About.tsx`
+- Rover recruitment content: `src/components/Rover.tsx` and `RoverApply.tsx`
+- Main navigation: `src/components/Navbar.tsx`
+- Contact form: `src/components/Contact.tsx`
+- Contact backend: `netlify/functions/contact.js`
+- Local site images: `public/images/`
+- 3D assets: `public/models/`
+
+See [docs/MAINTENANCE.md](docs/MAINTENANCE.md) for step-by-step maintenance notes.
+
+## Development workflow
+
+Please avoid making large edits directly on `main`.
+
+A simple team workflow is:
+
+```text
+main
+  |
+  +-- feat/...
+  +-- fix/...
+  +-- docs/...
+       |
+       v
+   Pull Request
+       |
+       v
+  review + build check
+       |
+       v
+      main
+```
+
+Example branch names:
+
+```text
+feat/new-project-page
+fix/mobile-navbar
+docs/update-maintainer-guide
+content/update-sponsors
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution and review checklist.
+
+## Testing checklist
+
+There is currently only a small automated test surface, so manual QA is still important.
+
+For website changes, verify:
+
+- the production build completes;
+- the modified route loads directly;
+- navbar links still work;
+- desktop and mobile layouts remain usable;
+- images have meaningful `alt` text;
+- new images are reasonably compressed;
+- external links are current;
+- forms provide success and error feedback;
+- no credentials or private team data are committed.
+
+## Known technical debt
+
+The site works, but there are several areas worth improving over time:
+
+- much of the content is embedded directly in React components;
+- repeated project and sponsor markup could move to typed data structures;
+- the current Create React App stack is aging;
+- automated tests are limited;
+- some media is loaded from external GitHub-hosted assets rather than this repository;
+- deployment history includes both GitHub Pages and Netlify conventions;
+- contact-form configuration should be reviewed whenever maintainership changes.
+
+These are good refactoring opportunities, but they do not need to block normal content updates.
+
+## Team handover
+
+When website ownership changes, the outgoing maintainer should make sure the new maintainer has access to:
+
+- this GitHub repository;
+- the production Netlify project;
+- the `sfusat.org` domain/DNS management;
+- the SMTP account or replacement email service used by the contact form;
+- the shared source for approved team photos, project media, sponsor logos, and outreach assets.
+
+Do not place account passwords or service credentials in this README, repository issues, or source code.
+
+## Contributing
+
+Team members are welcome to improve the site. Start with [CONTRIBUTING.md](CONTRIBUTING.md), then open an issue or pull request for anything beyond a very small content correction.
+
+## License and ownership
+
+This repository is maintained for the SFU Satellite Design Team website. Website content, team media, sponsor assets, and third-party logos may have rights or usage restrictions separate from the source code. Do not assume that every image or logo in the repository is freely reusable outside the SFU SAT website.
+
+## Contact
+
+SFU Satellite Design Team  
+Simon Fraser University  
+Burnaby, British Columbia  
+https://sfusat.org
