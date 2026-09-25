@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: sfusat-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 

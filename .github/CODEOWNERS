@@ -1,0 +1,8 @@
+# Current repository owner
+* @jumiknows
+
+# Deployment and repository-control areas
+/.github/ @jumiknows
+/CNAME @jumiknows
+/netlify.toml @jumiknows
+/SECURITY.md @jumiknows
