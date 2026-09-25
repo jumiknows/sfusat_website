@@ -1,19 +1,39 @@
-# Summary
+## Problem
 
-Explain what changed and why.
+What website, content, accessibility, or maintenance problem does this address?
 
-# Testing
+## Approach
 
-List the checks you ran and the pages you tested.
+What changed, and why was this implementation or content decision chosen?
 
-# Visual changes
+For visible work, mention the affected route or component and any design source used.
 
-Add screenshots when the change affects the interface.
+## Verification
 
-# Before review
+### Automated
 
-1. The change is focused on one task.
-2. `npm run check` passes locally.
-3. Desktop and mobile layouts were checked when relevant.
-4. Public content was confirmed with the appropriate team lead.
-5. No credentials or private information were added.
+List the checks you ran.
+
+### Visual or content review
+
+For visible changes, include the pages and viewport sizes checked.
+
+Add before and after screenshots when they help reviewers verify the result.
+
+For public team information, state who confirmed the content when applicable.
+
+## Risks and limitations
+
+Describe browser, responsive-layout, content, accessibility, or deployment concerns that remain.
+
+## References
+
+Link the issue, Figma frame, source content, design note, or other material that supports the change.
+
+## Checklist
+
+- [ ] The change is focused on one task.
+- [ ] `npm run check` passes.
+- [ ] Desktop and mobile layouts were checked when relevant.
+- [ ] Public content was confirmed with the appropriate owner.
+- [ ] No credentials or private information were added.
