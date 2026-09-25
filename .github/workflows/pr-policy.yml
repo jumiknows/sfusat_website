@@ -1,0 +1,23 @@
+name: PR Policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  title:
+    name: PR title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate PR title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if [[ ! "$TITLE" =~ ^(feat|fix|docs|test|refactor|content|design|chore|ci|perf|build|revert)(\(.+\))?:\ .+ ]]; then
+            echo "Use a clear title such as fix: repair mobile navigation or content: update sponsor list"
+            exit 1
+          fi
