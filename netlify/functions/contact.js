@@ -61,19 +61,20 @@ exports.handler = async function(event, context) {
       }
     });
 
+    const recipients = ['jumiknows@gmail.com', 'ernest.kinman.wong@gmail.com'];
+    const senderName = [firstName, lastName].filter(Boolean).join(' ').trim() || 'Contact Form';
+    const fromAddress = process.env.SMTP_USER || 'no-reply@sfusat.org';
+
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: `${senderName} <${fromAddress}>`,
       replyTo: email,
-      to: 'jumiknows@gmail.com', // TODO: Change back to 'sfusat@sfu.ca' after testing
-      subject: `[Contact Form] ${subject}`,
-      text: `Name: ${firstName} ${lastName}\nEmail: ${email}\n\nMessage:\n${message}`,
+      to: recipients,
+      subject,
+      text: `Contexnt of actual email:\n${message}\n\n${senderName}\n`,
       html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>Contexnt of actual email:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${senderName}</p>
       `
     };
 
