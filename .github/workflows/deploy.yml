@@ -33,6 +33,16 @@ jobs:
         run: npm run check
 
       - name: Publish GitHub Pages branch
+        id: publish_pages
+        continue-on-error: true
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          cname: sfusat.org
+
+      - name: Retry publishing GitHub Pages branch on transient failure
+        if: steps.publish_pages.outcome == 'failure'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
