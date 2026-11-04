@@ -1,0 +1,132 @@
+/* src/components/Contact.css */
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px; /* Increased padding for more white space */
+  text-align: left;
+}
+
+.contact-container h1 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 2rem; /* Increased margin for more space below the heading */
+}
+
+.contact-container p {
+  font-size: 1rem;
+  line-height: 1.8; /* Slightly increased line height for better readability */
+  margin-bottom: 2rem; /* Increased margin for more space between paragraphs */
+}
+
+/* Contact Form Section */
+.contact-form-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.about-link {
+  text-decoration: underline;
+}
+
+.contact-botcheck {
+  display: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.status-message {
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.status-message a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .contact-form-section {
+    margin-top: 40px;
+  }
+}
+.form-group label {
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.contact-methods li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  color: #fff;
+  font-size: 1.125rem;
+}
+.contact-methods svg {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+}

@@ -286,9 +286,9 @@ const RoverRunnerGame: React.FC = () => {
 
         ctx.textAlign = 'center';
         ctx.fillStyle = '#e9f4ff';
-        ctx.font = '700 34px Orbitron, sans-serif';
+        ctx.font = '700 34px Barlow, sans-serif';
         ctx.fillText(state.over ? 'Signal Lost' : 'Mission Warmup', WIDTH / 2, 122);
-        ctx.font = '500 18px Space Grotesk, sans-serif';
+        ctx.font = '500 18px Barlow, sans-serif';
         ctx.fillStyle = '#c5dbf0';
         ctx.fillText(
           state.over ? 'Restart mission and clear the terrain.' : 'Press Enter or Start Mission.',

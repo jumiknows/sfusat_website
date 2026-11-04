@@ -69,6 +69,8 @@ Avoid camera defaults, screenshots with unclear names and duplicate final versio
 
 Follow the existing React and TypeScript structure.
 
+Put words, photos and links in `src/content/`, not in page code.
+
 Keep routes in `src/App.tsx`.
 
 Prefer reusable components or typed data when the same structure appears several times.

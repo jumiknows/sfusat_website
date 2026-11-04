@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Projects from './components/Projects';
+import Projects from './pages/Projects';
 
 const renderNavbar = () => {
   render(
@@ -22,6 +22,7 @@ test('renders the main navigation', () => {
   expect(screen.getByRole('link', { name: 'Outreach' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Contact Us' })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'Join' })).toHaveAttribute('href', '/join');
 });
 
 test('opens and closes the navigation menu', () => {

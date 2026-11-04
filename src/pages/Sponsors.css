@@ -1,0 +1,91 @@
+/* Sponsors Page Styles */
+.sponsors-page {
+  line-height: 1.6;
+  color: #333;
+}
+
+.sponsors-page h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 40px 0;
+  font-weight: 700;
+}
+
+/* Sponsor tiers */
+
+/* Sponsor items */
+.sponsor-item {
+  transition: transform 0.2s ease;
+}
+
+.sponsor-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.sponsor-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Why sponsor section */
+.why-sponsor {
+  text-align: left;
+}
+
+/* Call to action */
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .sponsors-page h1 {
+    font-size: 2rem;
+  }
+  
+  .sponsor-item {
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .sponsors-page h1 {
+    font-size: 1.75rem;
+    margin: 30px 0;
+  }
+}
+
+/* Compact layout: sponsors sit side by side on wide screens */
+
+.sponsor-item {
+  margin-bottom: 16px;
+}
+
+.sponsor-logo {
+  margin-right: 24px;
+}
+
+@media (max-width: 768px) {
+
+  .sponsor-item {
+    margin-bottom: 12px;
+  }
+
+  .sponsor-logo {
+    margin-bottom: 8px;
+  }
+}
+
+.sponsor-logo img {
+  mix-blend-mode: multiply;
+}
+
+.tier-title svg {
+  margin-right: 8px;
+  font-size: 0.8em;
+}

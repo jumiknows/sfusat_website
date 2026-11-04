@@ -21,31 +21,11 @@ React, TypeScript, React Router, Three.js and GitHub Pages.
 
 Squarespace manages the sfusat.org domain and DNS.
 
-## Common files
+## Updating the site
 
-Home page: `src/components/Home.tsx`
+Most updates only change one file in `src/content/`, and you do not need to know React.
 
-Projects: `src/components/Projects.tsx`
-
-Project pages: `src/components/pages/`
-
-Rover: `src/components/Rover.tsx`
-
-Sponsors: `src/components/Sponsors.tsx`
-
-Outreach: `src/components/Outreach.tsx`
-
-Team information: `src/components/About.tsx`
-
-Contact page: `src/components/Contact.tsx`
-
-Navigation: `src/components/Navbar.tsx`
-
-Routes: `src/App.tsx`
-
-Images: `public/images/`
-
-3D models: `public/models/`
+See [docs/HOW_TO_UPDATE.md](docs/HOW_TO_UPDATE.md) for where everything is, with examples.
 
 ## Before opening a pull request
 
@@ -69,7 +49,7 @@ Do not edit `gh-pages` directly.
 
 ## Working on the website
 
-New contributors should start with [docs/ONBOARDING.md](docs/ONBOARDING.md).
+New contributors should start with [docs/ONBOARDING.md](docs/ONBOARDING.md) and [docs/HOW_TO_UPDATE.md](docs/HOW_TO_UPDATE.md).
 
 Team workflow and ticket guidance are in [docs/PROJECT_WORKFLOW.md](docs/PROJECT_WORKFLOW.md).
 
@@ -81,7 +61,7 @@ Contribution rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 GitHub Pages cannot send email, so the contact form submits to Web3Forms, which delivers messages to the team inbox.
 
-The address and access key are in `src/components/contactConfig.ts`.
+The address and access key are in `src/content/contact.ts`.
 
 ## Custom email
 

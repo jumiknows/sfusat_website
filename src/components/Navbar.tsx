@@ -1,6 +1,7 @@
 // Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Soundtrack from './Soundtrack';
 import './Navbar.css';
 
 const NAV_ITEMS = [
@@ -15,6 +16,28 @@ const NAV_ITEMS = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const [isPastHero, setIsPastHero] = useState(false);
+  const isOverlay = location.pathname === '/' && !isPastHero;
+
+  // On the home page the bar sits over the flight sequence, then turns solid
+  useEffect(() => {
+    let pending = 0;
+    const update = () => {
+      pending = 0;
+      const mission = document.querySelector('.mission');
+      setIsPastHero(mission ? mission.getBoundingClientRect().bottom <= window.innerHeight : true);
+    };
+    const handleScroll = () => {
+      pending = pending || requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(pending);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [location]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -63,7 +86,7 @@ const Navbar: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <nav className="navbar" role="navigation" aria-label="Main navigation">
+    <nav className={`navbar ${location.pathname === '/' ? 'navbar-home' : ''} ${isOverlay ? 'navbar-overlay' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-logo">
         <Link to="/" aria-label="SFU SAT Home">
           <img 
@@ -76,6 +99,8 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       
+      <Soundtrack />
+
       <button 
         className={`hamburger ${isOpen ? 'open' : ''}`} 
         onClick={toggleMenu}
@@ -108,6 +133,11 @@ const Navbar: React.FC = () => {
             </li>
           );
         })}
+        <li className="navbar-join">
+          <Link to="/join" onClick={closeMenu} aria-current={location.pathname === '/join' ? 'page' : undefined}>
+            Join
+          </Link>
+        </li>
       </ul>
     </nav>
   );

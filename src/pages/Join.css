@@ -1,0 +1,185 @@
+.join-page .join-body {
+  padding-top: 48px;
+  padding-bottom: var(--section-y);
+}
+
+.join-summary {
+  margin: 0 0 48px;
+  color: var(--ink);
+  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.join-program {
+  margin-bottom: var(--section-y);
+}
+
+.join-program-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 24px;
+}
+
+.join-program-header h2 {
+  margin: 0;
+}
+
+.join-program-header a,
+.join-closed a {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.join-deadline {
+  margin: -12px 0 24px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.join-roles,
+.join-closed ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.join-roles li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+.join-roles h3 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.join-roles p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.join-roles .btn {
+  flex-shrink: 0;
+}
+
+.join-closed {
+  padding-top: 32px;
+  border-top: 2px solid #000;
+}
+
+.join-closed h2 {
+  margin-bottom: 20px;
+}
+
+.join-closed li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 20px;
+  padding: 6px 0;
+  font-size: 1.25rem;
+}
+
+.join-closed li span,
+.join-closed li a ~ a {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.join-closed p {
+  margin: 20px 0 0;
+  color: var(--text);
+  font-size: 1.125rem;
+}
+
+/* Shown on project pages while that program is open */
+.recruiting-banner {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.recruiting-banner-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 20px var(--gutter);
+}
+
+.recruiting-banner p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .join-roles li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+.join-life {
+  margin-bottom: var(--section-y);
+}
+
+.join-life h2 {
+  margin-bottom: 24px;
+}
+
+.join-life-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.join-life-grid figure {
+  margin: 0;
+}
+
+.join-life-grid .loop-video,
+.join-life-grid img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.join-life-grid figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+@media (max-width: 700px) {
+  .join-life-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .join-life-grid .loop-video,
+  .join-life-grid img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.join-program-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}

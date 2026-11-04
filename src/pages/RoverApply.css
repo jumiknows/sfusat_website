@@ -1,0 +1,300 @@
+.rover-apply-page #team-forms {
+  scroll-margin-top: 80px;
+}
+
+.rover-apply-page {
+  overflow: hidden;
+}
+
+.ra-hero {
+  position: relative;
+}
+
+.ra-hero-grid {
+  display: grid;
+  gap: 42px;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.ra-copy h1 {
+  letter-spacing: -0.03em;
+  font-family: var(--font-heading);
+}
+
+.ra-copy p {
+  margin: 0;
+}
+
+.ra-scroll {
+  margin-top: 26px;
+  text-decoration: none;
+}
+
+.ra-stage {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ra-static-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: grid;
+  align-content: end;
+  overflow: hidden;
+}
+
+.ra-static-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  z-index: 1;
+}
+
+.ra-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.88) contrast(1.05) brightness(1.05);
+}
+
+.ra-hero-badges {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.ra-hero-badges span {
+  border: 1px solid rgba(3, 105, 161, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  color: #0369a1;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.ra-game {
+  position: relative;
+  margin-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.ra-game::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: min(88vw, 980px);
+  height: 1px;
+  background: none;
+}
+
+.ra-game-header {
+  margin: 0 auto 20px;
+  padding: 0 2px;
+}
+
+.ra-game-header h2,
+.ra-team-heading h2 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.ra-game-header p,
+.ra-team-heading p {
+  line-height: 1.7;
+}
+
+.ra-game-shell {
+  margin: 0 auto;
+}
+
+.ra-scoreboard {
+  display: flex;
+  gap: 22px;
+  justify-content: flex-end;
+  font-family: var(--font-heading);
+  margin-bottom: 12px;
+}
+
+.ra-canvas-wrap {
+  border: 1px solid rgba(30, 41, 59, 0.15);
+  overflow: hidden;
+  background: #20120d;
+}
+
+.ra-runner-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 3 / 1;
+}
+
+.ra-controls {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.ra-hint {
+  margin: 12px 0 0;
+}
+
+.ra-control-btn {
+  cursor: pointer;
+}
+
+.ra-jump-btn {
+  border-color: rgba(234, 88, 12, 0.35);
+}
+
+.ra-team-forms {
+  position: relative;
+}
+
+.ra-team-forms::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: min(88vw, 980px);
+  height: 1px;
+  background: none;
+}
+
+.ra-team-heading {
+  margin-bottom: 6px;
+}
+
+.ra-team-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.ra-team-card {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.ra-team-card:hover {
+  border-color: rgba(3, 105, 161, 0.35);
+}
+
+.ra-team-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: #1e293b;
+}
+
+.ra-team-card p {
+  margin: 8px 0;
+  flex: 1;
+}
+
+.ra-team-card span {
+  margin-top: auto;
+  display: inline-block;
+  transition: background 120ms ease;
+}
+
+@media (max-width: 1150px) {
+  .ra-team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+
+  .ra-stage {
+    min-height: 380px;
+  }
+
+  .ra-static-hero {
+    min-height: 380px;
+  }
+
+  .ra-team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ra-hero,
+  .ra-game,
+  .ra-team-forms {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .ra-game {
+    padding-top: 44px;
+    padding-bottom: 60px;
+  }
+
+  .ra-team-forms {
+    padding-top: 44px;
+    padding-bottom: 78px;
+  }
+
+  .ra-scoreboard,
+  .ra-controls {
+    justify-content: flex-start;
+  }
+
+  .ra-controls {
+    flex-wrap: wrap;
+  }
+
+  .ra-control-btn {
+    width: 100%;
+  }
+
+  .ra-team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ra-canvas-wrap,
+.ra-runner-canvas {
+  border-radius: 0;
+}
+
+.ra-team-card span {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #000;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ra-team-card:hover span {
+  background: none;
+}
