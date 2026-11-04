@@ -126,7 +126,7 @@ export const ALEASAT_TEST_PHOTOS = [
 ];
 
 export const ALEASAT_PHOTOS = [
-  { url: '/images/aleasat/hardware-on-test-table.jpg', alt: 'ALEASAT electronics stack and camera on a perforated test table' },
+  { url: '/images/aleasat/test-chamber-wiring.jpg', alt: 'A gloved hand wiring hardware inside the open thermal vacuum chamber' },
   { url: '/images/aleasat/test-chamber-integration.jpg', alt: 'Gloved hands connecting wiring to the ALEASAT cube inside the test chamber' },
   { url: '/images/aleasat/lens-adjustment-closeup.jpg', alt: 'A gloved hand holding a lens component over a test table' },
   { url: '/images/aleasat/chamber-through-window.jpg', alt: 'Hardware inside the test chamber, seen through its window' },
