@@ -1594,7 +1594,20 @@ main [id] {
 
 /* ALEASAT */
 .hero-aleasat .aleasat-main-image {
-  object-position: right center;
+  object-position: center center;
+}
+
+/* The photo sits to the right of the title, so its subject stays clear of the text */
+@media (min-width: 901px) {
+  .hero-aleasat .hero-image {
+    left: auto;
+    right: 0;
+    width: 72%;
+  }
+
+  .hero-aleasat .hero-description {
+    max-width: 400px;
+  }
 }
 
 .testing-section {
@@ -1632,7 +1645,7 @@ main [id] {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .hero-aleasat .aleasat-main-image {
     object-position: 54% center;
   }
@@ -1984,7 +1997,7 @@ body.soundtrack-open .back-to-top {
 }
 
 .hero-aleasat::after {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 38%, rgba(0, 0, 0, 0) 68%);
+  background: linear-gradient(to right, #000 0%, #000 28%, rgba(0, 0, 0, 0.82) 36%, rgba(0, 0, 0, 0.6) 44%, rgba(0, 0, 0, 0) 62%);
 }
 
 .project-photos {
@@ -1997,7 +2010,7 @@ body.soundtrack-open .back-to-top {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .hero-aleasat::after {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.1) 78%);
   }

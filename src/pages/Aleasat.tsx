@@ -24,8 +24,8 @@ const AleasatPage: React.FC = () => {
           </div>
           <div className="hero-image">
             <img 
-              src="/images/aleasat/test-chamber-wiring.jpg" 
-              alt="A gloved hand wiring hardware inside the open thermal vacuum chamber" 
+              src="/images/aleasat/hardware-on-test-table.jpg" 
+              alt="ALEASAT flight hardware on a perforated test table, with blue wiring running from the stack" 
               className="aleasat-main-image"
               loading="eager"
               decoding="async"
