@@ -1,6 +1,7 @@
 // src/components/Home.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MissionSequence from './MissionSequence';
 import './Home.css';
 
 const STATS = [
@@ -22,21 +23,7 @@ const SPONSORS = [
 const Home: React.FC = () => {
   return (
     <div className="home-page">
-      <section className="panel panel-hero">
-        <img
-          src="/images/site/team-launch.jpg"
-          alt="SFU SAT team members standing beneath an inflated high altitude balloon"
-         
-        />
-        <div className="panel-inner">
-          <h1>Making Space Accessible</h1>
-          <p>The SFU Satellite Design Team. Students at Simon Fraser University designing and building satellites, rovers and high altitude balloons.</p>
-          <div className="panel-actions">
-            <Link to="/rover/apply" className="btn btn-solid">Join the team</Link>
-            <Link to="/projects" className="btn btn-ghost">See our projects</Link>
-          </div>
-        </div>
-      </section>
+      <MissionSequence />
 
       <section className="home-stats" aria-label="SFU SAT in numbers">
         <dl>
@@ -49,33 +36,13 @@ const Home: React.FC = () => {
         </dl>
       </section>
 
-      <section className="panel panel-split">
-        <div className="panel-split-text">
-          <h2>ALEASAT</h2>
-          <p>Our flagship CubeSat, built with UBC Orbit through the European Space Agency's Fly Your Satellite program.</p>
-          <Link to="/projects/aleasat" className="btn btn-ghost">Explore the mission</Link>
-        </div>
-        <img src="/images/site/aleasat-render.jpg" alt="Render of the ALEASAT CubeSat" loading="lazy" />
-      </section>
-
-      <section className="panel panel-side">
-        <img src="/images/site/rover-cad.jpg" alt="CAD model from the rover design" loading="lazy" />
-        <div className="panel-inner">
-          <h2>Polaris Rover</h2>
-          <p>An autonomous rover for the Canadian International Rover Challenge in August 2027. We are recruiting now.</p>
-          <div className="panel-actions">
-            <Link to="/rover" className="btn btn-ghost">Meet the rover</Link>
-          </div>
-        </div>
-      </section>
-
       <section className="panel">
         <img src="/images/site/dusk-launch.jpg" alt="Team preparing a high altitude balloon in a field at dusk" loading="lazy" />
         <div className="panel-inner">
-          <h2>To 34 km and back</h2>
-          <p>New recruits start with a high altitude balloon. Balloon 3 climbed to 34 km and travelled 83.5 km before it was recovered.</p>
+          <h2>Built here. Flown for real.</h2>
+          <p>Every mission starts on the ground, with people, hardware and a launch window.</p>
           <div className="panel-actions">
-            <Link to="/projects/balloon3" className="btn btn-ghost">Read about the flight</Link>
+            <Link to="/projects" className="btn btn-ghost">See every mission</Link>
           </div>
         </div>
       </section>
@@ -84,7 +51,7 @@ const Home: React.FC = () => {
         <div className="home-sponsors-inner">
           <div>
             <h2>Backed by industry</h2>
-            <p>Our sponsors help make student-built space hardware possible.</p>
+            <p>Our sponsors help make this hardware possible.</p>
             <Link to="/sponsors" className="btn btn-dark">Become a sponsor</Link>
           </div>
           <ul>
@@ -100,7 +67,7 @@ const Home: React.FC = () => {
       <section className="panel panel-join">
         <img src="/images/site/earth-horizon.jpg" alt="" loading="lazy" />
         <div className="panel-inner">
-          <h2>Build something that leaves the ground</h2>
+          <h2>Help us go further</h2>
           <div className="panel-actions">
             <Link to="/rover/apply" className="btn btn-solid">Apply now</Link>
             <Link to="/contact" className="btn btn-ghost">Contact us</Link>

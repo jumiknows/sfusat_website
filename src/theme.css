@@ -260,6 +260,18 @@ h3 {
   background: #fff;
 }
 
+/* Home page: the bar floats over the flight sequence */
+.navbar-home {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.navbar-overlay {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
 /* Shared page header */
 .page-hero {
   background: #000;

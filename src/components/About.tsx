@@ -65,7 +65,7 @@ const AboutPage: React.FC = () => {
       <header className="page-hero">
         <div className="page-hero-inner">
           <h1>About</h1>
-          <p>A student team at Simon Fraser University, learning space engineering by doing it.</p>
+          <p>A space engineering organization at Simon Fraser University. We learn by building and flying.</p>
         </div>
       </header>
       {/* Hero Section */}
