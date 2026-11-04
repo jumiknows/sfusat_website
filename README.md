@@ -79,9 +79,9 @@ Contribution rules are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Contact form
 
-The repository still contains an older Netlify contact backend. GitHub Pages cannot run Netlify Functions.
+GitHub Pages cannot send email, so the contact form submits to Web3Forms, which delivers messages to the team inbox.
 
-The replacement is tracked in Issue 4.
+The address and access key are in `src/components/contactConfig.ts`.
 
 ## Custom email
 

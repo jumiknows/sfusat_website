@@ -1,14 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-/* Prevent horizontal scrolling and overscroll */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-}
-
 body {
-  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;

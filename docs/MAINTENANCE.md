@@ -85,13 +85,15 @@ When adding a top level page, check whether it also belongs in the main navigati
 
 ## Contact form
 
-The repository contains an older Netlify function in `netlify/functions/contact.js`.
+GitHub Pages cannot send email, so `src/components/Contact.tsx` submits to Web3Forms, which delivers messages to the team inbox.
 
-The current production site is on GitHub Pages. GitHub Pages cannot execute that Netlify function.
+The team address and access key are in `src/components/contactConfig.ts`. The Web3Forms access key is public by design. To change the receiving inbox, create a new key with that address.
 
-Do not assume the contact backend works until the team has configured a supported service.
+While the key is empty, the form opens the visitor's email app instead.
 
-Never put SMTP passwords or API keys in frontend code.
+After changing either value, send a real test message from the live site and confirm that it arrives.
+
+Never put SMTP passwords or private API keys in frontend code.
 
 ## Checks
 

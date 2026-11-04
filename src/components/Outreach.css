@@ -12,140 +12,103 @@
 }
 
 /* Slideshow Section */
-.slideshow-section {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;
-  min-height: 0;
+.outreach-slideshow {
   position: relative;
+  height: clamp(420px, 70vh, 640px);
   overflow: hidden;
-  background: #000;
-  margin-bottom: 40px;
-  border-radius: 12px;
+  background: #111;
+  touch-action: pan-y; /* Horizontal swipes change the photo */
 }
 
-/* Mobile adjustments for slideshow */
-@media (max-width: 768px) {
-  .slideshow-section {
-    height: 50vh;
-    min-height: 300px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-}
-
-.slideshow-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slideshow-wrapper {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.slide {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide-single-image {
-  width: 100%;
-  height: auto;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fffefe;
-}
-
-.slide-single-image img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 65vh;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  margin: auto;
-  opacity: 0;
-  animation: fadeInImage 0.8s ease-in-out forwards;
-}
-
-@keyframes fadeInImage {
-  to {
-    opacity: 1;
-  }
-}
-
-.slide-images-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  gap: 8px;
-  padding: 8px;
-}
-
-.slide-image-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  background: #000;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.slide-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-}
-
-/* Navigation Arrows */
-.slide-arrow {
+.outreach-slide {
   position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.outreach-slide.active {
+  opacity: 1;
+}
+
+/* Fills the space around photos of any shape with a blurred copy of the same photo */
+.outreach-slide-backdrop {
+  position: absolute;
+  inset: -60px;
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  object-fit: cover;
+  filter: blur(36px) brightness(0.55) saturate(1.2);
+}
+
+.outreach-slide-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.outreach-slide-arrow,
+.outreach-slide-controls {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.outreach-slide-arrow {
   top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  border: none;
-  padding: 16px 20px;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   font-size: 18px;
-  z-index: 10;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(4px);
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease;
 }
 
-.slide-arrow:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+.outreach-slide-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.slide-arrow-left {
+.outreach-slide-arrow.left {
   left: 24px;
 }
 
-.slide-arrow-right {
+.outreach-slide-arrow.right {
   right: 24px;
 }
 
-/* Slide Indicators */
-.slide-indicators {
-  display: none;
+.outreach-slide-controls {
+  right: 24px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 14px 0 2px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.outreach-slide-controls button {
+  width: 44px;
+  height: 44px;
+  color: inherit;
+  font-size: 13px;
+}
+
+.outreach-slideshow *:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outreach-slide {
+    transition: none;
+  }
 }
 
 /* Outreach Statistics Section */
@@ -339,25 +302,30 @@
   .container {
     padding: 0 20px;
   }
-  
-  .slideshow-section {
-    height: 50vh;
-    min-height: 350px;
+
+  .outreach-slideshow {
+    height: clamp(280px, 48vh, 420px);
   }
-  
-  .slide-arrow {
-    padding: 12px 16px;
+
+  .outreach-slide-arrow {
+    width: 44px;
+    height: 44px;
     font-size: 16px;
   }
-  
-  .slide-arrow-left {
-    left: 16px;
+
+  .outreach-slide-arrow.left {
+    left: 12px;
   }
-  
-  .slide-arrow-right {
-    right: 16px;
+
+  .outreach-slide-arrow.right {
+    right: 12px;
   }
-  
+
+  .outreach-slide-controls {
+    right: 12px;
+    bottom: 12px;
+  }
+
   .outreach-stats,
   .events-section {
     padding: 60px 0;
@@ -426,24 +394,6 @@
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
-  }
-  
-  .slideshow-section {
-    height: 40vh;
-    min-height: 280px;
-  }
-  
-  .slide-arrow {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-  
-  .slide-arrow-left {
-    left: 12px;
-  }
-  
-  .slide-arrow-right {
-    right: 12px;
   }
   
   .outreach-stats h2,

@@ -72,7 +72,7 @@ const AleasatPage: React.FC = () => {
       <section className="aleasat-hero">
         <div className="hero-content">
           <div className="hero-text">
-            <h2 className="hero-heading">ALEASAT</h2>
+            <h1 className="hero-heading">ALEASAT</h1>
             <p className="hero-subtitle">To Prove Ourselves</p>
             <p className="hero-description">
               A groundbreaking 1U CubeSat mission in partnership with UBC Orbit, 

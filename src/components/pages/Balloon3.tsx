@@ -29,7 +29,7 @@ const Balloon3Page: React.FC = () => {
       <section className="aleasat-hero">
         <div className="hero-content">
           <div className="hero-text">
-            <h2 className="hero-heading">High Altitude Balloon 3</h2>
+            <h1 className="hero-heading">High Altitude Balloon 3</h1>
             <p className="hero-subtitle">Seeing What’s Possible</p>
             <p className="hero-description">
               The SFU Aerospace High Altitude Balloon team launched their balloon in Carbon, Alberta on August 28th, 2021. The objective of the project was to help students gain skills so they could go on to work on other SFU Satellite projects. This was the first balloon launch that was successfully recovered.

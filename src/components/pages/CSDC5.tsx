@@ -8,7 +8,7 @@ const CSDC5Page: React.FC = () => (
     <section className="aleasat-hero">
       <div className="hero-content">
         <div className="hero-text">
-          <h2 className="hero-heading">Canadian Satellite Design Challenge 5</h2>
+          <h1 className="hero-heading">Canadian Satellite Design Challenge 5</h1>
           <p className="hero-subtitle">Refining our Skills</p>
         </div>
         <div className="hero-image">
