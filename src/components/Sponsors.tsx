@@ -23,7 +23,7 @@ const Sponsors: React.FC = () => {
       <div className="container">
         
         {/* Page Header */}
-        {/* <h1>Our Sponsors</h1> */}
+        <h1 className="visually-hidden">Our Sponsors</h1>
         
         {/* Platinum Sponsors Section */}
         <section className="sponsor-tier platinum">

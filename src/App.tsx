@@ -9,6 +9,8 @@ import Contact from './components/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import PageTitle from './components/PageTitle';
+import NotFound from './components/NotFound';
 import Rover from './components/Rover';
 import RoverApply from './components/RoverApply';
 import AleasatPage from './components/pages/Aleasat';
@@ -24,6 +26,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <PageTitle />
       <div className="App">
         <Navbar />
         <main>
@@ -44,6 +47,7 @@ const App: React.FC = () => {
             <Route path="/outreach" element={<Outreach />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

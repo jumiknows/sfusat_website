@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import './Outreach.css';
 
 // Slideshow images from the outreach-events folder
@@ -76,27 +76,17 @@ const slideshowImages = [
   }
 ];
 
+const SLIDE_INTERVAL_MS = 5000;
+const SWIPE_THRESHOLD_PX = 50;
+
+const prefersReducedMotion = () =>
+  Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+
 const Outreach: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Preload first few slideshow images for better performance
-  useEffect(() => {
-    const preloadImages = slideshowImages.slice(0, 3).map(img => img.url);
-    
-    preloadImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-
-  // Auto-advance slideshow
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const [isPaused, setIsPaused] = useState(prefersReducedMotion);
+  const [isHeld, setIsHeld] = useState(false); // Pointer or keyboard focus is on the slideshow
+  const touchStartX = useRef<number | null>(null);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
@@ -106,35 +96,84 @@ const Outreach: React.FC = () => {
     setCurrentSlide((prev) => (prev - 1 + slideshowImages.length) % slideshowImages.length);
   };
 
+  // Auto-advance slideshow. Restarts after every change so a manual click gets a full interval.
+  useEffect(() => {
+    if (isPaused || isHeld) {
+      return;
+    }
+
+    const timeout = setTimeout(nextSlide, SLIDE_INTERVAL_MS);
+
+    return () => clearTimeout(timeout);
+  }, [currentSlide, isPaused, isHeld]);
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const distance = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+
+    if (distance <= -SWIPE_THRESHOLD_PX) {
+      nextSlide();
+    } else if (distance >= SWIPE_THRESHOLD_PX) {
+      prevSlide();
+    }
+  };
+
+  // Only the visible photo and its neighbours are rendered, so the next one is ready to fade in.
+  const isNearCurrent = (index: number) => {
+    const distance = Math.abs(index - currentSlide);
+    return distance <= 1 || distance === slideshowImages.length - 1;
+  };
+
   return (
     <div className="outreach-page">
+      <h1 className="visually-hidden">Outreach</h1>
   
       
       {/* Image Slideshow Section */}
-      <section className="slideshow-section">
-        <div className="slideshow-container">
-          <div className="slideshow-wrapper" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-            {slideshowImages.map((image, index) => (
-              <div key={index} className="slide">
-                <div className="slide-single-image">
-                  <img 
-                    src={image.url} 
-                    alt={image.alt} 
-                    loading={index < 3 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                </div>
-              </div>
-            ))}
+      <section
+        className="outreach-slideshow"
+        aria-label="Photos from outreach events"
+        onPointerEnter={(e) => e.pointerType === 'mouse' && setIsHeld(true)}
+        onPointerLeave={(e) => e.pointerType === 'mouse' && setIsHeld(false)}
+        onFocus={(e) => e.target.matches(':focus-visible') && setIsHeld(true)}
+        onBlur={() => setIsHeld(false)}
+        onTouchStart={(e) => {
+          touchStartX.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={handleTouchEnd}
+      >
+        {slideshowImages.map((image, index) => isNearCurrent(index) && (
+          <div
+            key={image.url}
+            className={`outreach-slide ${index === currentSlide ? 'active' : ''}`}
+            aria-hidden={index !== currentSlide}
+          >
+            <img className="outreach-slide-backdrop" src={image.url} alt="" decoding="async" />
+            <img className="outreach-slide-photo" src={image.url} alt={image.alt} decoding="async" />
           </div>
-          
-          {/* Navigation arrows */}
-          <button className="slide-arrow slide-arrow-left" onClick={prevSlide}>
-            <FontAwesomeIcon icon={faChevronLeft} />
+        ))}
+
+        <button className="outreach-slide-arrow left" onClick={prevSlide} aria-label="Previous image">
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <button className="outreach-slide-arrow right" onClick={nextSlide} aria-label="Next image">
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+
+        <div className="outreach-slide-controls">
+          <button
+            onClick={() => setIsPaused(!isPaused)}
+            aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
+          >
+            <FontAwesomeIcon icon={isPaused ? faPlay : faPause} />
           </button>
-          <button className="slide-arrow slide-arrow-right" onClick={nextSlide}>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
+          <span aria-live={isPaused ? 'polite' : 'off'}>
+            {currentSlide + 1} / {slideshowImages.length}
+          </span>
         </div>
       </section>
 

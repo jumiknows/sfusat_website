@@ -2,7 +2,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: left;
+  align-items: center;
   padding: 10px 20px;
   background-color: #f8f9fa;
   border-top: 1px solid #ddd;
@@ -21,12 +21,17 @@
 
 .mail-link {
   text-decoration: none;
-  color: #74707075;
+  color: #555;
   font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .mail-link:hover {
-  color: #646c74;
+  color: #000;
 }
 
 /* Mobile responsive */
@@ -40,10 +45,6 @@
     text-align: left;
     min-height: 50px;
     position: relative;
-    display: flex !important;
-    visibility: visible !important;
-    background-color: #f8f9fa !important;
-    border-top: 2px solid #333 !important;
     margin-top: auto;
     flex-wrap: nowrap;
     flex-shrink: 0;
@@ -51,8 +52,7 @@
   }
   
   .footer p {
-    font-size: 10px;
-    color: #333 !important;
+    font-size: 12px;
     flex: 1;
     margin: 0;
     white-space: nowrap;
@@ -62,21 +62,6 @@
   }
   
   .mail-link {
-    font-size: 0.9rem;
-    color: #333;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-  }
-}
-
-/* Extra small screens */
-@media (max-width: 400px) {
-  .footer p {
-    font-size: 9px;
-  }
-  
-  .mail-link {
-    font-size: 0.8rem;
   }
 }

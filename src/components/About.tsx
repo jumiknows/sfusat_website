@@ -62,6 +62,7 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="about-page">
+      <h1 className="visually-hidden">About SFU Satellite Design Team</h1>
       {/* Hero Section */}
       {/* <section className="about-hero">
         <div className="about-hero-content">

@@ -63,9 +63,7 @@ const projects: Project[] = [
 const ProjectsPage: React.FC = () => {
   return (
     <div className="projects-page">
-      {/* <h2 className="projects-title">Projects</h2> */}
-      <p className="projects-subtitle"><br></br></p>
-      {/* <p className="projects-subtitle">Click on an image to learn more!</p> */}
+      <h1 className="visually-hidden">Projects</h1>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <div key={index} className="project-card">
@@ -76,7 +74,6 @@ const ProjectsPage: React.FC = () => {
                   alt={project.title} 
                   className="project-image"
                   loading={index < 1 ? "eager" : "lazy"}
-                  fetchPriority={index < 1 ? "high" : "low"}
                   decoding="async"
                 />
                 <div className="project-details">
@@ -91,7 +88,6 @@ const ProjectsPage: React.FC = () => {
                   alt={project.title} 
                   className="project-image"
                   loading={index < 1 ? "eager" : "lazy"}
-                  fetchPriority={index < 1 ? "high" : "low"}
                   decoding="async"
                 />
                 <div className="project-details">

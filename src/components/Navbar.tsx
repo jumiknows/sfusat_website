@@ -3,6 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
+const NAV_ITEMS = [
+  { to: '/', label: 'Home' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/sponsors', label: 'Sponsors' },
+  { to: '/outreach', label: 'Outreach' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact Us' }
+];
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -32,8 +41,15 @@ const Navbar: React.FC = () => {
       }
     };
 
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden'; // Prevent background scroll
     } else {
       document.body.style.overflow = 'unset';
@@ -41,6 +57,7 @@ const Navbar: React.FC = () => {
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
@@ -71,71 +88,26 @@ const Navbar: React.FC = () => {
         <span className="hamburger-line"></span>
       </button>
       
-      <ul 
+      <ul
         className={`navbar-links ${isOpen ? 'open' : ''}`}
         id="navbar-menu"
-        role="menubar"
       >
-        <li role="none">
-          <Link 
-            to="/" 
-            onClick={closeMenu}
-            className={location.pathname === '/' ? 'active' : ''}
-            role="menuitem"
-          >
-            Home
-          </Link>
-        </li>
-        <li role="none">
-          <Link 
-            to="/projects" 
-            onClick={closeMenu}
-            className={location.pathname === '/projects' ? 'active' : ''}
-            role="menuitem"
-          >
-            Projects
-          </Link>
-        </li>
-        <li role="none">
-          <Link 
-            to="/sponsors" 
-            onClick={closeMenu}
-            className={location.pathname === '/sponsors' ? 'active' : ''}
-            role="menuitem"
-          >
-            Sponsors
-          </Link>
-        </li>
-        <li role="none">
-          <Link 
-            to="/outreach" 
-            onClick={closeMenu}
-            className={location.pathname === '/outreach' ? 'active' : ''}
-            role="menuitem"
-          >
-            Outreach
-          </Link>
-        </li>
-        <li role="none">
-          <Link 
-            to="/about" 
-            onClick={closeMenu}
-            className={location.pathname === '/about' ? 'active' : ''}
-            role="menuitem"
-          >
-            About
-          </Link>
-        </li>
-        <li role="none">
-          <Link 
-            to="/contact" 
-            onClick={closeMenu}
-            className={location.pathname === '/contact' ? 'active' : ''}
-            role="menuitem"
-          >
-            Contact Us
-          </Link>
-        </li>
+        {NAV_ITEMS.map(({ to, label }) => {
+          const isActive = to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
+
+          return (
+            <li key={to}>
+              <Link
+                to={to}
+                onClick={closeMenu}
+                className={isActive ? 'active' : ''}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

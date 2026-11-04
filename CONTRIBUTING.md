@@ -91,7 +91,7 @@ GitHub Pages hosts the website.
 
 Squarespace manages the domain and DNS.
 
-The Netlify files in this repository are legacy files. Do not build new work around them unless the team intentionally returns to Netlify.
+Web3Forms delivers contact form messages to the team inbox.
 
 ## Secrets
 

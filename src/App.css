@@ -6,7 +6,6 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -19,7 +18,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   color: #333;
-  overflow-x: hidden;
   width: 100%;
   position: relative;
 }
@@ -32,7 +30,6 @@ html {
 
 body {
   overscroll-behavior-x: none;
-  touch-action: pan-y; /* Only allow vertical scrolling */
 }
 
 /* App Container */
@@ -43,7 +40,7 @@ body {
   min-height: 100dvh; /* Dynamic viewport height for mobile */
   text-align: left;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip, not hidden: hidden would stop the sticky navbar from sticking */
   width: 100%;
 }
 
@@ -51,7 +48,7 @@ body {
 .App main {
   flex: 1 0 auto;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Ensure footer is always visible on mobile */
@@ -187,6 +184,7 @@ button {
   .navbar,
   .footer,
   .slide-arrow,
+  .outreach-slideshow,
   .cta-section {
     display: none !important;
   }
@@ -203,23 +201,5 @@ button {
   
   h1, h2, h3 {
     page-break-after: avoid;
-  }
-}
-
-/* Mobile-Specific: Hide footer on mobile */
-@media (max-width: 768px) {
-  footer {
-    display: none !important; /* Ensure the footer is hidden on mobile */
-  }
-
-  .App-header {
-    font-size: 1rem;
-  }
-}
-
-/* Desktop-Specific: Show footer on desktop and larger screens */
-@media (min-width: 768px) {
-  footer {
-    display: block; /* Ensure footer is visible on larger screens */
   }
 }
