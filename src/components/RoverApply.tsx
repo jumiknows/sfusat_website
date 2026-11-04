@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import RoverRunnerGame from './rover/RoverRunnerGame';
 import RoverScene from './rover/RoverScene';
 import { getProgram } from './recruitment';
-import './RoverApply.css';
 
 const rover = getProgram('rover');
 const TEAM_FORMS = rover?.open ? rover.roles : [];

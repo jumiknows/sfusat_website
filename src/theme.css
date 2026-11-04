@@ -1380,6 +1380,10 @@ h3 {
   color: #fff;
 }
 
+.ra-team-card:hover span {
+  background: none;
+}
+
 /* Contact */
 .contact-page {
   display: grid;

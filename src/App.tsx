@@ -21,6 +21,8 @@ import Balloon2Page from './components/pages/Balloon2';
 import CSDC4Page from './components/pages/CSDC4';
 import Balloon1Page from './components/pages/Balloon1';
 import './App.css';
+// Imported here, not in the lazy page, so theme.css always loads after it and wins
+import './components/RoverApply.css';
 import './theme.css';
 
 // Holds the 3D rover and the game, so other pages do not download them
