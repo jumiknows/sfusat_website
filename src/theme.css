@@ -2010,3 +2010,34 @@ body.soundtrack-open .back-to-top {
   height: auto;
   object-fit: contain;
 }
+
+/* Never enlarge a photo past its real size, because that is what makes it blurry */
+.slide-content img,
+.outreach-slide-photo {
+  object-fit: scale-down;
+}
+
+/* Photo grid for smaller photos, shown at a size they can hold */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.thumb-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hero-balloon3 .aleasat-main-image {
+  object-position: center 38%;
+}
+
+@media (max-width: 600px) {
+  .thumb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}

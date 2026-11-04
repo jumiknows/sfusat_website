@@ -26,7 +26,7 @@ export const HOME_MISSIONS = [
     to: '/projects/balloon3',
     name: 'Balloon 3',
     detail: 'Launched from Carbon, Alberta',
-    image: '/images/balloon3/image8.jpg',
+    image: '/images/site/team-launch.jpg',
     alt: 'From the Balloon 3 mission'
   },
   {

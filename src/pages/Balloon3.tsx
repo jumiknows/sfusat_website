@@ -1,7 +1,6 @@
 import React from 'react';
 import SectionNav from '../components/SectionNav';
 import RecruitingBanner from '../components/RecruitingBanner';
-import Slideshow from '../components/Slideshow';
 import { BALLOON3_PHOTOS } from '../content/galleries';
 
 const Balloon3Page: React.FC = () => {
@@ -9,7 +8,7 @@ const Balloon3Page: React.FC = () => {
   return (
     <div className="aleasat-page">
       {/* Hero Section */}
-      <section className="aleasat-hero hero-immersive">
+      <section className="aleasat-hero hero-immersive hero-balloon3">
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-heading">High Altitude Balloon 3</h1>
@@ -17,7 +16,7 @@ const Balloon3Page: React.FC = () => {
           </div>
           <div className="hero-image">
             <img 
-              src="/images/balloon3/image8.jpg" 
+              src="/images/site/team-launch.jpg" 
               alt="Balloon 3 Launch Team" 
               className="aleasat-main-image"
               loading="eager"
@@ -120,7 +119,11 @@ const Balloon3Page: React.FC = () => {
             <h2>Development Gallery</h2>
             <p>See highlights from the Balloon 3 mission</p>
           </div>
-          <Slideshow images={BALLOON3_PHOTOS} imageClassName="aleasat-main-image" />
+          <div className="thumb-grid">
+            {BALLOON3_PHOTOS.map((photo) => (
+              <img key={photo.url} src={photo.url} alt={photo.alt} loading="lazy" decoding="async" />
+            ))}
+          </div>
         </div>
       </section>
     </div>
