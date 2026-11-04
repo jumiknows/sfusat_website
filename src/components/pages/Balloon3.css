@@ -3,10 +3,6 @@
   font-size: 2.3rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.025em;
 }
 /* Remove tilt for Balloon 3 images only */
@@ -23,12 +19,12 @@
 
 .aleasat-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f7fafc 0%, #fff 100%);
+  background: #f7fafc;
 }
 
 .aleasat-hero {
   padding: 4rem 0;
-  background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+  background: #1a365d;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -49,10 +45,6 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.025em;
 }
 
@@ -77,18 +69,12 @@
   height: auto;
   border-radius: 20px;
   box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-  opacity: 0;
-  animation: fadeInImage 1.2s ease-out forwards;
   transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
 .hero-image img:hover {
   transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
-}
-
-@keyframes fadeInImage {
-  to { opacity: 1; }
 }
 
 .mission-overview {

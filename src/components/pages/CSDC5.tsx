@@ -12,7 +12,7 @@ const CSDC5Page: React.FC = () => (
           <p className="hero-subtitle">Refining our Skills</p>
         </div>
         <div className="hero-image">
-          <img src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/image3.png" alt="CSDC5" className="aleasat-main-image" loading="eager" decoding="async" />
+          <img src="/images/site/image3.png" alt="CSDC5" className="aleasat-main-image" loading="eager" decoding="async" />
         </div>
       </div>
     </section>

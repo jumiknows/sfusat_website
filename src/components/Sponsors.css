@@ -1,6 +1,5 @@
 /* Sponsors Page Styles */
 .sponsors-page {
-  font-family: 'Arial', sans-serif;
   line-height: 1.6;
   color: #333;
 }
@@ -76,14 +75,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  opacity: 0;
-  animation: fadeInImage 0.8s ease-in-out forwards;
-}
-
-@keyframes fadeInImage {
-  to {
-    opacity: 1;
-  }
 }
 
 .sponsor-content h3 {
@@ -138,7 +129,7 @@
 .sponsor-cta .cta-button {
   display: inline-block;
   padding: 19px 44px;
-  background: linear-gradient(135deg, #333, #000) !important;
+  background: #333;
   color: white !important;
   border: none;
   cursor: pointer;
@@ -153,7 +144,7 @@
 }
 
 .sponsor-cta .cta-button:hover {
-  background: linear-gradient(135deg, #555, #333) !important;
+  background: #555;
   transform: translateY(-2.5px);
   box-shadow: 0 7.5px 25px rgba(0, 0, 0, 0.4);
   color: white !important;
@@ -254,5 +245,67 @@
   .cta-button {
     padding: 12px 24px;
     font-size: 0.9rem;
+  }
+}
+
+
+/* Compact layout: sponsors sit side by side on wide screens */
+.sponsor-tier {
+  margin: 40px 0;
+}
+
+.tier-title {
+  margin-bottom: 24px;
+}
+
+.sponsor-item {
+  margin-bottom: 16px;
+}
+
+.why-sponsor {
+  padding: 40px 0;
+  margin: 40px 0;
+}
+
+.sponsor-cta {
+  padding: 40px 0;
+}
+
+.sponsor-logo {
+  width: 150px;
+  height: 84px;
+  margin-right: 24px;
+}
+
+.sponsor-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.sponsor-content p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .sponsor-tier {
+    margin: 28px 0;
+  }
+
+  .sponsor-item {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+
+  .sponsor-logo {
+    width: 110px;
+    height: 56px;
+    margin-bottom: 8px;
+    padding: 4px;
+  }
+
+  .why-sponsor {
+    padding: 24px 0;
+    margin: 24px 0;
   }
 }

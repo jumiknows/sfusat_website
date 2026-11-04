@@ -3,10 +3,6 @@
   font-size: 2.3rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.025em;
 }
 /* Project Narrative Section - Enhanced UI/UX */
@@ -14,7 +10,7 @@
   background: var(--white);
   padding: 3.5rem 0 3.5rem 0;
   margin: 0;
-  border-left: 6px solid var(--accent-color);
+  border: 1px solid #e3e6ea;
   border-radius: 0 18px 18px 0;
   box-shadow: 0 2px 16px 0 rgba(49,130,206,0.06);
   transition: var(--transition);
@@ -31,17 +27,12 @@
   margin-bottom: 2.2rem;
   text-align: left;
   letter-spacing: -0.01em;
-  background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-color) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 .project-narrative p {
   font-size: 1.18rem;
   line-height: 1.85;
   color: var(--gray-800);
   margin-bottom: 1.6rem;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
   letter-spacing: 0.01em;
   transition: var(--transition);
 }
@@ -95,7 +86,7 @@
 /* Base Page Styles */
 .aleasat-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+  background: var(--gray-50);
 }
 
 .container {
@@ -107,7 +98,7 @@
 /* Hero Section */
 .aleasat-hero {
   padding: 4rem 0;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background: var(--primary-color);
   color: var(--white);
   position: relative;
   overflow: hidden;
@@ -140,10 +131,6 @@
   font-size: 4rem;
   font-weight: 800;
   margin: 0 0 1rem 0;
-  background: linear-gradient(135deg, var(--white) 0%, var(--gray-200) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.025em;
 }
 
@@ -174,20 +161,12 @@
   height: auto;
   border-radius: 20px;
   box-shadow: var(--shadow-xl);
-  opacity: 0;
-  animation: fadeInImage 1.2s ease-out forwards;
   transform: none;
   transition: var(--transition);
 }
 
 .aleasat-main-image:hover {
   transform: scale(1.02);
-}
-
-@keyframes fadeInImage {
-  to {
-    opacity: 1;
-  }
 }
 
 /* Mission Overview Section */
@@ -213,7 +192,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--success-color) 100%);
+  background: none;
   border-radius: 2px;
 }
 
@@ -244,7 +223,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--success-color) 100%);
+  background: none;
 }
 
 .stat-card:hover {
@@ -327,18 +306,6 @@
   transform: translateY(-2px);
 }
 
-.payload-icon {
-  font-size: 2rem;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--success-color) 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
 .payload-content h5 {
   font-size: 1.1rem;
   font-weight: 600;
@@ -378,18 +345,6 @@
 .impact-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-}
-
-.impact-icon {
-  font-size: 1.5rem;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--warning-color) 0%, var(--error-color) 100%);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 1rem 0;
 }
 
 .impact-card h5 {
@@ -433,7 +388,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, var(--accent-color) 0%, var(--success-color) 100%);
+  background: none;
   border-radius: 2px;
 }
 
@@ -479,8 +434,6 @@
   object-fit: contain;
   object-position: center;
   transition: var(--transition);
-  opacity: 0;
-  animation: fadeInImage 0.8s ease-out forwards;
 }
 
 .slide-overlay {
@@ -488,7 +441,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: rgba(0, 0, 0, 0.8);
   color: var(--white);
   padding: 2rem;
   transform: translateY(100%);
@@ -530,7 +483,6 @@
     margin-left: auto;
     margin-right: auto;
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(10px);
 }
 
 .slide-arrow:hover {
@@ -689,7 +641,7 @@
 .aleasat-slideshow-section {
   margin-top: 60px;
   padding: 40px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #f8f9fa;
 }
 
 .aleasat-slideshow-section h3 {
@@ -737,8 +689,6 @@
   object-fit: contain;
   object-position: center;
   display: block;
-  opacity: 0;
-  animation: fadeInImage 0.8s ease-in-out forwards;
 }
 
 .slide-arrow {
@@ -825,5 +775,47 @@
   
   .aleasat-description h3 {
     font-size: 1.5rem;
+  }
+}
+
+
+/* Compact layout, shared by the project pages */
+.mission-overview,
+.mission-details,
+.development-gallery {
+  padding: 3.5rem 0;
+}
+
+.mission-overview h2,
+.gallery-header h2 {
+  font-size: 2.25rem;
+}
+
+.mission-overview h2 {
+  margin-bottom: 2rem;
+}
+
+.gallery-header {
+  margin-bottom: 2rem;
+}
+
+.development-gallery .slideshow-wrapper {
+  height: 440px;
+}
+
+@media (max-width: 768px) {
+  .mission-overview,
+  .mission-details,
+  .development-gallery {
+    padding: 2.5rem 0;
+  }
+
+  .mission-overview h2,
+  .gallery-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .development-gallery .slideshow-wrapper {
+    height: 280px;
   }
 }

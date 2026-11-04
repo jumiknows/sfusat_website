@@ -20,10 +20,13 @@ const Sponsors: React.FC = () => {
   }, []);
   return (
     <div className="sponsors-page">
+      <header className="page-hero">
+        <div className="page-hero-inner">
+          <h1>Sponsors</h1>
+          <p>The organizations that make our work possible.</p>
+        </div>
+      </header>
       <div className="container">
-        
-        {/* Page Header */}
-        <h1 className="visually-hidden">Our Sponsors</h1>
         
         {/* Platinum Sponsors Section */}
         <section className="sponsor-tier platinum">
@@ -79,7 +82,7 @@ const Sponsors: React.FC = () => {
               <h3>AGI</h3>
               <p>
                 At AGI, they've been crafting breakthroughs since 1989. Their software is integral to the success of hundreds of organizations throughout the 
-                aerospace, defense, and telecommunications industries – among others. Some of the most important air, space, and defense programs of the past 30 
+                aerospace, defense, and telecommunications industries, among others. Some of the most important air, space, and defense programs of the past 30 
                 years have relied on the products they build.
               </p>
             </div>

@@ -3,7 +3,7 @@ import './Balloon2.css';
 
 const Balloon2Page: React.FC = () => (
   <div className="aleasat-page">
-    <section className="aleasat-hero">
+    <section className="aleasat-hero hero-immersive">
       <div className="hero-content">
         <div className="hero-text">
           <h1>Balloon 2</h1>
@@ -11,7 +11,7 @@ const Balloon2Page: React.FC = () => (
           <p className="hero-description">Our second high altitude balloon mission, providing invaluable experience for new members and future project leads.</p>
         </div>
         <div className="hero-image">
-          <img src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/image5.jpg" alt="Balloon 2" className="aleasat-main-image" loading="eager" decoding="async" />
+          <img src="/images/site/dusk-launch.jpg" alt="Balloon 2" className="aleasat-main-image" loading="eager" decoding="async" />
         </div>
       </div>
     </section>

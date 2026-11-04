@@ -5,9 +5,9 @@ const AboutPage: React.FC = () => {
   // Preload critical images
   useEffect(() => {
     const preloadImages = [
-      "https://media.githubusercontent.com/media/balloon4computing/artifact/main/team.jpg",
-      "https://media.githubusercontent.com/media/balloon4computing/artifact/main/adcs.png",
-      "https://media.githubusercontent.com/media/balloon4computing/artifact/main/obc.jpg"
+      "/images/site/team.jpg",
+      "/images/site/adcs.png",
+      "/images/site/obc.jpg"
     ];
 
     preloadImages.forEach(src => {
@@ -19,50 +19,55 @@ const AboutPage: React.FC = () => {
     {
       id: 1,
       name: "Attitude Determination and Control System (ADCS)",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/adcs.png",
+      image: "/images/site/adcs.png",
       description: "Attitude Determination and Control System (ADCS) is in charge of the various sensors used to determine the orientation and position of the satellite, as well as re-orienting the satellite when necessary. With the many sensors onboard a satellite, the ADCS team is currently working on a sensor fusion and filtration algorithm to eliminate noise for the On-Board Computer (OBC). Additionally, the team is designing and building a custom test rig for the satellite actuators, which will simultaneously test the magnetorquers and control algorithm."
     },
     {
       id: 2,
       name: "Command and Data Handling (C&DH)",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/obc.jpg",
+      image: "/images/site/obc.jpg",
       description: "The Command and Data Handling team (C&DH) works hard to develop the onboard computer (OBC) for our satellites. We design custom circuit boards and create specialized firmware to meet the satellite's needs. We also handle the management of executing commands, storing data, and gathering telemetry."
     },
     {
       id: 3,
       name: "Communications",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/comms.jpg",
+      image: "/images/site/comms.jpg",
       description: "The communications, or RF (Radio Frequency) team, ensures that the satellite can communicate with our ground station back on earth. This communication link will handle the downlink of satellite telemetry and payload data, as well as the uplink of telecommands."
     },
     {
       id: 4,
       name: "Electrical Power System (EPS)",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/eps.jpg",
+      image: "/images/site/eps.jpg",
       description: "The EPS team oversees generation, charging, storage, and budgeting of energy in the satellite. This can go from running models using code and simulation software to researching, designing and testing printable circuit boards (PCBs). Batteries can be highly sensitive, so our job in a nutshell is to make sure the satellite does not run out of power or have any exploding parts."
     },
     {
       id: 5,
       name: "Payload",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/payload.jpg",
+      image: "/images/site/payload.jpg",
       description: "Every project has a payload or reason for existing, and the payload team is in charge of building that. What we do specifically changes from project to project: Previous examples are atmospheric sensors, cameras, and calibration equipment for ground systems. For ALEASAT we are developing a centrifuge payload, which is an adapted reaction wheel. The team has already designed and manufactured a small prototype and is currently building a test rig to verify different operating modes."
     },
     {
       id: 6,
       name: "Structure",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/structure.png",
+      image: "/images/site/structure.png",
       description: "The structure team is responsible for holding the satellite together under extreme conditions. The team ensures all components are securely mounted within the satellite to survive extreme temperatures and vibrations during launch. They also develop the antenna deployment systems, and perform extensive simulation analyses to ensure the satellite will survive in orbit."
     },
     {
       id: 7,
       name: "Mission Operations (Mops)",
-      image: "https://media.githubusercontent.com/media/balloon4computing/artifact/main/mops.png",
+      image: "/images/site/mops.png",
       description: "The Mission Operations team (Mops) is responsible for operating the satellite after it launches. This includes assigning missions for the satellite, sending commands to the satellite, accepting image requests from the general public and capturing images for them. We build and operate our control center, Barbour's Cut, which aids our operation and allows for public image requests."
     }
   ];
 
   return (
     <div className="about-page">
-      <h1 className="visually-hidden">About SFU Satellite Design Team</h1>
+      <header className="page-hero">
+        <div className="page-hero-inner">
+          <h1>About</h1>
+          <p>A student team at Simon Fraser University, learning space engineering by doing it.</p>
+        </div>
+      </header>
       {/* Hero Section */}
       {/* <section className="about-hero">
         <div className="about-hero-content">
@@ -79,7 +84,7 @@ const AboutPage: React.FC = () => {
           <div className="mission-content">
             <div className="mission-image">
               <img
-                src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/team.jpg"
+                src="/images/site/team.jpg"
                 alt="SFU Satellite Design Team"
                 className="team-photo"
                 loading="eager"
@@ -121,7 +126,7 @@ const AboutPage: React.FC = () => {
       <section className="about-teams">
         <div className="container">
           <div className="teams-header">
-            <h2>Our Specialized Teams</h2>
+            <h2>Our Teams</h2>
             {/* <p>Each team brings unique expertise to our satellite projects, working together to achieve mission success.</p> */}
           </div>
           
@@ -157,24 +162,20 @@ const AboutPage: React.FC = () => {
           <h2>Our Core Values</h2>
           <div className="values-grid">
             <div className="value-card">
-              <div className="value-icon">📚</div>
               <h3>Education First</h3>
-              <p>We prioritize learning and knowledge sharing, ensuring every member grows their technical and professional skills.</p>
+              <p>Members teach each other and build technical and professional skills.</p>
             </div>
             <div className="value-card">
-              <div className="value-icon">⚙️</div>
               <h3>Collaboration</h3>
-              <p>Great achievements come from diverse teams working together. We foster an inclusive environment where every voice matters.</p>
+              <p>We build satellites as a team, and everyone's input counts.</p>
             </div>
             <div className="value-card">
-              <div className="value-icon">🔬</div>
               <h3>Innovation</h3>
-              <p>We push boundaries and explore new technologies, preparing our members for the cutting edge of space technology.</p>
+              <p>We try new technologies so members graduate familiar with current space engineering.</p>
             </div>
             <div className="value-card">
-              <div className="value-icon">🌟</div>
               <h3>Community Impact</h3>
-              <p>Through outreach and education, we inspire the next generation to pursue careers in STEM and space exploration.</p>
+              <p>Through outreach, we show younger students what careers in STEM and space can look like.</p>
             </div>
           </div>
         </div>

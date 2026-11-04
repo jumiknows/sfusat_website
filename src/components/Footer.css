@@ -1,67 +1,80 @@
 /* Footer Styles */
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #ddd;
-  width: 100%;
-  z-index: 10;
-  margin-top: auto; /* This ensures footer sticks to bottom */
   flex-shrink: 0;
-  box-sizing: border-box;
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid var(--on-dark-line);
+  background: #000;
+  color: #fff;
 }
 
-.footer p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 56px var(--gutter) 40px;
 }
 
-.mail-link {
-  text-decoration: none;
-  color: #555;
-  font-size: 1.2rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
+.footer-brand img {
+  width: 180px;
+  height: auto;
+  margin-bottom: 16px;
+  filter: invert(1);
 }
 
-.mail-link:hover {
-  color: #000;
+.footer-brand p {
+  max-width: 34ch;
+  color: var(--on-dark-muted);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    text-align: left;
-    min-height: 50px;
-    position: relative;
-    margin-top: auto;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    width: 100%;
+.footer nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.footer h2 {
+  margin: 0 0 8px;
+  color: var(--on-dark-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer a {
+  padding: 6px 0;
+  color: #fff;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-legal {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 32px;
+  color: var(--on-dark-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 40px var(--gutter) 32px;
   }
-  
-  .footer p {
-    font-size: 12px;
-    flex: 1;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
+
+  .footer-brand {
+    grid-column: 1 / -1;
   }
-  
-  .mail-link {
-    flex-shrink: 0;
+
+  .footer a {
+    overflow-wrap: anywhere;
   }
 }

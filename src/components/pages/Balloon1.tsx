@@ -11,7 +11,7 @@ const Balloon1Page: React.FC = () => (
           <p className="hero-description">Latobius was the first High Altitude Balloon launched by SFU Satellite Design Team, testing integration capabilities before CSDC4.</p>
         </div>
         <div className="hero-image">
-          <img src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/image8.jpeg" alt="Balloon 1" className="aleasat-main-image" loading="eager" decoding="async" />
+          <img src="/images/site/image8.jpeg" alt="Balloon 1" className="aleasat-main-image" loading="eager" decoding="async" />
         </div>
       </div>
     </section>

@@ -21,6 +21,7 @@ import Balloon2Page from './components/pages/Balloon2';
 import CSDC4Page from './components/pages/CSDC4';
 import Balloon1Page from './components/pages/Balloon1';
 import './App.css';
+import './theme.css';
 
 const App: React.FC = () => {
   return (

@@ -130,7 +130,12 @@ const Outreach: React.FC = () => {
 
   return (
     <div className="outreach-page">
-      <h1 className="visually-hidden">Outreach</h1>
+      <header className="page-hero">
+        <div className="page-hero-inner">
+          <h1>Outreach</h1>
+          <p>Sharing the science and engineering behind satellites with students of all ages.</p>
+        </div>
+      </header>
   
       
       {/* Image Slideshow Section */}
@@ -181,6 +186,17 @@ const Outreach: React.FC = () => {
       <section className="outreach-stats">
         <div className="container">
           <h2>Outreach Statistics</h2>
+
+          <div className="outreach-numbers">
+            <div className="outreach-number">
+              <strong>15,200</strong>
+              <span>people reached</span>
+            </div>
+            <div className="outreach-number">
+              <strong>45+</strong>
+              <span>successful events</span>
+            </div>
+          </div>
           
           <p className="stats-intro">
             Through our Educational Outreach program we have reached{' '}

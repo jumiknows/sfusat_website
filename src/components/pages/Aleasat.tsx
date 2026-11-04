@@ -40,7 +40,7 @@ const AleasatPage: React.FC = () => {
   // Preload the ALEASAT image and slideshow images
   useEffect(() => {
     const preloadImages = [
-      "https://media.githubusercontent.com/media/balloon4computing/artifact/main/image1.png",
+      "/images/site/aleasat-render.jpg",
       ...aleasatImages.slice(0, 3).map(img => img.url)
     ];
 
@@ -75,13 +75,12 @@ const AleasatPage: React.FC = () => {
             <h1 className="hero-heading">ALEASAT</h1>
             <p className="hero-subtitle">To Prove Ourselves</p>
             <p className="hero-description">
-              A groundbreaking 1U CubeSat mission in partnership with UBC Orbit, 
-              pushing the boundaries of student-led space exploration.
+              A 1U CubeSat mission built in partnership with UBC Orbit.
             </p>
           </div>
           <div className="hero-image">
             <img 
-              src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/image1.png" 
+              src="/images/site/aleasat-render.jpg" 
               alt="ALEASAT Satellite" 
               className="aleasat-main-image"
               loading="eager"
@@ -144,14 +143,12 @@ const AleasatPage: React.FC = () => {
                 <h4>Primary Payloads</h4>
                 <div className="payload-grid">
                   <div className="payload-item">
-                    <div className="payload-icon">📷</div>
                     <div className="payload-content">
                       <h5>Earth Imaging Camera</h5>
                       <p>Amateur radio operators can request pictures of their area through our satellite communication system.</p>
                     </div>
                   </div>
                   <div className="payload-item">
-                    <div className="payload-icon">🌀</div>
                     <div className="payload-content">
                       <h5>Miniaturized Centrifuge</h5>
                       <p>Testing human physiology effects for long-term space missions in partnership with SFU Aerospace Physiology Laboratory.</p>
@@ -165,19 +162,16 @@ const AleasatPage: React.FC = () => {
               <h4>Mission Impact</h4>
               <div className="impact-cards">
                 <div className="impact-card">
-                  <div className="impact-icon">🎓</div>
-                  <h5>Educational Excellence</h5>
-                  <p>Providing hands-on satellite engineering experience for future aerospace professionals.</p>
+                  <h5>Hands-on Experience</h5>
+                  <p>Students get real satellite engineering experience.</p>
                 </div>
                 <div className="impact-card">
-                  <div className="impact-icon">🚀</div>
-                  <h5>Space Credibility</h5>
-                  <p>Establishing our reputation as the fourth Canadian undergraduate team to launch a satellite.</p>
+                  <h5>Fourth Canadian Team</h5>
+                  <p>We would be the fourth Canadian undergraduate team to launch a satellite.</p>
                 </div>
                 <div className="impact-card">
-                  <div className="impact-icon">🔬</div>
-                  <h5>Research Innovation</h5>
-                  <p>Contributing to human spaceflight research and Canadian space technology development.</p>
+                  <h5>Spaceflight Research</h5>
+                  <p>Contributing to human spaceflight research in Canada.</p>
                 </div>
               </div>
             </div>

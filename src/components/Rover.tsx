@@ -36,8 +36,8 @@ const Rover: React.FC = () => {
       <div className="rover-container">
         <div className="rover-image">
           <img 
-            src="/images/rover/sfusat-recruitment-poster.png" 
-            alt="SFUSAT Wants You - Join our mission to Mars"
+            src="/images/site/rover-cad.jpg" 
+            alt="CAD model from the rover design"
           />
         </div>
         <div className="rover-content">
@@ -46,7 +46,7 @@ const Rover: React.FC = () => {
           <div className="rover-description">
             <p>
               Design and deploy an autonomous rover for the Canadian International Rover Challenge. 
-              Push the boundaries of robotics, autonomy, and systems integration.
+              The work covers robotics, autonomy, and systems integration.
             </p>
             <div className="rover-highlights">
               <div className="highlight-item">
@@ -72,20 +72,19 @@ const Rover: React.FC = () => {
         <div className="divider-line"></div>
       </div>
 
-      {/* Mission Critical Systems Section */}
+      {/* Rover Subsystems Section */}
       <div className="rover-challenges-section">
         <div className="challenges-container">
           <div className="challenges-header">
-            <h2 className="challenges-title">Mission Critical Systems</h2>
+            <h2 className="challenges-title">Rover Subsystems</h2>
             <p className="challenges-description">
-              Four technical domains requiring precision engineering and innovation.
+              The four systems the team is building.
             </p>
           </div>
           <div className="challenges-grid">
             <div className="challenge-card">
-              <div className="challenge-icon">🦾</div>
               <h3>Robotic Arm</h3>
-              <p className="challenge-summary">Precision manipulation system with multiple axes of movement</p>
+              <p className="challenge-summary">A multi-axis arm for handling objects</p>
               <ul>
                 <li>Multi-axis manipulator with inverse kinematics</li>
                 <li>Custom end-effector tooling for object manipulation</li>
@@ -94,7 +93,6 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
-              <div className="challenge-icon">📡</div>
               <h3>Communications</h3>
               <p className="challenge-summary">Long-range radio telemetry and command</p>
               <ul>
@@ -105,7 +103,6 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
-              <div className="challenge-icon">🛞</div>
               <h3>Mobility</h3>
               <p className="challenge-summary">All-terrain autonomous navigation</p>
               <ul>
@@ -116,9 +113,8 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
-              <div className="challenge-icon">🔋</div>
               <h3>Power Systems</h3>
-              <p className="challenge-summary">Mission-duration energy architecture</p>
+              <p className="challenge-summary">Keeps the rover powered for the full mission</p>
               <ul>
                 <li>High-capacity battery with thermal management</li>
                 <li>Intelligent power distribution and monitoring</li>
@@ -133,8 +129,8 @@ const Rover: React.FC = () => {
       <section className="rover-gallery-section">
         <div className="container">
           <div className="gallery-header">
-            <h2>Technical Showcase</h2>
-            <p>Exploring autonomous rover engineering and innovation</p>
+            <h2>Development Gallery</h2>
+            <p>A look at the rover design so far</p>
           </div>
           
           <div className="slideshow-container">

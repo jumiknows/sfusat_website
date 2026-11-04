@@ -76,20 +76,22 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="contact-container">
-      <h1>Contact Us</h1>
-      <p>
-        {/* SFU Satellite is currently hiring for ALEASAT technical roles. Please refer to our{' '} */}
-        SFU Satellite is currently hiring for ROVER technical roles. Please refer to our{' '}
-        <Link to="/about" className="about-link">About page</Link> for more information on each team.
-      </p>
-      <div className="contact-buttons">
-        <Link to="/rover/apply" className="contact-button">
-          Application Form
-        </Link>
-        <Link to="/rover" className="contact-button learn-more-button">
-          Learn More
-        </Link>
+    <div className="contact-page">
+      <div className="contact-intro">
+        <h1>Contact Us</h1>
+        <p>
+          {/* SFU Satellite is currently hiring for ALEASAT technical roles. Please refer to our{' '} */}
+          SFU Satellite is currently hiring for ROVER technical roles. Please refer to our{' '}
+          <Link to="/about" className="about-link">About page</Link> for more information on each team.
+        </p>
+        <div className="contact-buttons">
+          <Link to="/rover/apply" className="btn btn-solid">
+            Application Form
+          </Link>
+          <Link to="/rover" className="btn btn-ghost">
+            Learn More
+          </Link>
+        </div>
       </div>
 
       {/* Contact Form Section */}

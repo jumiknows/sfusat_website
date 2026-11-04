@@ -3,7 +3,7 @@ import './CCP1.css';
 
 const CCP1Page: React.FC = () => (
   <div className="aleasat-page">
-    <section className="aleasat-hero">
+    <section className="aleasat-hero hero-immersive">
       <div className="hero-content">
         <div className="hero-text">
           <h1>CCP1</h1>
@@ -11,7 +11,7 @@ const CCP1Page: React.FC = () => (
           <p className="hero-description">A collaboration with two other universities to build a 2U CubeSat, funded by the Canadian Space Agency.</p>
         </div>
         <div className="hero-image">
-          <img src="https://media.githubusercontent.com/media/balloon4computing/artifact/main/image4.jpg" alt="CCP1" className="aleasat-main-image" loading="eager" decoding="async" />
+          <img src="/images/site/ccp1-night.jpg" alt="CCP1" className="aleasat-main-image" loading="eager" decoding="async" />
         </div>
       </div>
     </section>

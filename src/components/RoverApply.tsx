@@ -35,15 +35,12 @@ const RoverApply: React.FC = () => {
   return (
     <div className="rover-apply-page">
       <section className="ra-hero">
-        <div className="ra-orbit" />
         <div className="ra-hero-grid">
           <div className="ra-copy">
-            <p className="ra-eyebrow">SFUSAT Rover Recruitment</p>
             <h1>Choose your subsystem. Build a rover that navigates rugged terrain.</h1>
             <p>
-              This is the new application gateway for the rover team. Explore the mission profile,
-              test your reflexes in Rover Runner, and apply directly to the subsystem where you can
-              make the strongest impact.
+              Apply to join the rover team. Pick the subsystem that fits your skills, or try Rover
+              Runner first.
             </p>
             <a className="ra-scroll" href="#team-forms">
               Jump to Team Applications
@@ -60,7 +57,7 @@ const RoverApply: React.FC = () => {
         <div className="ra-game-header">
           <h2>Rover Runner</h2>
           <p>
-            Press Space or tap Jump to dodge boulders across a Mars-grade terrain pass.
+            Press Space or tap Jump to dodge boulders.
           </p>
         </div>
 

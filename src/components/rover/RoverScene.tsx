@@ -34,7 +34,7 @@ const RoverScene: React.FC<RoverSceneProps> = ({
 
       // Scene setup
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xf8fafc);
+      scene.background = new THREE.Color(0x000000);
       scene.fog = new THREE.Fog(0xf8fafc, 50, 100);
 
       // Camera
@@ -254,7 +254,7 @@ const RoverScene: React.FC<RoverSceneProps> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#f8fafc',
+          background: '#000',
         }}
       />
       <div
