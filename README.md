@@ -39,6 +39,8 @@ Team information: `src/components/About.tsx`
 
 Contact page: `src/components/Contact.tsx`
 
+Recruitment: `src/components/recruitment.ts`
+
 Navigation: `src/components/Navbar.tsx`
 
 Routes: `src/App.tsx`

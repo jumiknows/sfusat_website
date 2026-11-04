@@ -15,7 +15,8 @@ const PAGE_TITLES: Record<string, string> = {
   '/sponsors': 'Sponsors',
   '/outreach': 'Outreach',
   '/about': 'About',
-  '/contact': 'Contact Us'
+  '/contact': 'Contact Us',
+  '/join': 'Join'
 };
 
 const PageTitle: React.FC = () => {

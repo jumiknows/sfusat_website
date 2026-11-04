@@ -1,5 +1,6 @@
 import React from 'react';
 import './Balloon2.css';
+import RecruitingBanner from '../RecruitingBanner';
 
 const Balloon2Page: React.FC = () => (
   <div className="aleasat-page">
@@ -11,10 +12,11 @@ const Balloon2Page: React.FC = () => (
           <p className="hero-description">Our second high altitude balloon mission, providing invaluable experience for new members and future project leads.</p>
         </div>
         <div className="hero-image">
-          <img src="/images/site/dusk-launch.jpg" alt="Balloon 2" className="aleasat-main-image" loading="eager" decoding="async" />
+          <img src="/images/site/image5.jpg" alt="Balloon 2" className="aleasat-main-image" loading="eager" decoding="async" />
         </div>
       </div>
     </section>
+    <RecruitingBanner program="balloon" />
     <section className="project-narrative">
       <div className="container">
         <h2>About Balloon 2</h2>

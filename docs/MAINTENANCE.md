@@ -83,6 +83,32 @@ Routes are registered in `src/App.tsx`.
 
 When adding a top level page, check whether it also belongs in the main navigation.
 
+## Recruitment
+
+Edit `src/components/recruitment.ts`. It is the only file that needs to change.
+
+To open a program, set `open: true`, add its roles with their Google Form links, and optionally add a `deadline`.
+
+ALEASAT shares its postings and application form with UBC Orbit, so check both sites agree before opening it. Set `packageUrl` to link a hiring package.
+
+To close a program, set `open: false`.
+
+The Join page, the Contact page, the home page and the project page banners all update from this file.
+
+Test every form link before merging.
+
+## Soundtrack
+
+The tracks are listed in `src/components/Soundtrack.tsx`. Use the video ID of an official YouTube upload, ideally a "Provided to YouTube" track that shows still album art.
+
+Keep the YouTube player visible and do not make it start by itself. Do not host downloaded copies of the music.
+
+## Videos
+
+Clips are in `public/videos/`, each as an `.mp4` with a `.jpg` poster of the same name. Keep them short, silent and small, and remove their metadata when converting.
+
+Confirm permission before publishing footage of people or test facilities.
+
 ## Contact form
 
 GitHub Pages cannot send email, so `src/components/Contact.tsx` submits to Web3Forms, which delivers messages to the team inbox.

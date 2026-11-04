@@ -1,5 +1,6 @@
 import React from 'react';
 import './Balloon1.css';
+import RecruitingBanner from '../RecruitingBanner';
 
 const Balloon1Page: React.FC = () => (
   <div className="aleasat-page">
@@ -15,6 +16,7 @@ const Balloon1Page: React.FC = () => (
         </div>
       </div>
     </section>
+    <RecruitingBanner program="balloon" />
     <section className="project-narrative">
       <div className="container">
         <h2>About Balloon 1</h2>

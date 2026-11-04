@@ -5,3 +5,4 @@
 export const CONTACT_EMAIL = 'sfusat@sfu.ca';
 export const CONTACT_FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 export const CONTACT_FORM_ACCESS_KEY = '3e704491-3948-4857-8524-47673b632505';
+export const INSTAGRAM_URL = 'https://www.instagram.com/sfu.satellite/';

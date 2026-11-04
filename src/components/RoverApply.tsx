@@ -1,35 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RoverRunnerGame from './rover/RoverRunnerGame';
 import RoverScene from './rover/RoverScene';
+import { getProgram } from './recruitment';
 import './RoverApply.css';
 
-const TEAM_FORMS = [
-  {
-    name: 'Software',
-    description: 'Autonomy, controls, perception, and mission software',
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSf0SaFq3Bp5PqquvxhZ8WYsAXaWIjtLDgnjWsL0O-mt5ab3Dw/viewform?usp=dialog',
-  },
-  {
-    name: 'Mechanical',
-    description: 'Chassis, suspension, drivetrain, and CAD integration',
-    url: 'https://forms.gle/iHwPVg9Wqh6QCRJL8',
-  },
-  {
-    name: 'Communications',
-    description: 'Ground station, networking, and telemetry pipelines',
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSdOkB6Hx3VihP10OrrLxeD1P9fog0bEIZX-iHOpLv0BTzj3EQ/viewform?usp=publish-editor',
-  },
-  {
-    name: 'Payload',
-    description: 'Science instruments and mission operations support',
-    url: 'https://forms.gle/HDMQYYj9xsUTTHzGA',
-  },
-  {
-    name: 'Electrical',
-    description: 'Power systems, embedded design, and board bring-up',
-    url: 'https://forms.gle/buF63Tt6xngTQuGN6',
-  },
-];
+const rover = getProgram('rover');
+const TEAM_FORMS = rover?.open ? rover.roles : [];
 
 const RoverApply: React.FC = () => {
   return (
@@ -37,7 +14,7 @@ const RoverApply: React.FC = () => {
       <section className="ra-hero">
         <div className="ra-hero-grid">
           <div className="ra-copy">
-            <h1>Choose your subsystem. Build a rover that navigates rugged terrain.</h1>
+            <h1>Rover Team Applications</h1>
             <p>
               Apply to join the rover team. Pick the subsystem that fits your skills, or try Rover
               Runner first.
@@ -67,7 +44,11 @@ const RoverApply: React.FC = () => {
       <section className="ra-team-forms" id="team-forms">
         <div className="ra-team-heading">
           <h2>Team Application Forms</h2>
-          <p>Select one subsystem form to apply to. You can submit more than one if your skillset spans teams.</p>
+          <p>
+            {TEAM_FORMS.length > 0
+              ? 'Select one subsystem form to apply to. You can submit more than one if your skillset spans teams.'
+              : <>Rover recruitment is closed right now. See <Link to="/join">what is open</Link>.</>}
+          </p>
         </div>
 
         <div className="ra-team-grid">
@@ -75,7 +56,7 @@ const RoverApply: React.FC = () => {
             <a
               key={team.name}
               className="ra-team-card"
-              href={team.url}
+              href={team.form}
               target="_blank"
               rel="noopener noreferrer"
             >

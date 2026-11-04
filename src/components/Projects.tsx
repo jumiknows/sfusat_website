@@ -14,13 +14,14 @@ interface Project {
 const projects: Project[] = [
   { 
     title: 'Polaris', 
-    image: '/images/site/rover-cad.jpg', 
+    image: '/images/rover/sfusat-recruitment-poster.png', 
     description: 'Design and deploy an autonomous rover for the Canadian International Rover Challenge. The work covers robotics, autonomy, and systems integration.', 
-    link: '/rover'
+    link: '/rover',
+    imageClassName: 'project-image-contain'
   },
   { 
     title: 'ALEASAT', 
-    image: '/images/site/aleasat-render.jpg', 
+    image: '/images/aleasat/finished-cube.jpg', 
     description: 'Our most ambitious project yet. Alongside UBC Orbit, we are sending a 1U cube satellite into space. The satellite will provide research data relating to human physiology and will provide pictures of Earth for amateur radio operators.', 
     link: '/projects/aleasat' 
   },
@@ -46,7 +47,7 @@ const projects: Project[] = [
   },
   { 
     title: 'Balloon 2', 
-    image: '/images/site/dusk-launch.jpg', 
+    image: '/images/site/image5.jpg', 
     description: 'The first balloon helped us gain invaluable experience so we did it again to help our new members. Many of the leads from this project went on to lead CSDC5 and ALEA.', 
     link: '/projects/balloon2' 
   },
@@ -70,7 +71,7 @@ const ProjectsPage: React.FC = () => {
       <header className="page-hero">
         <div className="page-hero-inner">
           <h1>Projects</h1>
-          <p>From high altitude balloons to a CubeSat bound for orbit.</p>
+          <p>High altitude balloons, CubeSats and a rover.</p>
         </div>
       </header>
       <div className="projects-grid">

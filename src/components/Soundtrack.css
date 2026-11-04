@@ -1,0 +1,247 @@
+.soundtrack {
+  order: 2;
+  margin-left: 8px;
+}
+
+.soundtrack-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.soundtrack-toggle:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.soundtrack-toggle.open {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.soundtrack-toggle-label {
+  display: none;
+}
+
+@media (min-width: 1240px) {
+  .soundtrack-toggle-label {
+    display: inline;
+  }
+}
+
+/* Moving bars show that music is playing */
+.soundtrack-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.soundtrack-bars i {
+  width: 3px;
+  height: 100%;
+  background: currentColor;
+  transform-origin: bottom;
+  animation: soundtrack-bar 0.9s ease-in-out infinite alternate;
+}
+
+.soundtrack-bars i:nth-child(2) {
+  animation-delay: -0.35s;
+}
+
+.soundtrack-bars i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes soundtrack-bar {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.soundtrack-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  width: 384px;
+  max-width: calc(100vw - 24px);
+  border: 1px solid var(--on-dark-line);
+  background: #0b0c0e;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.soundtrack-stage {
+  width: 200px;
+  min-height: 200px;
+  background: #000;
+}
+
+.soundtrack-stage iframe,
+.soundtrack-stage > div {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.soundtrack-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.soundtrack-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.soundtrack-heading > div {
+  min-width: 0;
+}
+
+.soundtrack-heading strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.soundtrack-heading span {
+  color: var(--on-dark-muted);
+  font-size: 0.875rem;
+}
+
+.soundtrack-panel button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  font-size: 0.9375rem;
+}
+
+.soundtrack-panel button:hover {
+  color: var(--on-dark-muted);
+}
+
+.soundtrack-heading button {
+  margin: -6px -8px 0 0;
+}
+
+.soundtrack-progress span {
+  display: block;
+  color: var(--on-dark-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.soundtrack-panel input[type='range'] {
+  display: block;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  accent-color: #fff;
+  cursor: pointer;
+}
+
+.soundtrack-error {
+  margin: 0;
+  color: var(--on-dark-muted);
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.soundtrack-error a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.soundtrack-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.soundtrack-panel .soundtrack-play {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+}
+
+.soundtrack-panel .soundtrack-play:hover {
+  background: #d8dbe0;
+  color: #000;
+}
+
+.soundtrack-volume {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Keeps page content reachable while the player is docked */
+body.soundtrack-open .footer {
+  padding-bottom: 232px;
+}
+
+body.soundtrack-open .mission-hud {
+  padding-right: calc(var(--gutter) + 360px);
+}
+
+@media (max-width: 600px) {
+  .soundtrack-panel {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+  }
+
+  .soundtrack-controls {
+    padding: 8px 10px;
+  }
+
+  /* Phones set volume with their own buttons */
+  .soundtrack-volume {
+    display: none;
+  }
+
+  body.soundtrack-open .mission-chapter {
+    bottom: 260px;
+  }
+
+  body.soundtrack-open .mission-hud {
+    bottom: 222px;
+    padding-right: var(--gutter);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soundtrack-bars i {
+    animation: none;
+  }
+}

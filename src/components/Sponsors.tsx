@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAward, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import SectionNav from './SectionNav';
 import './Sponsors.css';
 
 const Sponsors: React.FC = () => {
@@ -23,14 +26,24 @@ const Sponsors: React.FC = () => {
       <header className="page-hero">
         <div className="page-hero-inner">
           <h1>Sponsors</h1>
-          <p>The organizations that make our work possible.</p>
+          <p>Organizations that support our work.</p>
+          <Link to="/contact?subject=Sponsorship" className="btn btn-solid page-hero-action">Become a sponsor</Link>
         </div>
       </header>
+      <SectionNav
+        label="On this page"
+        sections={[
+          { id: 'platinum', label: 'Platinum' },
+          { id: 'silver', label: 'Silver' },
+          { id: 'bronze', label: 'Bronze' },
+          { id: 'why', label: 'Why sponsor' }
+        ]}
+      />
       <div className="container">
         
         {/* Platinum Sponsors Section */}
-        <section className="sponsor-tier platinum">
-          <h2 className="tier-title">Platinum Sponsors</h2>
+        <section className="sponsor-tier platinum" id="platinum">
+          <h2 className="tier-title"><FontAwesomeIcon icon={faTrophy} /> Platinum Sponsors</h2>
           
           <div className="sponsor-item">
             <div className="sponsor-logo">
@@ -90,8 +103,8 @@ const Sponsors: React.FC = () => {
         </section>
 
         {/* Silver Sponsors Section */}
-        <section className="sponsor-tier silver">
-          <h2 className="tier-title">Silver Sponsors</h2>
+        <section className="sponsor-tier silver" id="silver">
+          <h2 className="tier-title"><FontAwesomeIcon icon={faMedal} /> Silver Sponsors</h2>
           
           <div className="sponsor-item">
             <div className="sponsor-logo">
@@ -171,8 +184,8 @@ const Sponsors: React.FC = () => {
         </section>
 
         {/* Bronze Sponsors Section */}
-        <section className="sponsor-tier bronze">
-          <h2 className="tier-title">Bronze Sponsors</h2>
+        <section className="sponsor-tier bronze" id="bronze">
+          <h2 className="tier-title"><FontAwesomeIcon icon={faAward} /> Bronze Sponsors</h2>
           
           <div className="sponsor-item">
             <div className="sponsor-logo">
@@ -289,19 +302,19 @@ const Sponsors: React.FC = () => {
         </section>
 
         {/* Why Sponsor Us Section */}
-        <section className="why-sponsor">
-          <h2>Why Sponsor Us?</h2>
-          <p>
+        <section className="why-sponsor" id="why">
+          <div>
+            <h2>Why Sponsor Us?</h2>
+            <p>
             The SFU Satellite Design Team is the product of the hard work and dedication from SFU students on providing opportunities to the community. Our success and progress could not 
             be achieved without support from sponsors and community leaders. With your support, the team can continue to inspire future generations of space explorers, engineers and 
             business leaders through technological development and educational outreach.
           </p>
-        </section>
-
-        {/* Call to Action Section */}
-        <section className="sponsor-cta">
-          <h2>Help Us Build a Satellite</h2>
-          <Link to="/contact" className="cta-button">CONTACT US</Link>
+          </div>
+          <div className="why-sponsor-action">
+            <h3>Help Us Build a Satellite</h3>
+            <Link to="/contact?subject=Sponsorship" className="btn btn-solid">Contact us</Link>
+          </div>
         </section>
       </div>
     </div>

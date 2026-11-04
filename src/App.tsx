@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Projects from './components/Projects';
@@ -11,8 +11,8 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import PageTitle from './components/PageTitle';
 import NotFound from './components/NotFound';
+import Join from './components/Join';
 import Rover from './components/Rover';
-import RoverApply from './components/RoverApply';
 import AleasatPage from './components/pages/Aleasat';
 import Balloon3Page from './components/pages/Balloon3';
 import CSDC5Page from './components/pages/CSDC5';
@@ -23,6 +23,9 @@ import Balloon1Page from './components/pages/Balloon1';
 import './App.css';
 import './theme.css';
 
+// Holds the 3D rover and the game, so other pages do not download them
+const RoverApply = lazy(() => import('./components/RoverApply'));
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -30,12 +33,13 @@ const App: React.FC = () => {
       <PageTitle />
       <div className="App">
         <Navbar />
-        <main>
+        <a href="#main" className="skip-link">Skip to content</a>
+        <main id="main" tabIndex={-1}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/website" element={<Home />} />
             <Route path="/rover" element={<Rover />} />
-            <Route path="/rover/apply" element={<RoverApply />} />
+            <Route path="/rover/apply" element={<Suspense fallback={<div className="route-loading" />}><RoverApply /></Suspense>} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/aleasat" element={<AleasatPage />} />
             <Route path="/projects/balloon3" element={<Balloon3Page />} />
@@ -48,6 +52,7 @@ const App: React.FC = () => {
             <Route path="/outreach" element={<Outreach />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/join" element={<Join />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

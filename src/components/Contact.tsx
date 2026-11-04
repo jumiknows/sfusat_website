@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import the Link component for internal navigation
-import { CONTACT_EMAIL, CONTACT_FORM_ACCESS_KEY, CONTACT_FORM_ENDPOINT } from './contactConfig';
+import { Link, useSearchParams } from 'react-router-dom'; // Import the Link component for internal navigation
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import InstagramIcon from './InstagramIcon';
+import { CONTACT_EMAIL, CONTACT_FORM_ACCESS_KEY, CONTACT_FORM_ENDPOINT, INSTAGRAM_URL } from './contactConfig';
+import { recruitingSummary } from './recruitment';
 import './Contact.css'; // Import the CSS file for styling
 
 const EMPTY_FORM = {
@@ -12,7 +16,9 @@ const EMPTY_FORM = {
 };
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState(EMPTY_FORM);
+  const [searchParams] = useSearchParams();
+  // Links such as /contact?subject=Sponsorship arrive with the subject filled in
+  const [formData, setFormData] = useState({ ...EMPTY_FORM, subject: searchParams.get('subject') ?? '' });
   const [botcheck, setBotcheck] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
@@ -80,16 +86,25 @@ const Contact: React.FC = () => {
       <div className="contact-intro">
         <h1>Contact Us</h1>
         <p>
-          {/* SFU Satellite is currently hiring for ALEASAT technical roles. Please refer to our{' '} */}
-          SFU Satellite is currently hiring for ROVER technical roles. Please refer to our{' '}
+          {recruitingSummary()} Please refer to our{' '}
           <Link to="/about" className="about-link">About page</Link> for more information on each team.
         </p>
+        <ul className="contact-methods">
+          <li>
+            <FontAwesomeIcon icon={faEnvelope} />
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          </li>
+          <li>
+            <InstagramIcon />
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">@sfu.satellite</a>
+          </li>
+        </ul>
         <div className="contact-buttons">
-          <Link to="/rover/apply" className="btn btn-solid">
-            Application Form
+          <Link to="/join" className="btn btn-solid">
+            See open roles
           </Link>
-          <Link to="/rover" className="btn btn-ghost">
-            Learn More
+          <Link to="/projects" className="btn btn-ghost">
+            Our projects
           </Link>
         </div>
       </div>
@@ -97,10 +112,7 @@ const Contact: React.FC = () => {
       {/* Contact Form Section */}
       <div className="contact-form-section">
         <h2>Send us a message</h2>
-        <p>
-          Whether you have questions about our projects, research, or team, or just want to connect, complete the form
-          below or email us at <a href={`mailto:${CONTACT_EMAIL}`} className="about-link">{CONTACT_EMAIL}</a>.
-        </p>
+        <p>Questions about our projects, research or team? Send us a message and we will get back to you.</p>
 
         <form
           onSubmit={handleSubmit}

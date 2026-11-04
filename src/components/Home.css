@@ -61,21 +61,15 @@
 }
 
 /* Text sits on the trees so the team stays visible */
-.panel-hero,
-.panel-side {
+.panel-people {
   align-items: center;
 }
 
-.panel-hero > img {
-  object-position: center bottom;
+.panel-people > img {
+  object-position: center 72%;
 }
 
-.panel-side > img {
-  object-position: right center;
-}
-
-.panel-hero::after,
-.panel-side::after {
+.panel-people::after {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.72) 40%, rgba(0, 0, 0, 0) 70%);
 }
 
@@ -126,6 +120,75 @@
   width: 100%;
   max-width: calc(var(--page-width) / 2);
   padding: 64px var(--gutter);
+}
+
+.home-missions {
+  background: #000;
+  padding-top: var(--section-y);
+}
+
+.home-missions a img {
+  transition: transform 0.5s ease;
+}
+
+.home-missions li a {
+  overflow: hidden;
+}
+
+.home-missions a:hover img {
+  transform: scale(1.03);
+}
+
+.home-missions ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 64px;
+  list-style: none;
+}
+
+.home-missions a {
+  display: block;
+  color: #fff;
+}
+
+.home-missions a:hover {
+  color: #fff;
+}
+
+.home-missions a:hover h2 {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.home-missions img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.home-missions .mission-logo {
+  padding: 32px;
+  background: #fff;
+  object-fit: contain;
+}
+
+.home-missions h3 {
+  margin: 16px 0 4px;
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.home-missions p {
+  margin: 0;
+  color: var(--on-dark-muted);
+  font-size: 1.0625rem;
 }
 
 .home-sponsors {
@@ -182,6 +245,11 @@
 }
 
 @media (max-width: 900px) {
+  .home-missions ul {
+    grid-template-columns: 1fr;
+    padding-bottom: 40px;
+  }
+
   .home-stats dl {
     grid-template-columns: repeat(2, 1fr);
     padding: 40px var(--gutter);
@@ -212,22 +280,21 @@
     min-height: 78vh;
   }
 
-  .panel-hero,
-  .panel-side {
-    align-items: flex-end;
+  /* Photo above the text, so nothing covers the team */
+  .panel-people {
+    display: block;
+    min-height: 0;
   }
 
-  .panel-hero > img {
-    object-position: 55% 30%;
+  .panel-people > img {
+    position: static;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-position: 60% 80%;
   }
 
-  .panel-hero::after,
-  .panel-side::after {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 72%);
-  }
-
-  .panel-hero {
-    min-height: calc(100svh - var(--nav-height));
+  .panel-people::after {
+    display: none;
   }
 
   .panel-split {
@@ -249,5 +316,72 @@
   .home-sponsors ul {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
+  }
+}
+
+/* The satellite sits on the right of this photo, clear of the text */
+.panel-esa > img {
+  object-position: right center;
+}
+
+.panel > .loop-video {
+  position: absolute;
+  inset: 0;
+}
+
+.panel .loop-video-toggle {
+  z-index: 2;
+  right: var(--gutter);
+  bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .panel-people > .loop-video {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .panel .loop-video-toggle {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* The photo sits on the right and fades into black, so the text stays clear of the hardware */
+.panel-esa > img {
+  left: auto;
+  right: 0;
+  width: 62%;
+  object-position: center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+}
+
+.panel-esa p {
+  max-width: 34ch;
+}
+
+.panel-esa::after {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .panel-esa {
+    display: block;
+    min-height: 0;
+  }
+
+  .panel-esa > img {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .panel-esa p {
+    max-width: 52ch;
   }
 }

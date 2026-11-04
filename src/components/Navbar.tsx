@@ -1,6 +1,7 @@
 // Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Soundtrack from './Soundtrack';
 import './Navbar.css';
 
 const NAV_ITEMS = [
@@ -22,7 +23,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const mission = document.querySelector('.mission');
-      setIsPastHero(mission ? mission.getBoundingClientRect().bottom <= 72 : true);
+      setIsPastHero(mission ? mission.getBoundingClientRect().bottom <= window.innerHeight : true);
     };
 
     handleScroll();
@@ -90,6 +91,8 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       
+      <Soundtrack />
+
       <button 
         className={`hamburger ${isOpen ? 'open' : ''}`} 
         onClick={toggleMenu}
@@ -122,6 +125,11 @@ const Navbar: React.FC = () => {
             </li>
           );
         })}
+        <li className="navbar-join">
+          <Link to="/join" onClick={closeMenu} aria-current={location.pathname === '/join' ? 'page' : undefined}>
+            Join
+          </Link>
+        </li>
       </ul>
     </nav>
   );

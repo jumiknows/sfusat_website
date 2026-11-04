@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faBatteryFull, faCalendarDays, faCrosshairs, faGaugeHigh, faRobot, faRoute, faTowerBroadcast } from '@fortawesome/free-solid-svg-icons';
+import { isRecruiting } from './recruitment';
+import SectionNav from './SectionNav';
 import './Rover.css';
 
 const roverImages = [
@@ -36,13 +38,13 @@ const Rover: React.FC = () => {
       <div className="rover-container">
         <div className="rover-image">
           <img 
-            src="/images/site/rover-cad.jpg" 
-            alt="CAD model from the rover design"
+            src="/images/rover/sfusat-recruitment-poster.png" 
+            alt="Canadian International Rover Challenge logo"
           />
         </div>
         <div className="rover-content">
           <h1>Rover Challenge</h1>
-          <p className="rover-subtitle">August 2027</p>
+          <p className="rover-subtitle"><FontAwesomeIcon icon={faCalendarDays} /> August 2027</p>
           <div className="rover-description">
             <p>
               Design and deploy an autonomous rover for the Canadian International Rover Challenge. 
@@ -50,22 +52,32 @@ const Rover: React.FC = () => {
             </p>
             <div className="rover-highlights">
               <div className="highlight-item">
-                <span className="highlight-label">Level:</span>
+                <span className="highlight-label"><FontAwesomeIcon icon={faGaugeHigh} /> Level:</span>
                 <span className="highlight-value">Intermediate to Advanced</span>
               </div>
               <div className="highlight-item">
-                <span className="highlight-label">Focus:</span>
+                <span className="highlight-label"><FontAwesomeIcon icon={faCrosshairs} /> Focus:</span>
                 <span className="highlight-value">Robotics | Autonomy | Systems Integration</span>
               </div>
             </div>
           </div>
-          <div className="rover-buttons">
-            <Link to="/rover/apply" className="rover-button">
-              Apply Now
-            </Link>
-          </div>
+          {isRecruiting('rover') && (
+            <div className="rover-buttons">
+              <Link to="/rover/apply" className="rover-button">
+                Apply Now
+              </Link>
+            </div>
+          )}
         </div>
       </div>
+
+      <SectionNav
+        label="On this page"
+        sections={[
+          { id: 'subsystems', label: 'Subsystems' },
+          { id: 'gallery', label: 'Gallery' }
+        ]}
+      />
 
       {/* Section Divider */}
       <div className="section-divider">
@@ -73,7 +85,7 @@ const Rover: React.FC = () => {
       </div>
 
       {/* Rover Subsystems Section */}
-      <div className="rover-challenges-section">
+      <div className="rover-challenges-section" id="subsystems">
         <div className="challenges-container">
           <div className="challenges-header">
             <h2 className="challenges-title">Rover Subsystems</h2>
@@ -83,6 +95,7 @@ const Rover: React.FC = () => {
           </div>
           <div className="challenges-grid">
             <div className="challenge-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faRobot} /></span>
               <h3>Robotic Arm</h3>
               <p className="challenge-summary">A multi-axis arm for handling objects</p>
               <ul>
@@ -93,6 +106,7 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faTowerBroadcast} /></span>
               <h3>Communications</h3>
               <p className="challenge-summary">Long-range radio telemetry and command</p>
               <ul>
@@ -103,6 +117,7 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faRoute} /></span>
               <h3>Mobility</h3>
               <p className="challenge-summary">All-terrain autonomous navigation</p>
               <ul>
@@ -113,6 +128,7 @@ const Rover: React.FC = () => {
             </div>
 
             <div className="challenge-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faBatteryFull} /></span>
               <h3>Power Systems</h3>
               <p className="challenge-summary">Keeps the rover powered for the full mission</p>
               <ul>
@@ -126,7 +142,7 @@ const Rover: React.FC = () => {
       </div>
 
       {/* Rover Gallery Slideshow */}
-      <section className="rover-gallery-section">
+      <section className="rover-gallery-section" id="gallery">
         <div className="container">
           <div className="gallery-header">
             <h2>Development Gallery</h2>

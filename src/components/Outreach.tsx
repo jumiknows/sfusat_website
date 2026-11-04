@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPause, faPlay, faCalendarDays, faGraduationCap, faIndustry, faPeopleGroup, faSeedling } from '@fortawesome/free-solid-svg-icons';
+import SectionNav from './SectionNav';
 import './Outreach.css';
 
 // Slideshow images from the outreach-events folder
@@ -138,9 +139,20 @@ const Outreach: React.FC = () => {
       </header>
   
       
+      <SectionNav
+        label="On this page"
+        sections={[
+          { id: 'photos', label: 'Photos' },
+          { id: 'impact', label: 'Impact' },
+          { id: 'events', label: 'Events' },
+          { id: 'host', label: 'Host us' }
+        ]}
+      />
+
       {/* Image Slideshow Section */}
       <section
         className="outreach-slideshow"
+        id="photos"
         aria-label="Photos from outreach events"
         onPointerEnter={(e) => e.pointerType === 'mouse' && setIsHeld(true)}
         onPointerLeave={(e) => e.pointerType === 'mouse' && setIsHeld(false)}
@@ -183,36 +195,48 @@ const Outreach: React.FC = () => {
       </section>
 
       {/* Outreach Statistics Section */}
-      <section className="outreach-stats">
+      <section className="outreach-stats" id="impact">
         <div className="container">
-          <h2>Outreach Statistics</h2>
+          <h2>Our Impact</h2>
 
           <div className="outreach-numbers">
             <div className="outreach-number">
+              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faPeopleGroup} /></span>
               <strong>15,200</strong>
               <span>people reached</span>
             </div>
             <div className="outreach-number">
+              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCalendarDays} /></span>
               <strong>45+</strong>
               <span>successful events</span>
             </div>
           </div>
           
-          <p className="stats-intro">
+          <div className="info-grid">
+            <div className="info-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faGraduationCap} /></span>
+              <h3>Education</h3>
+              <p>
             Through our Educational Outreach program we have reached{' '}
             <strong>out to 15,200 people in over 45 successful events</strong>.{' '}
             We work with various school facilities and external organizations to educate 
             the general public, and students for all ages about the science and engineering 
             behind the building of a satellite.
           </p>
-          
-          <p className="stats-description">
+            </div>
+            <div className="info-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faIndustry} /></span>
+              <h3>Industry</h3>
+              <p>
             Our educational outreach program also allows the team to connect with the 
             aerospace industry promoting our mission through presentations and attending 
             local and international conferences.
           </p>
-          
-          <p className="stats-future">
+            </div>
+            <div className="info-card">
+              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faSeedling} /></span>
+              <h3>What's Next</h3>
+              <p>
             We will continue to expand our educational outreach endeavors through 
             collaboration with multiple internal and external organizations, with the 
             goal of creating a CubeSat specific education program. We will also be focusing 
@@ -221,15 +245,25 @@ const Outreach: React.FC = () => {
             would emphasize our primary goal of fostering future career choices in STEM 
             for the next generation.
           </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* List of Events Section */}
-      <section className="events-section">
+      <section className="events-section" id="events">
         <div className="container">
-          <h2>List of Events</h2>
+          <h2>Events</h2>
           
           <div className="events-list">
+            <div className="event-year">
+              <h3>2026</h3>
+              <ul>
+                <li>SFU Surge StormHacks, reward track and judges October 2026</li>
+                <li>ESA CubeSat Support Facility testing, Belgium June 2026</li>
+              </ul>
+            </div>
+
             <div className="event-year">
               <h3>2025</h3>
               <ul>
@@ -330,11 +364,11 @@ const Outreach: React.FC = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="cta-section">
+      <section className="cta-section" id="host">
         <div className="container">
           <h2>Putting on an Event?</h2>
           <p>Reach out to us!</p>
-          <Link to="/contact" className="cta-button">CONTACT US</Link>
+          <Link to="/contact?subject=Outreach%20event" className="cta-button">CONTACT US</Link>
         </div>
       </section>
     </div>

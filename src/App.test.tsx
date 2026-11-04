@@ -22,6 +22,7 @@ test('renders the main navigation', () => {
   expect(screen.getByRole('link', { name: 'Outreach' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Contact Us' })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'Join' })).toHaveAttribute('href', '/join');
 });
 
 test('opens and closes the navigation menu', () => {
