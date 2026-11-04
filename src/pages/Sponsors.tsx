@@ -33,11 +33,7 @@ const Sponsors: React.FC = () => {
               {tier.sponsors.map((sponsor) => (
                 <li key={sponsor.name} className="sponsor-card">
                   <div className="sponsor-card-logo">
-                    {sponsor.logo ? (
-                      <img src={sponsor.logo} alt="" loading="lazy" decoding="async" />
-                    ) : (
-                      <span aria-hidden="true">{sponsor.name}</span>
-                    )}
+                    <img src={sponsor.logo} alt="" loading="lazy" decoding="async" />
                   </div>
                   <div className="sponsor-card-text">
                     <h3>{sponsor.name}</h3>

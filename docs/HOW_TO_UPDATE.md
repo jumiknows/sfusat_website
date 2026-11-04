@@ -78,7 +78,7 @@ ALEASAT shares its postings and application form with UBC Orbit, so check that b
 ### Add a sponsor
 
 1. Put the logo in `public/images/sponsors/sponsor/`. Use a version with dark text, because cards are white.
-2. Open `src/content/sponsors.ts` and add an entry to the right tier. Without a logo, the card shows the name. Add one or two plain sentences saying what the organization does.
+2. Open `src/content/sponsors.ts` and add an entry to the right tier. Add one or two plain sentences saying what the organization does.
 3. If the sponsor should also appear on the home page, add it to `HOME_SPONSORS` in `src/content/home.ts`.
 
 ### Add a project

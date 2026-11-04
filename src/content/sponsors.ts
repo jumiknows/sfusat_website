@@ -1,9 +1,9 @@
 // One entry per sponsor. Confirm the name, tier, logo and description with the team lead first.
-// logo: a file in public/images/sponsors/sponsor/. Leave it out to show the name until there is one.
+// logo: a file in public/images/sponsors/sponsor/, with dark text because cards are white.
 // about: one or two plain sentences saying what the organization does.
 export interface Sponsor {
   name: string;
-  logo?: string;
+  logo: string;
   about: string;
 }
 
@@ -117,12 +117,8 @@ export const SPONSOR_TIERS: { id: string; title: string; sponsors: Sponsor[] }[]
           'The regulator of the engineering and geoscience professions in British Columbia.'
       },
       {
-        name: 'Innovative Tool & Die',
-        about:
-          'A tool and die manufacturer.'
-      },
-      {
         name: 'Candor Circuit Boards',
+        logo: logo('candor.svg'),
         about:
           'A Canadian manufacturer of custom printed circuit boards, specializing in HDI and heavy copper boards.'
       },
@@ -140,6 +136,7 @@ export const SPONSOR_TIERS: { id: string; title: string; sponsors: Sponsor[] }[]
       },
       {
         name: 'Hansen Industries',
+        logo: logo('hansen.png'),
         about:
           'Provides sheet metal fabrication and precision machining in Vancouver and Richmond, BC.'
       },

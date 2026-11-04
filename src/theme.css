@@ -1854,3 +1854,159 @@ main [id] {
 body.soundtrack-open .back-to-top {
   bottom: 236px;
 }
+
+
+/* Reading sections: the heading on the left, the content on the right */
+.mission-overview,
+.project-narrative + .mission-details,
+.project-narrative {
+  border-top: 1px solid var(--line);
+}
+
+.mission-details .container > h2,
+.mission-overview h2 {
+  margin-bottom: 24px;
+}
+
+.mission-details p {
+  color: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.project-narrative p {
+  max-width: 68ch;
+}
+
+.split-body > p {
+  max-width: 68ch;
+  margin: 0 0 36px;
+}
+
+.orbit-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 48px;
+}
+
+.orbit-columns h3 {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plain-list li {
+  padding: 16px 0;
+  border-top: 1px solid #c9cdd3;
+}
+
+.plain-list h4 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.mission-details .plain-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 1000px) {
+  .project-narrative .container,
+  .mission-overview .container,
+  .mission-details .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+    column-gap: 64px;
+    max-width: var(--page-width);
+  }
+
+  .project-narrative .container > h2,
+  .mission-overview .container > h2,
+  .mission-details .container > h2 {
+    grid-column: 1;
+    grid-row: 1 / span 20;
+    margin: 0;
+  }
+
+  .project-narrative .container > *:not(h2),
+  .mission-overview .container > *:not(h2),
+  .mission-details .container > *:not(h2) {
+    grid-column: 2;
+  }
+}
+
+/* Lighter dividers and clearer titles */
+.info-card,
+.value-card,
+.value-card:hover,
+.challenge-card,
+.challenge-card:hover,
+.rover-challenges-section .challenge-card {
+  padding-top: 20px;
+  border-top: 1px solid #c9cdd3;
+}
+
+.info-card h3,
+.value-card h3,
+.challenge-card h3 {
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.outreach-stats .info-card p,
+.value-card p {
+  color: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.aleasat-page .mission-stats {
+  gap: 24px;
+}
+
+.aleasat-page .stat-number {
+  margin-bottom: 8px;
+}
+
+.hero-aleasat::after {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 38%, rgba(0, 0, 0, 0) 68%);
+}
+
+.project-photos {
+  justify-content: flex-start;
+}
+
+@media (max-width: 800px) {
+  .orbit-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-aleasat::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.1) 78%);
+  }
+}
+
+/* Smaller project images keep their shape instead of stretching across the column */
+.aleasat-hero:not(.hero-immersive) .aleasat-main-image {
+  width: auto;
+  max-width: min(100%, 480px);
+  height: auto;
+  object-fit: contain;
+}

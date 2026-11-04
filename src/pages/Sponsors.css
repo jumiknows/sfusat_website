@@ -84,14 +84,6 @@
   object-fit: contain;
 }
 
-.sponsor-card-logo span {
-  color: var(--ink);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-}
-
 .sponsor-card-text {
   flex: 1;
   padding: 16px 20px 20px;
@@ -132,11 +124,7 @@
     padding: 12px;
   }
 
-  .sponsor-card-logo span {
-    font-size: 0.8125rem;
-  }
-
-  .sponsor-card-text {
+    .sponsor-card-text {
     padding: 12px 14px;
     border-top: 0;
     border-left: 1px solid var(--line);

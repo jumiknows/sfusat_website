@@ -22,7 +22,7 @@ const images = [
   ...ROVER_PHOTOS.map((item) => item.url),
   ...PROJECTS.map((item) => item.image),
   ...PROJECT_PAGES.flatMap((item) => [item.image, ...(item.photos ?? []).map((photo) => photo.src)]),
-  ...SPONSOR_TIERS.flatMap((tier) => tier.sponsors.flatMap((sponsor) => sponsor.logo ?? [])),
+  ...SPONSOR_TIERS.flatMap((tier) => tier.sponsors.map((sponsor) => sponsor.logo)),
   ...TEAMS.map((item) => item.image)
 ];
 
