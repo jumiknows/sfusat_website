@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faPause, faPlay, faCalendarDays, faGraduationCap, faIndustry, faPeopleGroup, faSeedling } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import SectionNav from '../components/SectionNav';
 import { OUTREACH_PHOTOS as slideshowImages } from '../content/galleries';
 import { EVENTS } from '../content/events';
@@ -127,16 +127,14 @@ const Outreach: React.FC = () => {
       {/* Outreach Statistics Section */}
       <section className="outreach-stats" id="impact">
         <div className="container">
-          <h2>Our Impact</h2>
+          <h2>Outreach Statistics</h2>
 
           <div className="outreach-numbers">
             <div className="outreach-number">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faPeopleGroup} /></span>
               <strong>15,200</strong>
               <span>people reached</span>
             </div>
             <div className="outreach-number">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCalendarDays} /></span>
               <strong>45+</strong>
               <span>successful events</span>
             </div>
@@ -144,7 +142,6 @@ const Outreach: React.FC = () => {
           
           <div className="info-grid">
             <div className="info-card">
-              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faGraduationCap} /></span>
               <h3>Education</h3>
               <p>
             Through our Educational Outreach program we have reached{' '}
@@ -155,7 +152,6 @@ const Outreach: React.FC = () => {
           </p>
             </div>
             <div className="info-card">
-              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faIndustry} /></span>
               <h3>Industry</h3>
               <p>
             Our educational outreach program also allows the team to connect with the 
@@ -164,7 +160,6 @@ const Outreach: React.FC = () => {
           </p>
             </div>
             <div className="info-card">
-              <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faSeedling} /></span>
               <h3>What's Next</h3>
               <p>
             We will continue to expand our educational outreach endeavors through 

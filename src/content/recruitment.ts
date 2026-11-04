@@ -1,10 +1,7 @@
 // Everything about recruitment lives here. To open a program, set `open: true` and add its roles.
 // To close it, set `open: false`. Buttons and banners across the site update from this list.
 
-import { IconDefinition, faBolt, faCode, faFlask, faGears, faSatellite, faTowerBroadcast } from '@fortawesome/free-solid-svg-icons';
-
 export interface Role {
-  icon?: IconDefinition;
   name: string;
   description: string;
   form: string;
@@ -29,31 +26,26 @@ export const PROGRAMS: Program[] = [
     page: '/rover',
     roles: [
       {
-        icon: faCode,
         name: 'Software',
         description: 'Autonomy, controls, perception, and mission software',
         form: 'https://docs.google.com/forms/d/e/1FAIpQLSf0SaFq3Bp5PqquvxhZ8WYsAXaWIjtLDgnjWsL0O-mt5ab3Dw/viewform?usp=dialog'
       },
       {
-        icon: faGears,
         name: 'Mechanical',
         description: 'Chassis, suspension, drivetrain, and CAD integration',
         form: 'https://forms.gle/iHwPVg9Wqh6QCRJL8'
       },
       {
-        icon: faTowerBroadcast,
         name: 'Communications',
         description: 'Ground station, networking, and telemetry pipelines',
         form: 'https://docs.google.com/forms/d/e/1FAIpQLSdOkB6Hx3VihP10OrrLxeD1P9fog0bEIZX-iHOpLv0BTzj3EQ/viewform?usp=publish-editor'
       },
       {
-        icon: faFlask,
         name: 'Payload',
         description: 'Science instruments and mission operations support',
         form: 'https://forms.gle/HDMQYYj9xsUTTHzGA'
       },
       {
-        icon: faBolt,
         name: 'Electrical',
         description: 'Power systems, embedded design, and board bring-up',
         form: 'https://forms.gle/buF63Tt6xngTQuGN6'
@@ -70,7 +62,6 @@ export const PROGRAMS: Program[] = [
     packageUrl: 'https://drive.google.com/drive/folders/1n6QCLkcxDga5NRTx_VBeEZObuoaJOnIY',
     roles: [
       {
-        icon: faSatellite,
         name: 'ALEASAT Member',
         description: 'Join the team building our flagship CubeSat',
         // This address shows the closing notice until the form is reopened

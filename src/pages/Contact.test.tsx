@@ -6,7 +6,8 @@ import Contact from './Contact';
 jest.mock('../content/contact', () => ({
   CONTACT_EMAIL: 'team@example.com',
   CONTACT_FORM_ENDPOINT: 'https://relay.example.com/submit',
-  CONTACT_FORM_ACCESS_KEY: 'test-key'
+  CONTACT_FORM_ACCESS_KEY: 'test-key',
+  SOCIAL_LINKS: []
 }));
 
 const fillAndSubmit = () => {

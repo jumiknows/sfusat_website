@@ -122,16 +122,8 @@
   padding-top: var(--section-y);
 }
 
-.home-missions a img {
-  transition: transform 0.5s ease;
-}
-
 .home-missions li a {
   overflow: hidden;
-}
-
-.home-missions a:hover img {
-  transform: scale(1.03);
 }
 
 .home-missions ul {
@@ -387,10 +379,6 @@
 .home-stats dl > div {
   display: flex;
   flex-direction: column;
-}
-
-.home-stats dl .stat-icon {
-  order: -1;
 }
 
 .home-missions h3 svg {

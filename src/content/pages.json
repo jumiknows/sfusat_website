@@ -1,0 +1,82 @@
+[
+  {
+    "path": "/",
+    "title": "SFU Satellite Design Team",
+    "description": "The SFU Satellite Design Team at Simon Fraser University designs and builds satellites, rovers and high altitude balloons. ALEASAT was tested at ESA's CubeSat Support Facility in 2026."
+  },
+  {
+    "path": "/projects",
+    "title": "Projects",
+    "description": "SFU Satellite Design Team projects: the ALEASAT CubeSat, the Polaris rover, high altitude balloons and Canadian Satellite Design Challenge entries."
+  },
+  {
+    "path": "/projects/aleasat",
+    "title": "ALEASAT",
+    "description": "ALEASAT is a 1U CubeSat built by SFU Satellite Design Team and UBC Orbit, tested at ESA's CubeSat Support Facility in June 2026, with launch targeted for 2028."
+  },
+  {
+    "path": "/projects/balloon3",
+    "title": "Balloon 3",
+    "description": "Balloon 3 launched from Carbon, Alberta in August 2021, reached 34 km and travelled 83.5 km before recovery."
+  },
+  {
+    "path": "/projects/balloon2",
+    "title": "Balloon 2",
+    "description": "The SFU Satellite Design Team's second high altitude balloon mission."
+  },
+  {
+    "path": "/projects/balloon1",
+    "title": "Balloon 1",
+    "description": "Latobius, the first high altitude balloon launched by the SFU Satellite Design Team."
+  },
+  {
+    "path": "/projects/csdc5",
+    "title": "CSDC5",
+    "description": "The SFU Satellite Design Team's entry in the fifth Canadian Satellite Design Challenge."
+  },
+  {
+    "path": "/projects/csdc4",
+    "title": "CSDC4",
+    "description": "The SFU Satellite Design Team's first entry in the Canadian Satellite Design Challenge."
+  },
+  {
+    "path": "/projects/ccp1",
+    "title": "CCP1",
+    "description": "Canadian CubeSat Project 1, a 2U CubeSat built with two other universities and funded by the Canadian Space Agency."
+  },
+  {
+    "path": "/rover",
+    "title": "Polaris Rover",
+    "description": "Polaris is an autonomous rover being built for the Canadian International Rover Challenge in August 2027."
+  },
+  {
+    "path": "/rover/apply",
+    "title": "Rover Applications",
+    "description": "Apply to join the SFU Satellite Design Team's rover subsystems: software, mechanical, communications, payload and electrical."
+  },
+  {
+    "path": "/sponsors",
+    "title": "Sponsors",
+    "description": "The organizations that sponsor the SFU Satellite Design Team, and how to become a sponsor."
+  },
+  {
+    "path": "/outreach",
+    "title": "Outreach",
+    "description": "The SFU Satellite Design Team has reached 15,200 people in over 45 outreach events. See the full list of events."
+  },
+  {
+    "path": "/about",
+    "title": "About",
+    "description": "The SFU Satellite Design Team's mission, technical teams, milestones and values."
+  },
+  {
+    "path": "/join",
+    "title": "Join",
+    "description": "See open roles on the SFU Satellite Design Team and apply."
+  },
+  {
+    "path": "/contact",
+    "title": "Contact Us",
+    "description": "Contact the SFU Satellite Design Team by email, message or social media."
+  }
+]

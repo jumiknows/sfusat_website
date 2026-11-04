@@ -10,67 +10,101 @@
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 40px;
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 56px var(--gutter) 40px;
+  padding: 48px var(--gutter) 40px;
 }
 
 .footer-brand img {
-  width: 180px;
+  display: block;
+  width: 160px;
   height: auto;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   filter: invert(1);
 }
 
 .footer-brand p {
-  max-width: 34ch;
+  max-width: 30ch;
+  margin: 0;
   color: var(--on-dark-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
-.footer nav {
+.footer nav,
+.footer-connect {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
 }
 
 .footer h2 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   color: var(--on-dark-muted);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .footer a {
-  padding: 6px 0;
+  padding: 5px 0;
   color: #fff;
+  font-size: 0.9375rem;
 }
 
 .footer a:hover {
   color: #fff;
   text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.footer .footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--on-dark-line);
+  font-size: 1.125rem;
+}
+
+.footer .footer-social a:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
 }
 
 .footer-legal {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter) 32px;
-  color: var(--on-dark-muted);
-  font-size: 0.875rem;
+  border-top: 1px solid var(--on-dark-line);
 }
 
-@media (max-width: 600px) {
+.footer-legal p {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  color: var(--on-dark-muted);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 800px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    padding: 40px var(--gutter) 32px;
+    gap: 28px;
+    padding: 36px var(--gutter) 28px;
   }
 
-  .footer-brand {
+  .footer-brand,
+  .footer-connect {
     grid-column: 1 / -1;
   }
 

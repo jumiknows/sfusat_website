@@ -44,7 +44,6 @@ const Join: React.FC<JoinProps> = ({ programs = PROGRAMS }) => {
               {program.roles.map((role) => (
                 <li key={role.name}>
                   <div className="join-role">
-                    {role.icon && <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={role.icon} /></span>}
                     <div>
                       <h3>{role.name}</h3>
                       <p>{role.description}</p>

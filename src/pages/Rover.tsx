@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faCrosshairs, faGaugeHigh } from '@fortawesome/free-solid-svg-icons';
 import { isRecruiting } from '../content/recruitment';
 import SectionNav from '../components/SectionNav';
 import Slideshow from '../components/Slideshow';
@@ -22,7 +20,7 @@ const Rover: React.FC = () => {
         </div>
         <div className="rover-content">
           <h1>Rover Challenge</h1>
-          <p className="rover-subtitle"><FontAwesomeIcon icon={faCalendarDays} /> August 2027</p>
+          <p className="rover-subtitle">August 2027</p>
           <div className="rover-description">
             <p>
               Design and deploy an autonomous rover for the Canadian International Rover Challenge. 
@@ -30,11 +28,11 @@ const Rover: React.FC = () => {
             </p>
             <div className="rover-highlights">
               <div className="highlight-item">
-                <span className="highlight-label"><FontAwesomeIcon icon={faGaugeHigh} /> Level:</span>
+                <span className="highlight-label">Level:</span>
                 <span className="highlight-value">Intermediate to Advanced</span>
               </div>
               <div className="highlight-item">
-                <span className="highlight-label"><FontAwesomeIcon icon={faCrosshairs} /> Focus:</span>
+                <span className="highlight-label">Focus:</span>
                 <span className="highlight-value">Robotics | Autonomy | Systems Integration</span>
               </div>
             </div>
@@ -74,7 +72,6 @@ const Rover: React.FC = () => {
           <div className="challenges-grid">
             {ROVER_SUBSYSTEMS.map((subsystem) => (
               <div key={subsystem.name} className="challenge-card">
-                <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={subsystem.icon} /></span>
                 <h3>{subsystem.name}</h3>
                 <p className="challenge-summary">{subsystem.summary}</p>
                 <ul>

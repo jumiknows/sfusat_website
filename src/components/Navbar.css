@@ -217,3 +217,16 @@
     max-height: 24px;
 }
 }
+
+/* Join is framed, so hover fills the whole button instead of underlining it */
+.navbar-links li.navbar-join a:hover,
+.navbar-links li.navbar-join a:focus-visible,
+.navbar-links li.navbar-join a[aria-current='page'] {
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar-links li.navbar-join a:focus {
+  text-decoration: none;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsSpin, faArrowUpRightFromSquare, faCalendarDays, faCamera, faCube, faFlagCheckered, faGraduationCap, faLayerGroup, faMicroscope } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import LoopVideo from '../components/LoopVideo';
 import RecruitingBanner from '../components/RecruitingBanner';
 import SectionNav from '../components/SectionNav';
@@ -17,7 +17,7 @@ const AleasatPage: React.FC = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-heading">ALEASAT</h1>
-            <p className="hero-subtitle">To Prove Ourselves</p>
+            <p className="hero-subtitle">1U CubeSat with UBC Orbit</p>
             <p className="hero-description">
               A 1U CubeSat mission built in partnership with UBC Orbit, with launch targeted for 2028.
             </p>
@@ -51,22 +51,18 @@ const AleasatPage: React.FC = () => {
           <h2>Mission Overview</h2>
           <div className="mission-stats">
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCube} /></span>
               <div className="stat-number">1U</div>
               <div className="stat-label">CubeSat Size</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCalendarDays} /></span>
               <div className="stat-number">2020</div>
               <div className="stat-label">Project Start</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faLayerGroup} /></span>
               <div className="stat-number">2</div>
               <div className="stat-label">Main Payloads</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faFlagCheckered} /></span>
               <div className="stat-number">4th</div>
               <div className="stat-label">Canadian Team</div>
             </div>
@@ -103,14 +99,12 @@ const AleasatPage: React.FC = () => {
                 <div className="payload-grid">
                   <div className="payload-item">
                     <div className="payload-content">
-                      <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faCamera} /></span>
                       <h5>Earth Imaging Camera</h5>
                       <p>Amateur radio operators can request pictures of their area through our satellite communication system.</p>
                     </div>
                   </div>
                   <div className="payload-item">
                     <div className="payload-content">
-                      <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowsSpin} /></span>
                       <h5>Miniaturized Centrifuge</h5>
                       <p>Testing human physiology effects for long-term space missions in partnership with SFU Aerospace Physiology Laboratory.</p>
                     </div>
@@ -123,17 +117,14 @@ const AleasatPage: React.FC = () => {
               <h4>Mission Impact</h4>
               <div className="impact-cards">
                 <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faGraduationCap} /></span>
                   <h5>Hands-on Experience</h5>
                   <p>Students get real satellite engineering experience.</p>
                 </div>
                 <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faFlagCheckered} /></span>
                   <h5>Fourth Canadian Team</h5>
                   <p>We would be the fourth Canadian undergraduate team to launch a satellite.</p>
                 </div>
                 <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faMicroscope} /></span>
                   <h5>Spaceflight Research</h5>
                   <p>Contributing to human spaceflight research in Canada.</p>
                 </div>

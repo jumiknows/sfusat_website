@@ -275,10 +275,6 @@
 .challenges-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-.challenge-card,
-.challenge-card:hover {
-  border-top: 2px solid #000;
-}
 .challenge-card li {
   color: var(--muted);
   font-size: 1rem;

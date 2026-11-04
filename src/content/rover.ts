@@ -1,8 +1,5 @@
-import { faBatteryFull, faRobot, faRoute, faTowerBroadcast } from '@fortawesome/free-solid-svg-icons';
-
 export const ROVER_SUBSYSTEMS = [
   {
-    icon: faRobot,
     name: 'Robotic Arm',
     summary: 'A multi-axis arm for handling objects',
     details: [
@@ -12,7 +9,6 @@ export const ROVER_SUBSYSTEMS = [
     ]
   },
   {
-    icon: faTowerBroadcast,
     name: 'Communications',
     summary: 'Long-range radio telemetry and command',
     details: [
@@ -22,7 +18,6 @@ export const ROVER_SUBSYSTEMS = [
     ]
   },
   {
-    icon: faRoute,
     name: 'Mobility',
     summary: 'All-terrain autonomous navigation',
     details: [
@@ -32,7 +27,6 @@ export const ROVER_SUBSYSTEMS = [
     ]
   },
   {
-    icon: faBatteryFull,
     name: 'Power Systems',
     summary: 'Keeps the rover powered for the full mission',
     details: [

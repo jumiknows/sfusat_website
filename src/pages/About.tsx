@@ -1,5 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SectionNav from '../components/SectionNav';
 import { MILESTONES, MISSION, TEAMS as teams, TEAM_STATS, VALUES } from '../content/about';
 import './About.css';
@@ -42,7 +41,6 @@ const AboutPage: React.FC = () => {
               <div className="mission-stats">
                 {TEAM_STATS.map((stat) => (
                   <div key={stat.label} className="stat-item">
-                    <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={stat.icon} /></span>
                     <span className="stat-number">{stat.value}</span>
                     <span className="stat-label">{stat.label}</span>
                   </div>
@@ -69,7 +67,7 @@ const AboutPage: React.FC = () => {
               >
                 <div className="team-card-content">
                   <div className="team-info">
-                    <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={team.icon} /></span>{team.name}</h3>
+                    <h3>{team.name}</h3>
                     <p>{team.description}</p>
                   </div>
                   <div className="team-image">
@@ -94,7 +92,6 @@ const AboutPage: React.FC = () => {
           <ol>
             {MILESTONES.map((milestone) => (
               <li key={milestone.date}>
-                <i className="milestone-icon" aria-hidden="true"><FontAwesomeIcon icon={milestone.icon} /></i>
                 <span>{milestone.date}</span>
                 <p>{milestone.text}</p>
               </li>
@@ -110,7 +107,6 @@ const AboutPage: React.FC = () => {
           <div className="values-grid">
             {VALUES.map((value) => (
               <div key={value.title} className="value-card">
-                <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={value.icon} /></span>
                 <h3>{value.title}</h3>
                 <p>{value.text}</p>
               </div>

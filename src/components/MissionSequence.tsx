@@ -11,10 +11,10 @@ interface Chapter {
 
 // Scroll ranges (0 to 1) in which each chapter's text is on screen
 const CHAPTERS: Chapter[] = [
-  { start: -1, end: 0.14, readout: 'Scroll' },
-  { start: 0.24, end: 0.46, readout: '34 km' },
-  { start: 0.56, end: 0.78, readout: 'Low Earth orbit' },
-  { start: 0.88, end: 2, readout: 'Next: Polaris' }
+  { start: -1, end: 0.2, readout: 'Scroll' },
+  { start: 0.2, end: 0.5, readout: '34 km' },
+  { start: 0.5, end: 0.82, readout: 'Low Earth orbit' },
+  { start: 0.82, end: 2, readout: 'Next: Polaris' }
 ];
 
 const canUseWebGL = () => {
@@ -58,13 +58,9 @@ const MissionSequence: React.FC = () => {
         if (!element) {
           return;
         }
-        // The text follows the scroll position directly, in both directions
-        const enter = Math.min((latest - chapter.start) / 0.05, 1);
-        const leave = Math.min((chapter.end - latest) / 0.05, 1);
-        const opacity = Math.max(Math.min(enter, leave), 0);
-        element.style.opacity = String(opacity);
-        element.style.transform = `translateY(${(1 - Math.min(enter, 1)) * 24 - (1 - Math.min(leave, 1)) * 24}px)`;
-        element.style.visibility = opacity > 0 ? 'visible' : 'hidden';
+        const isActive = latest >= chapter.start && latest <= chapter.end;
+        element.style.opacity = isActive ? '1' : '0';
+        element.style.visibility = isActive ? 'visible' : 'hidden';
       });
 
       if (readoutRef.current) {
