@@ -1,19 +1,17 @@
-import { faCalendarDays, faPeopleGroup, faRocket, faUsers } from '@fortawesome/free-solid-svg-icons';
-
 export const HOME_STATS = [
-  { value: '15,200', label: 'People reached through outreach', icon: faPeopleGroup },
-  { value: '45+', label: 'Outreach events', icon: faCalendarDays },
-  { value: '50+', label: 'Team members', icon: faUsers },
-  { value: '10+', label: 'Years active', icon: faRocket }
+  { value: '15,200', label: 'People reached through outreach' },
+  { value: '45+', label: 'Outreach events' },
+  { value: '50+', label: 'Team members' },
+  { value: '10+', label: 'Years active' }
 ];
 
 export const HOME_SPONSORS = [
   { src: '/images/sponsors/sponsor/Momentus.png', name: 'Momentus' },
-  { src: '/images/sponsors/sponsor/mda.png', name: 'MDA' },
-  { src: '/images/sponsors/sponsor/agi.png', name: 'AGI' },
-  { src: '/images/sponsors/sponsor/DigiKey.png', name: 'DigiKey' },
+  { src: '/images/sponsors/sponsor/mda-logo.png', name: 'MDA' },
+  { src: '/images/sponsors/sponsor/agi-logo.png', name: 'AGI' },
+  { src: '/images/sponsors/sponsor/digikey.svg', name: 'DigiKey' },
   { src: '/images/sponsors/sponsor/valispace.png', name: 'Valispace' },
-  { src: '/images/sponsors/sponsor/csa.png', name: 'Canadian Space Agency' }
+  { src: '/images/sponsors/sponsor/csa-logo.png', name: 'Canadian Space Agency' }
 ];
 
 export const HOME_MISSIONS = [
@@ -28,7 +26,7 @@ export const HOME_MISSIONS = [
     to: '/projects/balloon3',
     name: 'Balloon 3',
     detail: 'Launched from Carbon, Alberta',
-    image: '/images/balloon3/image8.jpg',
+    image: '/images/site/team-launch.jpg',
     alt: 'From the Balloon 3 mission'
   },
   {

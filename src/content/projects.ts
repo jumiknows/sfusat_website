@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
   { 
     title: 'ALEASAT', 
     image: '/images/aleasat/finished-cube.jpg', 
-    description: 'Our most ambitious project yet. Alongside UBC Orbit, we are sending a 1U cube satellite into space. The satellite will provide research data relating to human physiology and will provide pictures of Earth for amateur radio operators.', 
+    description: 'Alongside UBC Orbit, we are sending a 1U cube satellite into space. The satellite will provide research data relating to human physiology and will provide pictures of Earth for amateur radio operators.', 
     link: '/projects/aleasat' 
   },
   { 
@@ -66,7 +66,6 @@ export const PROJECTS: Project[] = [
 
 export interface ProjectPageContent {
   slug: string; // The address: /projects/slug
-  title: string; // Shown in the browser tab
   heading: string;
   subtitle: string;
   description?: string;
@@ -84,7 +83,6 @@ export interface ProjectPageContent {
 export const PROJECT_PAGES: ProjectPageContent[] = [
   {
     slug: 'balloon2',
-    title: 'Balloon 2',
     heading: 'Balloon 2',
     subtitle: 'High Altitude Balloon Mission 2',
     description: 'Our second high altitude balloon mission, providing invaluable experience for new members and future project leads.',
@@ -99,13 +97,12 @@ export const PROJECT_PAGES: ProjectPageContent[] = [
   },
   {
     slug: 'csdc5',
-    title: 'CSDC5',
     heading: 'Canadian Satellite Design Challenge 5',
-    subtitle: 'Refining our Skills',
+    subtitle: 'Our second design challenge',
     image: '/images/site/image3.png',
     imageAlt: 'CSDC5',
     longHeading: true,
-    storyHeading: 'Taking the Selfie out of This World',
+    storyHeading: 'About CSDC5',
     story: [
       'In the 5th round of the CSDC, teams are challenged to undertake the ultimate, global educational outreach program. The CubeSat that is required from each team must be able to communicate with anyone on earth who has an amateur radio licence, otherwise known as an ARO (Amateur Radio Operator).',
       'The ARO should be able to call the satellite and ask for a selfie, the cube satellite will then tell the ARO when the selfie will take place and then take a photo of the ARO\'s location and downlink it immediately along with Canadian photos and stories relating to the Aerospace industry here in Canada.',
@@ -120,7 +117,6 @@ export const PROJECT_PAGES: ProjectPageContent[] = [
   },
   {
     slug: 'ccp1',
-    title: 'CCP1',
     heading: 'CCP1',
     subtitle: 'Canadian CubeSat Project 1',
     description: 'A collaboration with two other universities to build a 2U CubeSat, funded by the Canadian Space Agency.',
@@ -134,13 +130,12 @@ export const PROJECT_PAGES: ProjectPageContent[] = [
   },
   {
     slug: 'csdc4',
-    title: 'CSDC4',
     heading: 'Canadian Satellite Design Challenge 4',
-    subtitle: 'Our Debut',
+    subtitle: 'Our first design challenge',
     image: '/images/site/image6.jpeg',
     imageAlt: 'CSDC4',
     longHeading: true,
-    storyHeading: 'The Start of Something...',
+    storyHeading: 'About CSDC4',
     story: [
       'The Canadian Satellite Design Challenge is a Canada-wide competition for teams of university students (undergraduate and graduate) to design and build a small satellite. The satellites will undergo full launch and space environmental qualification testing.',
       'The SFU Satellite Design Team participated in this event with our payload to be a radio calibration source for one of Canada\'s largest radio telescopes. This mission would greatly aid in the precision of their observations contributing to Canadian scientific research into the age of the universe and its expansion, in particular, dark energy.',
@@ -155,7 +150,6 @@ export const PROJECT_PAGES: ProjectPageContent[] = [
   },
   {
     slug: 'balloon1',
-    title: 'Balloon 1',
     heading: 'Balloon 1',
     subtitle: 'High Altitude Balloon Mission 1',
     description: 'Latobius was the first High Altitude Balloon launched by SFU Satellite Design Team, testing integration capabilities before CSDC4.',

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import InstagramIcon from './InstagramIcon';
+import SocialIcon from './SocialIcon';
 import './Footer.css'; // Ensure the CSS is properly imported
-import { CONTACT_EMAIL, INSTAGRAM_URL } from '../content/contact';
+import { CONTACT_EMAIL, SOCIAL_LINKS } from '../content/contact';
 
 const Footer: React.FC = () => {
   return (
@@ -14,7 +12,7 @@ const Footer: React.FC = () => {
           <img src="/images/icons/sfusatlogo.png" alt="SFU SAT" />
           <p>The SFU Satellite Design Team at Simon Fraser University.</p>
         </div>
-        <nav aria-label="Footer">
+        <nav aria-label="Explore">
           <h2>Explore</h2>
           <Link to="/projects">Projects</Link>
           <Link to="/rover">Rover</Link>
@@ -26,11 +24,22 @@ const Footer: React.FC = () => {
           <Link to="/join">Join</Link>
           <Link to="/sponsors">Sponsor us</Link>
           <Link to="/contact">Contact</Link>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="footer-icon-link"><FontAwesomeIcon icon={faEnvelope} /> {CONTACT_EMAIL}</a>
-          <a href={INSTAGRAM_URL} className="footer-icon-link" target="_blank" rel="noopener noreferrer"><InstagramIcon /> Instagram</a>
         </nav>
+        <div className="footer-connect">
+          <h2>Connect</h2>
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+          <div className="footer-social">
+            {SOCIAL_LINKS.map((link) => (
+              <a key={link.network} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
+                <SocialIcon network={link.network} />
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-      <p className="footer-legal">© 2016 - 2026 SFU Satellite Design Team</p>
+      <div className="footer-legal">
+        <p>© 2016 - 2026 SFU Satellite Design Team</p>
+      </div>
     </footer>
   );
 };

@@ -25,7 +25,7 @@ public/videos/    Short video clips.
 | Slideshow photos | `src/content/galleries.ts` |
 | Rover subsystems | `src/content/rover.ts` |
 | Home page numbers, logos and mission cards | `src/content/home.ts` |
-| Email, Instagram and contact form | `src/content/contact.ts` |
+| Email, social media links and contact form | `src/content/contact.ts` |
 | Music tracks | `src/content/soundtrack.ts` |
 | ALEASAT or Balloon 3 story text | `src/pages/Aleasat.tsx`, `src/pages/Balloon3.tsx` |
 | Home page 3D flight text | `src/components/MissionSequence.tsx` |
@@ -77,8 +77,8 @@ ALEASAT shares its postings and application form with UBC Orbit, so check that b
 
 ### Add a sponsor
 
-1. Put the logo in `public/images/sponsors/sponsor/`.
-2. Open `src/content/sponsors.ts` and add an entry to the right tier.
+1. Put the logo in `public/images/sponsors/sponsor/`. Use a version with dark text, because cards are white.
+2. Open `src/content/sponsors.ts` and add an entry to the right tier. Add one or two plain sentences saying what the organization does.
 3. If the sponsor should also appear on the home page, add it to `HOME_SPONSORS` in `src/content/home.ts`.
 
 ### Add a project
@@ -87,6 +87,7 @@ ALEASAT shares its postings and application form with UBC Orbit, so check that b
 2. Open `src/content/projects.ts`.
 3. Add a card to `PROJECTS`, with `link: '/projects/your-project'`.
 4. Add an entry to `PROJECT_PAGES`, with `slug: 'your-project'`. The page and its address are created for you.
+5. Add its title and a search description to `src/content/pages.json`. This is what Google shows.
 
 The previous and next project links update by themselves.
 
@@ -105,6 +106,12 @@ Use plain, factual wording. Say what the team did, with real details.
 Avoid slogans and buzzwords such as "pushing the boundaries", "cutting-edge" or "journey".
 
 Confirm public information with the appropriate team lead before publishing it.
+
+## Search results
+
+Each page's title and description for Google are in `src/content/pages.json`. Keep descriptions plain and under 200 characters.
+
+The build creates a real page for every address in that file, and the sitemap, using `scripts/generate-pages.js`.
 
 ## Check your work
 

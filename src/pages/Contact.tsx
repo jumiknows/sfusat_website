@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom'; // Import the Link component for internal navigation
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import InstagramIcon from '../components/InstagramIcon';
-import { CONTACT_EMAIL, CONTACT_FORM_ACCESS_KEY, CONTACT_FORM_ENDPOINT, INSTAGRAM_URL } from '../content/contact';
+import SocialIcon from '../components/SocialIcon';
+import { CONTACT_EMAIL, CONTACT_FORM_ACCESS_KEY, CONTACT_FORM_ENDPOINT, SOCIAL_LINKS } from '../content/contact';
 import { recruitingSummary } from '../content/recruitment';
 import './Contact.css'; // Import the CSS file for styling
 
@@ -94,10 +94,12 @@ const Contact: React.FC = () => {
             <FontAwesomeIcon icon={faEnvelope} />
             <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </li>
-          <li>
-            <InstagramIcon />
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">@sfu.satellite</a>
-          </li>
+          {SOCIAL_LINKS.map((link) => (
+            <li key={link.network}>
+              <SocialIcon network={link.network} />
+              <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.label}>{link.handle}</a>
+            </li>
+          ))}
         </ul>
         <div className="contact-buttons">
           <Link to="/join" className="btn btn-solid">

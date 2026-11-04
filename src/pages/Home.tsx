@@ -31,7 +31,6 @@ const Home: React.FC = () => {
         <dl>
           {HOME_STATS.map((stat) => (
             <div key={stat.label}>
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={stat.icon} /></span>
               <dd>{stat.value}</dd>
               <dt>{stat.label}</dt>
             </div>

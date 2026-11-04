@@ -8,6 +8,7 @@ import { PROGRAMS } from './recruitment';
 import { SPONSOR_TIERS } from './sponsors';
 import { TEAMS } from './about';
 import { EVENTS } from './events';
+import PAGES from './pages.json';
 
 const inPublicFolder = (file: string) => fs.existsSync(path.join(process.cwd(), 'public', file));
 
@@ -43,6 +44,24 @@ test('every open recruitment program has roles with form links', () => {
     program.roles.forEach((role) => {
       expect(role.form).toMatch(/^https:\/\//);
     });
+  });
+});
+
+test('every page has search details', () => {
+  const paths = PAGES.map((page) => page.path);
+
+  [...PROJECTS.map((project) => project.link), ...PROJECT_PAGES.map((page) => `/projects/${page.slug}`)].forEach((path) => {
+    expect(paths).toContain(path);
+  });
+  PAGES.forEach((page) => {
+    expect(page.description.length).toBeGreaterThan(30);
+    expect(page.description.length).toBeLessThanOrEqual(200);
+  });
+});
+
+test('every sponsor has a description', () => {
+  SPONSOR_TIERS.flatMap((tier) => tier.sponsors).forEach((sponsor) => {
+    expect(sponsor.about.length).toBeGreaterThan(10);
   });
 });
 

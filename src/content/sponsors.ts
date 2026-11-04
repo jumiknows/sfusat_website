@@ -1,29 +1,90 @@
-// logo is a file in public/images/sponsors/sponsor/. Confirm the tier and logo with the team lead first.
-export const SPONSOR_TIERS = [
+// One entry per sponsor. Confirm the name, tier, logo and description with the team lead first.
+// logo: a file in public/images/sponsors/sponsor/, with dark text because cards are white.
+// about: one or two plain sentences saying what the organization does.
+export interface Sponsor {
+  name: string;
+  logo: string;
+  about: string;
+}
+
+const logo = (file: string) => `/images/sponsors/sponsor/${file}`;
+
+export const SPONSOR_TIERS: { id: string; title: string; sponsors: Sponsor[] }[] = [
   {
     id: 'platinum',
     title: 'Platinum Sponsors',
     sponsors: [
       {
         name: 'Momentus Space',
-        logo: '/images/sponsors/sponsor/Momentus.png',
-        logoAlt: 'Momentus Space',
-        description:
-          'Founded in 2017, Momentus was born out of countless discussions with satellite operators looking for rides to destinations which weren\'t commercially being offered. Their mission is simple: they want enterprise and existence to flourish in space and they know that creating truly efficient in-space transportation will make that possible.'
+        logo: logo('Momentus.png'),
+        about:
+          'Founded in 2017, Momentus provides in-space transportation, moving satellites to the orbits they need after launch.'
       },
       {
-        name: 'Simon Fraser Student Society',
-        logo: '/images/sponsors/sponsor/sfss.png',
-        logoAlt: 'Simon Fraser Student Society',
-        description:
-          'The Simon Fraser Student Society is a student-led organization that represents and advocates for the interests of the 25,000+ undergraduate students at SFU. They are the not-for-profit support network and voice for students at SFU and provide services and support to make student life better.'
+        name: 'Pillon Holdings',
+        logo: logo('pillon-holdings.png'),
+        about:
+          'A privately held BC company established in 2013. Its companies provide electronics manufacturing, including Dorigo Systems, which has built electronics since 1988.'
       },
       {
         name: 'AGI',
-        logo: '/images/sponsors/sponsor/agi.png',
-        logoAlt: 'AGI',
-        description:
-          'At AGI, they\'ve been crafting breakthroughs since 1989. Their software is integral to the success of hundreds of organizations throughout the aerospace, defense, and telecommunications industries, among others. Some of the most important air, space, and defense programs of the past 30 years have relied on the products they build.'
+        logo: logo('agi-logo.png'),
+        about:
+          'Makes modelling and simulation software for aerospace and defence, including Systems Tool Kit (STK). AGI is now the US national security division of Ansys.'
+      },
+      {
+        name: 'UBC Radio Science Lab',
+        logo: logo('radio-science-lab.png'),
+        about:
+          'A lab in UBC\'s Department of Electrical and Computer Engineering that researches radio science and electromagnetic compatibility.'
+      },
+      {
+        name: 'Simon Fraser Student Society',
+        logo: logo('sfss-logo.png'),
+        about:
+          'The student-led society that represents and advocates for more than 25,000 undergraduate students at SFU.'
+      },
+      {
+        name: 'Canadian Space Agency',
+        logo: logo('csa-logo.png'),
+        about:
+          'The federal agency established in 1989 to manage Canada\'s civil space activities, including space science and technology.'
+      },
+      {
+        name: 'Ebco',
+        logo: logo('ebco.svg'),
+        about:
+          'A manufacturing company based in Richmond, BC, working in precision machining and fabrication.'
+      },
+      {
+        name: 'TRIUMF',
+        logo: logo('triumf.png'),
+        about:
+          'Canada\'s particle accelerator centre, based in Vancouver.'
+      }
+    ]
+  },
+  {
+    id: 'gold',
+    title: 'Gold Sponsors',
+    sponsors: [
+      {
+        name: 'UBC Electrical and Computer Engineering',
+        logo: logo('ubc-ece.png'),
+        about:
+          'The UBC department offering undergraduate and graduate programs in electrical and computer engineering.'
+      },
+      {
+        name: 'Harwin',
+        logo: logo('harwin.png'),
+        about:
+          'Manufactures high-reliability connectors, EMC shielding and PCB hardware, including vibration-resistant connectors for aerospace and defence.'
+      },
+      {
+        name: 'Altium',
+        logo: logo('altium.svg'),
+        about:
+          'Makes electronics design software that connects PCB design, collaboration and manufacturing.'
       }
     ]
   },
@@ -32,32 +93,64 @@ export const SPONSOR_TIERS = [
     title: 'Silver Sponsors',
     sponsors: [
       {
-        name: 'MDA',
-        logo: '/images/sponsors/sponsor/mda.png',
-        logoAlt: 'MDA',
-        description:
-          'MDA develops and delivers advanced surveillance and intelligence solutions, defence and maritime systems, radar geospatial imagery, space robotics, satellite antennas, and communication subsystems. From locations across Canada, MDA\'s global reach and heritage serving international markets with innovative and iconic solutions for space and terrestrial applications is unparalleled.'
+        name: 'UBC Faculty of Applied Science',
+        logo: logo('ubc-applied-science.png'),
+        about:
+          'UBC\'s faculty for engineering and related professional programs.'
       },
       {
-        name: 'Canadian Space Agency',
-        logo: '/images/sponsors/sponsor/csa.png',
-        logoAlt: 'Canadian Space Agency',
-        description:
-          'Established in March 1989, the CSA is a federal agency responsible for managing all of Canada\'s civil space-related activities. The objectives of the Agency are to promote the peaceful use and development of space, to advance the knowledge of space through science and to ensure that space science and technology provide social and economic benefits for Canadians.'
-      },
-      {
-        name: 'SFU Aerospace',
-        logo: '/images/sponsors/sponsor/SFUAerospace.jpeg',
-        logoAlt: 'SFU Aerospace',
-        description:
-          'SFU Aerospace is a joint initiative among the three largest aerospace teams at Simon Fraser University: they are an administrative team working to represent each design team in their efforts for funding and resources. Together, they represent over 140 students and their ambitious goals from designing and building satellites, rockets, and autonomous drones.'
+        name: 'Affinity',
+        logo: logo('affinity.png'),
+        about:
+          'Works with customers from concept to component.'
       },
       {
         name: 'SFU Faculty of Applied Science',
-        logo: '/images/sponsors/sponsor/SFUFAS.png',
-        logoAlt: 'SFU Faculty of Applied Science',
-        description:
-          'In the Faculty of Applied Sciences, they are shaping tomorrow\'s technology leaders in computing science and engineering. They offer challenging areas of study complemented by unique learning experiences to foster a spirit of innovation and entrepreneurship, professional growth and leadership ability.'
+        logo: logo('SFUFAS.png'),
+        about:
+          'The SFU faculty for computing science and engineering, home to the schools that many team members study in.'
+      },
+      {
+        name: 'Engineers and Geoscientists BC',
+        logo: logo('EGBC_logo_vert_web.png'),
+        about:
+          'The regulator of the engineering and geoscience professions in British Columbia.'
+      },
+      {
+        name: 'Candor Circuit Boards',
+        logo: logo('candor.svg'),
+        about:
+          'A Canadian manufacturer of custom printed circuit boards, specializing in HDI and heavy copper boards.'
+      },
+      {
+        name: 'IEEE',
+        logo: logo('ieee.png'),
+        about:
+          'The professional association for electrical, electronics and computing engineering, known for its technical standards and publications.'
+      },
+      {
+        name: 'MDA',
+        logo: logo('mda-logo.png'),
+        about:
+          'A Canadian space company that builds satellite systems, antennas and space robotics, with more than 450 missions in its history.'
+      },
+      {
+        name: 'Hansen Industries',
+        logo: logo('hansen.png'),
+        about:
+          'Provides sheet metal fabrication and precision machining in Vancouver and Richmond, BC.'
+      },
+      {
+        name: 'SFU Aerospace',
+        logo: logo('SFUAerospace.jpeg'),
+        about:
+          'An administrative group that represents SFU\'s aerospace design teams in their efforts to secure funding and resources.'
+      },
+      {
+        name: 'UBC Engineering Physics',
+        logo: logo('ubc-engineering-physics.png'),
+        about:
+          'An accredited UBC Bachelor of Applied Science program, administered by the Department of Physics and Astronomy.'
       }
     ]
   },
@@ -66,46 +159,70 @@ export const SPONSOR_TIERS = [
     title: 'Bronze Sponsors',
     sponsors: [
       {
-        name: 'Tallysman Wireless',
-        logo: '/images/sponsors/sponsor/tallysman.png',
-        logoAlt: 'Tallysman Wireless',
-        description:
-          'Tallysman® is a developer, manufacturer, and provider of GNSS, Iridium and Globalstar antennas and accessories in support of their customers who are engaged in a broad range of satellite-based positioning, navigation, and data applications. Based in Ottawa Canada, Tallysman is focused on high function, high performance technology and solutions. Their core competencies include digital wireless networks, RF and Global Navigation Satellite Systems (GNSS) component design.'
+        name: 'Ansys',
+        logo: logo('ansys.svg'),
+        about:
+          'Develops engineering simulation software used to test designs before they are built.'
       },
       {
-        name: 'SFU Mechatronic Systems Engineering',
-        logo: '/images/sponsors/sponsor/MSE-Logo.jpg',
-        logoAlt: 'SFU Mechatronic Systems Engineering',
-        description:
-          'Mechatronics is a dynamic, multidisciplinary subject combining three engineering fields: mechanical, electrical and software engineering. This highly integrated approach creates smart, inventive and evermore efficient solutions for a wide range of high-tech engineering problems.'
+        name: 'Canadian Satellite Design Challenge',
+        logo: logo('csdc-logo.png'),
+        about:
+          'A Canada-wide competition for university teams to design and build small satellites.'
       },
       {
-        name: 'SFU Computing Science',
-        logo: '/images/sponsors/sponsor/SFUCS.jpg',
-        logoAlt: 'SFU Computing Science',
-        description:
-          'The School of Computing Science follows SFU\'s tradition of excellence in teaching and research. Their research is world-renowned, and their students graduate with advanced knowledge in areas such as networks, multimedia, healthcare and telecommunications. Many graduates apply their broad- based skills as entrepreneurs and business leaders in their field.'
-      },
-      {
-        name: 'SFU Engineering Science',
-        logo: '/images/sponsors/sponsor/SFUENSC.jpg',
-        logoAlt: 'SFU Engineering Science',
-        description:
-          'Their students acquire a rich foundation of skills then work with the faculty to drive and develop new ideas within their five main program areas: biomedical engineering, computer engineering, electronics engineering, engineering physics and systems engineering.'
+        name: 'TekSavvy',
+        logo: logo('teksavvy.png'),
+        about:
+          'A Canadian provider of home internet, phone and TV.'
       },
       {
         name: 'Valispace',
-        logo: '/images/sponsors/sponsor/valispace.png',
-        logoAlt: 'Valispace',
-        description:
-          'The limits of today\'s engineering are not the imagination of engineers, but the tools for collaboration: the more complex a product becomes, the more engineers need to work together on it. They want small engineering teams to be able to design highly complex systems fast and cheap and big engineering teams to build things which seem like magic to us today.'
+        logo: logo('valispace.png'),
+        about:
+          'Makes requirements management software for hardware engineering, now part of Altium\'s tools as Requirements Portal.'
       },
       {
-        name: 'Digi-Key',
-        logo: '/images/sponsors/sponsor/DigiKey.png',
-        logoAlt: 'Digi-Key',
-        description:
-          'Headquartered in Thief River Falls, Minnesota, USA, Digi-Key is one of the fastest growing distributors of electronic components in the world. Today Digi-Key offers the world\'s largest selection of electronic components in stock and available for immediate shipment. From prototype to production, they are here to fuel innovation all over the world.'
+        name: 'SolidWorks',
+        logo: logo('solidworks.svg'),
+        about:
+          '3D CAD software for mechanical design, used across engineering teams and industry.'
+      },
+      {
+        name: 'SFU Computing Science',
+        logo: logo('SFUCS.jpg'),
+        about:
+          'SFU\'s School of Computing Science, which has offered computing education and research for 50 years.'
+      },
+      {
+        name: 'Tallysman Wireless',
+        logo: logo('tallysman.png'),
+        about:
+          'An Ottawa-based maker of GNSS antennas for satellite positioning and navigation, now part of Calian.'
+      },
+      {
+        name: 'SFU Mechatronic Systems Engineering',
+        logo: logo('MSE-Logo.jpg'),
+        about:
+          'The SFU school combining mechanical, electrical and software engineering.'
+      },
+      {
+        name: 'SFU Engineering Science',
+        logo: logo('SFUENSC.jpg'),
+        about:
+          'The SFU school with programs in biomedical, computer, electronics and systems engineering, and engineering physics.'
+      },
+      {
+        name: 'DigiKey',
+        logo: logo('digikey.svg'),
+        about:
+          'An electronic components distributor headquartered in Thief River Falls, Minnesota, with millions of parts available.'
+      },
+      {
+        name: 'SFU Aerospace Physiology Laboratory',
+        logo: logo('aerospace-physiology-lab.png'),
+        about:
+          'An SFU lab that partners with the ALEASAT project on its miniaturized human centrifuge payload.'
       }
     ]
   }

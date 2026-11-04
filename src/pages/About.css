@@ -431,11 +431,6 @@
   gap: 40px;
 }
 
-.value-card,
-.value-card:hover {
-  border-top: 2px solid #000;
-}
-
 @media (max-width: 900px) {
   .team-info {
     order: 1;
@@ -443,7 +438,6 @@
 }
 
 .team-info h3 {
-  display: flex;
   align-items: center;
   gap: 14px;
 }
@@ -453,11 +447,7 @@
 }
 
 .about-milestones li {
-  grid-template-columns: 44px 170px 1fr;
   align-items: center;
-  gap: 8px 20px;
-  border-top: 0;
-  padding: 12px 0;
 }
 
 .about-milestones ol::before {
@@ -468,14 +458,4 @@
   left: 21px;
   width: 2px;
   background: #c9cdd3;
-}
-
-@media (max-width: 600px) {
-  .about-milestones li {
-    grid-template-columns: 44px 1fr;
-}
-
-  .about-milestones li p {
-    grid-column: 2;
-}
 }

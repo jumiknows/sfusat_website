@@ -1,16 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition, faAward, faMedal, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import SectionNav from '../components/SectionNav';
 import { SPONSOR_TIERS } from '../content/sponsors';
 import './Sponsors.css';
-
-const TIER_ICONS: Record<string, IconDefinition> = {
-  platinum: faTrophy,
-  silver: faMedal,
-  bronze: faAward
-};
 
 const Sponsors: React.FC = () => {
   return (
@@ -26,6 +18,7 @@ const Sponsors: React.FC = () => {
         label="On this page"
         sections={[
           { id: 'platinum', label: 'Platinum' },
+          { id: 'gold', label: 'Gold' },
           { id: 'silver', label: 'Silver' },
           { id: 'bronze', label: 'Bronze' },
           { id: 'why', label: 'Why sponsor' }
@@ -35,20 +28,20 @@ const Sponsors: React.FC = () => {
         
         {SPONSOR_TIERS.map((tier) => (
           <section key={tier.id} className={`sponsor-tier ${tier.id}`} id={tier.id}>
-            <h2 className="tier-title">
-              <FontAwesomeIcon icon={TIER_ICONS[tier.id]} /> {tier.title}
-            </h2>
-            {tier.sponsors.map((sponsor) => (
-              <div key={sponsor.name} className="sponsor-item">
-                <div className="sponsor-logo">
-                  <img src={sponsor.logo} alt={sponsor.logoAlt} loading="lazy" decoding="async" />
-                </div>
-                <div className="sponsor-content">
-                  <h3>{sponsor.name}</h3>
-                  <p>{sponsor.description}</p>
-                </div>
-              </div>
-            ))}
+            <h2 className="tier-title">{tier.title}</h2>
+            <ul className="sponsor-grid">
+              {tier.sponsors.map((sponsor) => (
+                <li key={sponsor.name} className="sponsor-card">
+                  <div className="sponsor-card-logo">
+                    <img src={sponsor.logo} alt="" loading="lazy" decoding="async" />
+                  </div>
+                  <div className="sponsor-card-text">
+                    <h3>{sponsor.name}</h3>
+                    <p>{sponsor.about}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </section>
         ))}
 

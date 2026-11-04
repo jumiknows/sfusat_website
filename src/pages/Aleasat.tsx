@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowsSpin, faArrowUpRightFromSquare, faCalendarDays, faCamera, faCube, faFlagCheckered, faGraduationCap, faLayerGroup, faMicroscope } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import LoopVideo from '../components/LoopVideo';
 import RecruitingBanner from '../components/RecruitingBanner';
 import SectionNav from '../components/SectionNav';
@@ -17,7 +17,7 @@ const AleasatPage: React.FC = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-heading">ALEASAT</h1>
-            <p className="hero-subtitle">To Prove Ourselves</p>
+            <p className="hero-subtitle">1U CubeSat with UBC Orbit</p>
             <p className="hero-description">
               A 1U CubeSat mission built in partnership with UBC Orbit, with launch targeted for 2028.
             </p>
@@ -51,22 +51,18 @@ const AleasatPage: React.FC = () => {
           <h2>Mission Overview</h2>
           <div className="mission-stats">
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCube} /></span>
               <div className="stat-number">1U</div>
               <div className="stat-label">CubeSat Size</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faCalendarDays} /></span>
               <div className="stat-number">2020</div>
               <div className="stat-label">Project Start</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faLayerGroup} /></span>
               <div className="stat-number">2</div>
               <div className="stat-label">Main Payloads</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faFlagCheckered} /></span>
               <div className="stat-number">4th</div>
               <div className="stat-label">Canadian Team</div>
             </div>
@@ -90,53 +86,39 @@ const AleasatPage: React.FC = () => {
       {/* Mission Details Section */}
       <section className="mission-details" id="orbit">
         <div className="container">
-          <div className="details-grid">
-            <div className="details-content">
-              <h3>Going to Orbit</h3>
-              <p>
-                SFU Satellite Design Team has partnered with UBC Orbit to design, build, and launch a 1U (10x10x10cm) cube satellite. 
-                The project started in January 2020 with plans to launch the satellite to low-earth-orbit (LEO), with launch targeted for 2028.
-              </p>
-              
-              <div className="payload-section">
-                <h4>Primary Payloads</h4>
-                <div className="payload-grid">
-                  <div className="payload-item">
-                    <div className="payload-content">
-                      <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faCamera} /></span>
-                      <h5>Earth Imaging Camera</h5>
-                      <p>Amateur radio operators can request pictures of their area through our satellite communication system.</p>
-                    </div>
-                  </div>
-                  <div className="payload-item">
-                    <div className="payload-content">
-                      <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowsSpin} /></span>
-                      <h5>Miniaturized Centrifuge</h5>
-                      <p>Testing human physiology effects for long-term space missions in partnership with SFU Aerospace Physiology Laboratory.</p>
-                    </div>
-                  </div>
-                </div>
+          <h2>Going to Orbit</h2>
+          <div className="split-body">
+            <p>SFU Satellite Design Team has partnered with UBC Orbit to design, build, and launch a 1U (10x10x10cm) cube satellite. The project started in January 2020 with plans to launch the satellite to low-earth-orbit (LEO), with launch targeted for 2028.</p>
+            <div className="orbit-columns">
+              <div>
+                <h3>Primary Payloads</h3>
+                <ul className="plain-list">
+                <li>
+                  <h4>Earth Imaging Camera</h4>
+                  <p>Amateur radio operators can request pictures of their area through our satellite communication system.</p>
+                </li>
+                <li>
+                  <h4>Miniaturized Centrifuge</h4>
+                  <p>Testing human physiology effects for long-term space missions in partnership with SFU Aerospace Physiology Laboratory.</p>
+                </li>
+                </ul>
               </div>
-            </div>
-            
-            <div className="impact-section">
-              <h4>Mission Impact</h4>
-              <div className="impact-cards">
-                <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faGraduationCap} /></span>
-                  <h5>Hands-on Experience</h5>
+              <div>
+                <h3>Mission Impact</h3>
+                <ul className="plain-list">
+                <li>
+                  <h4>Hands-on Experience</h4>
                   <p>Students get real satellite engineering experience.</p>
-                </div>
-                <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faFlagCheckered} /></span>
-                  <h5>Fourth Canadian Team</h5>
+                </li>
+                <li>
+                  <h4>Fourth Canadian Team</h4>
                   <p>We would be the fourth Canadian undergraduate team to launch a satellite.</p>
-                </div>
-                <div className="impact-card">
-                  <span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faMicroscope} /></span>
-                  <h5>Spaceflight Research</h5>
+                </li>
+                <li>
+                  <h4>Spaceflight Research</h4>
                   <p>Contributing to human spaceflight research in Canada.</p>
-                </div>
+                </li>
+                </ul>
               </div>
             </div>
           </div>

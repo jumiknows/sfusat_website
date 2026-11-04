@@ -1,9 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp, faBolt, faCamera, faClock, faCube, faMicrochip, faRoute, faTowerBroadcast } from '@fortawesome/free-solid-svg-icons';
 import SectionNav from '../components/SectionNav';
 import RecruitingBanner from '../components/RecruitingBanner';
-import Slideshow from '../components/Slideshow';
 import { BALLOON3_PHOTOS } from '../content/galleries';
 
 const Balloon3Page: React.FC = () => {
@@ -11,15 +8,15 @@ const Balloon3Page: React.FC = () => {
   return (
     <div className="aleasat-page">
       {/* Hero Section */}
-      <section className="aleasat-hero hero-immersive">
+      <section className="aleasat-hero hero-immersive hero-balloon3">
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-heading">High Altitude Balloon 3</h1>
-            <p className="hero-subtitle">Seeing What’s Possible</p>
+            <p className="hero-subtitle">High Altitude Balloon Mission 3</p>
           </div>
           <div className="hero-image">
             <img 
-              src="/images/balloon3/image8.jpg" 
+              src="/images/site/team-launch.jpg" 
               alt="Balloon 3 Launch Team" 
               className="aleasat-main-image"
               loading="eager"
@@ -45,20 +42,17 @@ const Balloon3Page: React.FC = () => {
       {/* Project Narrative Section */}
       <section className="project-narrative" id="flight">
         <div className="container">
-          <h2>Reaching New Heights</h2>
+          <h2>The Flight</h2>
           <div className="mission-stats flight-stats">
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faArrowUp} /></span>
               <div className="stat-number">34 km</div>
               <div className="stat-label">Peak altitude</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faRoute} /></span>
               <div className="stat-number">83.5 km</div>
               <div className="stat-label">Travelled overland</div>
             </div>
             <div className="stat-card">
-              <span className="stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faClock} /></span>
               <div className="stat-number">3 h</div>
               <div className="stat-label">Ascent and descent</div>
             </div>
@@ -73,7 +67,7 @@ const Balloon3Page: React.FC = () => {
         <div className="container">
           <h2>The Subsystems</h2>
           <article className="subsystem-row" id="comms">
-            <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faTowerBroadcast} /></span>Communications</h3>
+            <h3>Communications</h3>
             <div>
               <p>
             The Communications team was tasked with implementing and validating a communications link that would facilitate the transmission and reception of telemetry and status data to be used when tracking and recovering the payload. For a team with little RF knowledge going into the project, the task of designing such a system was daunting yet exciting. A 915Mhz LoRa-based system was chosen due to its long-range and low power consumption, with a trade-off in throughput. This was paired with an 8-element Yagi antenna at the ground station and a Whip antenna on the balloon, alongside a SPOT Trace for redundancy.
@@ -84,7 +78,7 @@ const Balloon3Page: React.FC = () => {
             </div>
           </article>
           <article className="subsystem-row" id="payload">
-            <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faCamera} /></span>Payload</h3>
+            <h3>Payload</h3>
             <div>
               <p>
             The Payload subsystem had the most creative freedom to determine the purpose of their team and decided on 3 goals: Capture camera footage of the flight, create a unique mission crest, and conduct a science experiment. The previous balloons SFU SAT had sent up had not recovered any onboard footage which is something the team wanted to try with this payload. Having a view from near-space is not something that people see often, and it would be an excellent method to generate interest and engagement for SFU SAT in the future. The mission crests were inspired by the golden records on the Voyager probes but instead of gold, 3D printed plastic was used. In the scientific experiment, the effects of UV light from the upper atmosphere were tested. Some UV detecting paper was mounted to the side of the balloon and had 4 setups for light exposure: fully shielded, fully exposed, covered in cloth, and covered with a UV camera lens. In the end, a significant difference between the materials in the upper atmosphere was not found, but as they say, no result is still a result! 
@@ -92,7 +86,7 @@ const Balloon3Page: React.FC = () => {
             </div>
           </article>
           <article className="subsystem-row" id="computing">
-            <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faMicrochip} /></span>Computing</h3>
+            <h3>Computing</h3>
             <div>
               <p>
             The Computing team was responsible for accessing and logging flight data from the sensors on the payload and retrieving GPS information to forward to the communications system. Two independent computing systems were used to ensure that if one failed at least half the system would still function. The systems were divided for the sensors and logging data, and another module for the GPS and communications. An Arduino mega was used for the sensor portion and an Arduino Uno for the GPS and communications.
@@ -100,7 +94,7 @@ const Balloon3Page: React.FC = () => {
             </div>
           </article>
           <article className="subsystem-row" id="power">
-            <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faBolt} /></span>Power</h3>
+            <h3>Power</h3>
             <div>
               <p>
             Throughout the project, the Power team was responsible for ensuring key components of the balloon payload were supplied with an ample and consistent amount of power. One obstacle the team had to deal with was potential noise from the batteries that could interfere with other components on the balloon. In the end, the solution was to wrap the batteries in tinfoil. Based on the lack of interference during the flight, this technique appeared to be effective.
@@ -108,7 +102,7 @@ const Balloon3Page: React.FC = () => {
             </div>
           </article>
           <article className="subsystem-row" id="structure">
-            <h3><span className="card-icon" aria-hidden="true"><FontAwesomeIcon icon={faCube} /></span>Structure</h3>
+            <h3>Structure</h3>
             <div>
               <p>
             The Structure Team was responsible for determining the payload shape, materials, parachute, balloon, and connections. The trapezoidal shape is meant to steady the payload as it falls, which was observed when the GoPro footage stabilized after the initial descent from the balloon bursting. The team chose extruded polystyrene foam for ease of cutting angled edges and distributing load throughout the structure. Kapton tape was used on the outer structure for its wide temperature range and resistance to puncture. Macrame, consisting of reef knots, was chosen for the netting and connections between components, which distributed the load throughout the system. As a result, there was no visible strain on the payload structure even as the system underwent jolts throughout its ascent, followed by the turbulent balloon burst. The Structure Team chose a hydrogen-filled balloon for its ascent rate and environmental sustainability. Choosing hydrogen gas allowed the balloon to reach approximately 34 km, which exceeded the project's goal of 32 km.
@@ -125,7 +119,11 @@ const Balloon3Page: React.FC = () => {
             <h2>Development Gallery</h2>
             <p>See highlights from the Balloon 3 mission</p>
           </div>
-          <Slideshow images={BALLOON3_PHOTOS} imageClassName="aleasat-main-image" />
+          <div className="thumb-grid">
+            {BALLOON3_PHOTOS.map((photo) => (
+              <img key={photo.url} src={photo.url} alt={photo.alt} loading="lazy" decoding="async" />
+            ))}
+          </div>
         </div>
       </section>
     </div>

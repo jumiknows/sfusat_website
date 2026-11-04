@@ -103,7 +103,6 @@ h2,
 .details-content h3,
 .team-info h3,
 .value-card h3,
-.sponsor-content h3,
 .challenge-card h3,
 .event-year h3 {
   color: var(--ink);
@@ -681,44 +680,6 @@ h3 {
   color: var(--ink);
 }
 
-.sponsor-item,
-.sponsor-item:hover {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: clamp(24px, 5vw, 72px);
-  align-items: center;
-  margin: 0;
-  padding: 28px 0;
-  background: none;
-  border: 0;
-  border-top: 1px solid var(--line);
-  border-radius: 0;
-  box-shadow: none;
-  transform: none;
-}
-
-.sponsor-logo {
-  width: 100%;
-  height: 90px;
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-
-.sponsor-content h3 {
-  margin-bottom: 6px;
-  font-size: 1.375rem;
-  font-weight: 700;
-}
-
-.sponsor-content p {
-  max-width: 76ch;
-  margin: 0;
-  color: var(--text);
-  font-size: 1.0625rem;
-  line-height: 1.55;
-}
-
 .why-sponsor {
   margin: 0;
   padding: clamp(32px, 5vw, 64px);
@@ -1170,9 +1131,7 @@ h3 {
   }
 
   .team-card-content,
-  .team-card-right .team-card-content,
-  .sponsor-item,
-  .sponsor-item:hover {
+  .team-card-right .team-card-content {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -1182,12 +1141,6 @@ h3 {
     order: -1;
     height: 52vw;
     max-height: 320px;
-  }
-
-  .sponsor-logo {
-    justify-content: flex-start;
-    width: 170px;
-    height: 72px;
   }
 }
 
@@ -1436,30 +1389,6 @@ main [id] {
 }
 
 /* Icons */
-.card-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  background: #000;
-  color: #fff;
-  font-size: 1.125rem;
-}
-
-.stat-icon {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--ink);
-  font-size: 1.375rem;
-  line-height: 1;
-}
-
-.about-page .stat-icon,
-.home-stats .stat-icon {
-  color: #fff;
-}
 
 /* Section headings with a link alongside */
 .section-head {
@@ -1493,7 +1422,6 @@ main [id] {
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
   margin-top: 40px;
 }
 
@@ -1506,21 +1434,10 @@ main [id] {
 .payload-item:hover,
 .impact-card,
 .impact-card:hover {
-  padding: 24px;
-  background: #fff;
-  border: 1px solid var(--line);
   border-radius: 0;
   box-shadow: none;
   text-align: left;
   transform: none;
-}
-
-.info-card .card-icon,
-.value-card .card-icon,
-.challenge-card .card-icon,
-.payload-item .card-icon,
-.impact-card .card-icon {
-  margin-bottom: 16px;
 }
 
 .info-card h3 {
@@ -1545,11 +1462,6 @@ main [id] {
   margin-bottom: 12px;
 }
 
-.mission-details .payload-item,
-.mission-details .impact-card {
-  background: #fff;
-}
-
 /* About: alternating sections, teams with their icon beside the name */
 .about-milestones {
   background: var(--surface);
@@ -1558,19 +1470,6 @@ main [id] {
 
 .about-values {
   background: #fff;
-}
-
-.milestone-icon {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: #000;
-  color: #fff;
-  font-style: normal;
 }
 
 /* The line joining the milestones */
@@ -1597,10 +1496,6 @@ main [id] {
   gap: 20px;
 }
 
-.rover-challenges-section .challenge-card {
-  background: #fff;
-}
-
 /* Join */
 .join-role {
   display: flex;
@@ -1613,12 +1508,6 @@ main [id] {
   margin: 0 0 28px;
   padding: 0;
   list-style: none;
-}
-
-.footer-icon-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* Balloon 3 subsystems */
@@ -1640,7 +1529,6 @@ main [id] {
 }
 
 .subsystem-row h3 {
-  display: flex;
   align-items: center;
   gap: 14px;
   margin: 0;
@@ -1819,7 +1707,7 @@ main [id] {
 /* Back to top */
 .back-to-top {
   position: fixed;
-  left: 20px;
+  right: 20px;
   bottom: 20px;
   z-index: 850;
   display: flex;
@@ -1910,5 +1798,246 @@ main [id] {
 
   body.soundtrack-open .back-to-top {
     display: none;
+  }
+}
+
+/* Plain columns separated by a rule: no boxes or icon tiles */
+.info-grid {
+  gap: 40px;
+}
+
+.info-card,
+.value-card,
+.value-card:hover,
+.challenge-card,
+.challenge-card:hover,
+.rover-challenges-section .challenge-card,
+.payload-item,
+.payload-item:hover,
+.impact-card,
+.impact-card:hover,
+.mission-details .payload-item,
+.mission-details .impact-card {
+  padding: 16px 0 0;
+  background: none;
+  border: 0;
+  border-top: 2px solid #000;
+}
+
+.team-info h3,
+.subsystem-row h3 {
+  display: block;
+}
+
+.about-milestones ol::before {
+  display: none;
+}
+
+.about-milestones li {
+  grid-template-columns: 170px 1fr;
+  gap: 8px 24px;
+  border-top: 1px solid #c9cdd3;
+  padding: 14px 0;
+}
+
+@media (max-width: 600px) {
+  .about-milestones li {
+    grid-template-columns: 1fr;
+  }
+
+  .about-milestones li p {
+    grid-column: auto;
+  }
+}
+
+/* Sits above the docked music player */
+body.soundtrack-open .back-to-top {
+  bottom: 236px;
+}
+
+
+/* Reading sections: the heading on the left, the content on the right */
+.mission-overview,
+.project-narrative + .mission-details,
+.project-narrative {
+  border-top: 1px solid var(--line);
+}
+
+.mission-details .container > h2,
+.mission-overview h2 {
+  margin-bottom: 24px;
+}
+
+.mission-details p {
+  color: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.project-narrative p {
+  max-width: 68ch;
+}
+
+.split-body > p {
+  max-width: 68ch;
+  margin: 0 0 36px;
+}
+
+.orbit-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 48px;
+}
+
+.orbit-columns h3 {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plain-list li {
+  padding: 16px 0;
+  border-top: 1px solid #c9cdd3;
+}
+
+.plain-list h4 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.mission-details .plain-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 1000px) {
+  .project-narrative .container,
+  .mission-overview .container,
+  .mission-details .container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+    column-gap: 64px;
+    max-width: var(--page-width);
+  }
+
+  .project-narrative .container > h2,
+  .mission-overview .container > h2,
+  .mission-details .container > h2 {
+    grid-column: 1;
+    grid-row: 1 / span 20;
+    margin: 0;
+  }
+
+  .project-narrative .container > *:not(h2),
+  .mission-overview .container > *:not(h2),
+  .mission-details .container > *:not(h2) {
+    grid-column: 2;
+  }
+}
+
+/* Lighter dividers and clearer titles */
+.info-card,
+.value-card,
+.value-card:hover,
+.challenge-card,
+.challenge-card:hover,
+.rover-challenges-section .challenge-card {
+  padding-top: 20px;
+  border-top: 1px solid #c9cdd3;
+}
+
+.info-card h3,
+.value-card h3,
+.challenge-card h3 {
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.outreach-stats .info-card p,
+.value-card p {
+  color: var(--text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.aleasat-page .mission-stats {
+  gap: 24px;
+}
+
+.aleasat-page .stat-number {
+  margin-bottom: 8px;
+}
+
+.hero-aleasat::after {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 38%, rgba(0, 0, 0, 0) 68%);
+}
+
+.project-photos {
+  justify-content: flex-start;
+}
+
+@media (max-width: 800px) {
+  .orbit-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-aleasat::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.1) 78%);
+  }
+}
+
+/* Smaller project images keep their shape instead of stretching across the column */
+.aleasat-hero:not(.hero-immersive) .aleasat-main-image {
+  width: auto;
+  max-width: min(100%, 480px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* Never enlarge a photo past its real size, because that is what makes it blurry */
+.slide-content img,
+.outreach-slide-photo {
+  object-fit: scale-down;
+}
+
+/* Photo grid for smaller photos, shown at a size they can hold */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.thumb-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.hero-balloon3 .aleasat-main-image {
+  object-position: center 38%;
+}
+
+@media (max-width: 600px) {
+  .thumb-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 }
