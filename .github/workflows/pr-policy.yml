@@ -17,7 +17,8 @@ jobs:
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
-          if [[ ! "$TITLE" =~ ^(feat|fix|docs|test|refactor|content|design|chore|ci|perf|build|revert)(\(.+\))?:\ .+ ]]; then
+          shopt -s nocasematch
+          if [[ ! "$TITLE" =~ ^(feat|fix|docs|test|refactor|content|design|chore|ci|perf|build|revert)(\(.+\))?(:\ .+|\/.+)$ ]]; then
             echo "Use a clear title such as fix: repair mobile navigation or content: update sponsor list"
             exit 1
           fi
