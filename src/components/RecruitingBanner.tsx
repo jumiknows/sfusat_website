@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getProgram } from './recruitment';
-import './Join.css';
+import { getProgram } from '../content/recruitment';
+import '../pages/Join.css';
 
 interface RecruitingBannerProps {
   program: string;

@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Projects from './components/Projects';
+import Projects from './pages/Projects';
 
 const renderNavbar = () => {
   render(

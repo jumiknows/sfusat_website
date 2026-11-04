@@ -10,17 +10,13 @@ import {
   faVolumeXmark,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
+import { TRACKS } from '../content/soundtrack';
 import './Soundtrack.css';
 
 // Played through YouTube's own player, which handles licensing with the rights holders.
 // These are official uploads that show a still of the album art rather than a music video.
 // YouTube requires the player to stay visible and at least 200px in each direction, so closing the
 // panel stops the music. Nothing loads from YouTube until a visitor opens the player.
-export const TRACKS = [
-  { id: '5PgdZDXg0z0', title: 'Space Oddity', artist: 'David Bowie' },
-  { id: 'JuSsvM8B4Jc', title: 'Cornfield Chase', artist: 'Hans Zimmer' }
-];
-
 const PLAYING = 1;
 const BUFFERING = 3;
 const ENDED = 0;

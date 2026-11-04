@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import InstagramIcon from './InstagramIcon';
 import './Footer.css'; // Ensure the CSS is properly imported
-import { CONTACT_EMAIL, INSTAGRAM_URL } from './contactConfig';
+import { CONTACT_EMAIL, INSTAGRAM_URL } from '../content/contact';
 
 const Footer: React.FC = () => {
   return (

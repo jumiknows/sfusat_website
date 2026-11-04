@@ -4,7 +4,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   height: 100%;
   width: 100%;
 }
@@ -14,7 +13,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
-  color: #333;
   width: 100%;
   position: relative;
 }
@@ -50,11 +48,6 @@ body {
 
 /* Ensure footer is always visible on mobile */
 @media (max-width: 768px) {
-  .App {
-    min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for better mobile support */
-    min-height: -webkit-fill-available; /* iOS Safari support */
-  }
   
   html {
     height: 100%;
@@ -90,46 +83,18 @@ a:hover {
 }
 
 /* Focus Styles for Accessibility */
-*:focus-visible {
-  outline: 2px solid #333;
-  outline-offset: 2px;
-}
 
 /* Button Reset */
 button {
   border: none;
   background: none;
   cursor: pointer;
-  font-family: inherit;
 }
 
 /* Image Optimization - Removed global img selector to prevent component conflicts */
 /* Components should handle their own image styling */
 
 /* Utility Classes */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
 
 /* Loading States */
 .loading {
@@ -158,21 +123,7 @@ button {
 
 /* Responsive Container */
 .container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 16px;
-  }
 }
 
 /* Print Styles */
@@ -185,13 +136,7 @@ button {
     display: none !important;
   }
   
-  .container {
-    max-width: 100%;
-    padding: 0;
-  }
-  
   body {
-    font-size: 12pt;
     line-height: 1.4;
   }
   

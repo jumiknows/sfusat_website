@@ -15,7 +15,9 @@ const SectionNav: React.FC<SectionNavProps> = ({ label, sections }) => {
   const [active, setActive] = useState(sections[0]?.id);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let pending = 0;
+    const update = () => {
+      pending = 0;
       let current = sections[0]?.id;
       sections.forEach(({ id }) => {
         const element = document.getElementById(id);
@@ -26,9 +28,16 @@ const SectionNav: React.FC<SectionNavProps> = ({ label, sections }) => {
       setActive(current);
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      pending = pending || requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(pending);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [sections]);
 
   const goTo = (e: React.MouseEvent, id: string) => {

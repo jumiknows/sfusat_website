@@ -51,6 +51,8 @@ For content, use a name such as `content/update-sponsors`.
 
 ## Make the change
 
+Use [HOW_TO_UPDATE.md](HOW_TO_UPDATE.md) to find the right file. Most content changes only touch one file in `src/content/`.
+
 Keep the change focused on the ticket.
 
 Run the site locally while you work.

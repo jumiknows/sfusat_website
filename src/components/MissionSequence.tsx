@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { isRecruiting } from './recruitment';
+import { isRecruiting } from '../content/recruitment';
 import './MissionSequence.css';
 
 interface Chapter {
@@ -91,13 +91,23 @@ const MissionSequence: React.FC = () => {
       .catch(() => setHasFailed(true));
 
     update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    let pending = 0;
+    const requestUpdate = () => {
+      if (!pending) {
+        pending = requestAnimationFrame(() => {
+          pending = 0;
+          update();
+        });
+      }
+    };
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
 
     return () => {
       disposed = true;
-      window.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      cancelAnimationFrame(pending);
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
       scene?.dispose();
     };
   }, [isStatic]);

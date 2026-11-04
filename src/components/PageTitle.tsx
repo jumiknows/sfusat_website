@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { PROJECT_PAGES } from '../content/projects';
 
 const PAGE_TITLES: Record<string, string> = {
   '/rover': 'Rover',
@@ -7,16 +8,12 @@ const PAGE_TITLES: Record<string, string> = {
   '/projects': 'Projects',
   '/projects/aleasat': 'ALEASAT',
   '/projects/balloon3': 'Balloon 3',
-  '/projects/csdc5': 'CSDC5',
-  '/projects/ccp1': 'CCP1',
-  '/projects/balloon2': 'Balloon 2',
-  '/projects/csdc4': 'CSDC4',
-  '/projects/balloon1': 'Balloon 1',
   '/sponsors': 'Sponsors',
   '/outreach': 'Outreach',
   '/about': 'About',
   '/contact': 'Contact Us',
-  '/join': 'Join'
+  '/join': 'Join',
+  ...Object.fromEntries(PROJECT_PAGES.map((project) => [`/projects/${project.slug}`, project.title]))
 };
 
 const PageTitle: React.FC = () => {

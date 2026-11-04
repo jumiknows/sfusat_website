@@ -1,0 +1,449 @@
+/* Larger hero heading for Aleasat, between h1 and h2 */
+.hero-text .hero-heading {
+  letter-spacing: -0.025em;
+}
+/* Project Narrative Section - Enhanced UI/UX */
+.project-narrative {
+  background: var(--white);
+  margin: 0;
+  transition: var(--transition);
+}
+.project-narrative .container {
+  margin: 0 auto;
+}
+.project-narrative h2 {
+  letter-spacing: -0.01em;
+}
+.project-narrative p {
+  transition: var(--transition);
+}
+.project-narrative p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .project-narrative {
+    border-left-width: 4px;
+  }
+  .project-narrative p {
+    padding: 0;
+  }
+}
+/* Modern CSS Variables */
+:root {
+  --gray-600: #4a5568;
+  --gray-800: #1a202c;
+  --white: #ffffff;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Page Styles */
+.aleasat-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.aleasat-hero {
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.aleasat-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  letter-spacing: -0.025em;
+}
+
+.hero-description {
+  margin: 0;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aleasat-main-image {
+  max-width: 100%;
+  height: auto;
+  transform: none;
+  transition: var(--transition);
+}
+
+.aleasat-main-image:hover {
+  transform: scale(1.02);
+}
+
+/* Mission Overview Section */
+.mission-overview {
+  background: var(--white);
+}
+
+.mission-overview h2 {
+  margin: 0 0 3rem 0;
+  position: relative;
+}
+
+.mission-overview h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: none;
+  border-radius: 2px;
+}
+
+.mission-stats {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stat-card {
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: none;
+}
+
+/* Mission Details Section */
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+}
+
+.details-content h3 {
+  margin: 0 0 1.5rem 0;
+}
+
+.details-content p {
+  margin: 0 0 2rem 0;
+}
+
+.payload-section {
+  margin-top: 3rem;
+}
+
+.payload-section h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin: 0 0 1.5rem 0;
+}
+
+.payload-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.payload-item {
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+.payload-content h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin: 0 0 0.5rem 0;
+}
+
+.payload-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+/* Impact Section */
+.impact-section h4 {
+  color: var(--gray-800);
+}
+
+.impact-cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.impact-card {
+  transition: var(--transition);
+}
+
+.impact-card h5 {
+  color: var(--gray-800);
+}
+
+/* Development Gallery Section */
+.development-gallery {
+  background: var(--white);
+}
+
+.gallery-header h2 {
+  margin: 0 0 1rem 0;
+  position: relative;
+}
+
+.gallery-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: none;
+  border-radius: 2px;
+}
+
+/* Modern Slideshow */
+
+.slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-content img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  transition: var(--transition);
+}
+
+/* Navigation Arrows */
+.slide-arrow {
+    max-width: 100%;
+    max-height: 420px;
+  justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Slide Indicators */
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .mission-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .mission-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ALEASAT Slideshow Styles */
+
+.slideshow-container {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slideshow-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 500px;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+}
+
+.slide-arrow-left {
+  left: 20px;
+}
+
+.slide-arrow-right {
+  right: 20px;
+}
+
+/* Mobile responsiveness for slideshow */
+@media (max-width: 768px) {
+  
+  .slideshow-container {
+    margin: 0 10px;
+  }
+  
+  .slideshow-wrapper {
+    height: 300px;
+  }
+  
+  .slide-arrow {
+    font-size: 1rem;
+  }
+  
+  .slide-arrow-left {
+    left: 10px;
+  }
+  
+  .slide-arrow-right {
+    right: 10px;
+  }
+}
+
+/* Mobile responsiveness for main content */
+
+/* Compact layout, shared by the project pages */
+
+.project-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-photos img {
+  max-width: 300px;
+  border-radius: 16px;
+}
+
+.aleasat-hero::before {
+  display: none;
+}
+
+.hero-immersive {
+  position: relative;
+}
+
+.hero-immersive .hero-content {
+  position: static;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(80vh, 760px);
+}
+
+.hero-immersive .hero-image {
+  position: absolute;
+  inset: 0;
+}
+
+.project-narrative {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.aleasat-page .mission-stats {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.details-grid {
+  gap: 64px;
+}
+
+.payload-item,
+.impact-card,
+.payload-item:hover,
+.impact-card:hover {
+  border-top: 1px solid var(--line);
+}
+
+.slide-content img {
+  border-radius: 0;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+}
+}
+
+.photo-grid figure {
+  margin: 0;
+}
+
+.photo-grid .wide {
+  grid-column: span 2;
+}
+
+.photo-grid img {
+  display: block;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.photo-grid figcaption {
+  margin-top: 10px;
+  color: var(--on-dark-muted);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 900px) {
+  .photo-grid img {
+    height: 240px;
+}
+}
+
+@media (max-width: 600px) {
+  .photo-grid .wide {
+    grid-column: auto;
+}
+
+  .photo-grid img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+}
+}

@@ -21,14 +21,22 @@ const Navbar: React.FC = () => {
 
   // On the home page the bar sits over the flight sequence, then turns solid
   useEffect(() => {
-    const handleScroll = () => {
+    let pending = 0;
+    const update = () => {
+      pending = 0;
       const mission = document.querySelector('.mission');
       setIsPastHero(mission ? mission.getBoundingClientRect().bottom <= window.innerHeight : true);
     };
+    const handleScroll = () => {
+      pending = pending || requestAnimationFrame(update);
+    };
 
-    handleScroll();
+    update();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(pending);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [location]);
 
   const toggleMenu = () => {

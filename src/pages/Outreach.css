@@ -1,0 +1,362 @@
+/* Outreach Page Styles */
+.outreach-page {
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Slideshow Section */
+.outreach-slideshow {
+  position: relative;
+  height: clamp(340px, 58vh, 540px);
+  overflow: hidden;
+  touch-action: pan-y; /* Horizontal swipes change the photo */
+}
+
+.outreach-slide {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden; /* Keeps the blurred backdrops of hidden slides from being drawn */
+  transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.outreach-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease;
+}
+
+/* Fills the space around photos of any shape with a blurred copy of the same photo */
+.outreach-slide-backdrop {
+  position: absolute;
+  inset: -60px;
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  object-fit: cover;
+  filter: blur(36px) brightness(0.55) saturate(1.2);
+}
+
+.outreach-slide-photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.outreach-slide-arrow,
+.outreach-slide-controls {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.outreach-slide-arrow {
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 18px;
+  transform: translateY(-50%);
+}
+
+.outreach-slide-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.outreach-slide-arrow.left {
+  left: 24px;
+}
+
+.outreach-slide-arrow.right {
+  right: 24px;
+}
+
+.outreach-slide-controls {
+  right: 24px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 14px 0 2px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.outreach-slide-controls button {
+  width: 44px;
+  height: 44px;
+  color: inherit;
+  font-size: 13px;
+}
+
+.outreach-slideshow *:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .outreach-slide {
+    transition: none;
+  }
+}
+
+/* Outreach Statistics Section */
+
+/* Events Section */
+
+.events-section h2 {
+  letter-spacing: -0.02em;
+}
+
+.events-list {
+  gap: 56px;
+  margin: 0 auto;
+}
+
+.event-year {
+  border-left: 4px solid #6c757d;
+  padding-left: 32px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.event-year::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 32px;
+  width: 16px;
+  height: 16px;
+  background: #6c757d;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 0 2px #6c757d;
+}
+
+.event-year h3 {
+  margin-bottom: 24px;
+  margin-left: 0;
+}
+
+.event-year ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-year li {
+  position: relative;
+  padding-left: 24px;
+  transition: color 0.2s ease;
+}
+
+.event-year li:last-child {
+  border-bottom: none;
+}
+
+.event-year li::before {
+  content: '•';
+  color: #6c757d;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+}
+
+.event-year li:hover {
+  color: #2c3e50;
+  cursor: default;
+}
+
+/* Call to Action Section */
+.cta-section {
+  text-align: center;
+  color: white;
+}
+
+.cta-section h2 {
+  margin-bottom: 16px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #fff;
+  color: #495057;
+  padding: 18px 48px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  background: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  color: #343a40;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .outreach-slideshow {
+    height: clamp(240px, 38vh, 320px);
+  }
+
+  .outreach-slide-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .outreach-slide-arrow.left {
+    left: 12px;
+  }
+
+  .outreach-slide-arrow.right {
+    right: 12px;
+  }
+
+  .outreach-slide-controls {
+    right: 12px;
+    bottom: 12px;
+  }
+  
+  .events-list {
+    gap: 40px;
+  }
+  
+  .event-year {
+    padding-left: 28px;
+  }
+  
+  .event-year::before {
+    left: -8px;
+    top: 24px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .event-year li {
+    padding-left: 20px;
+  }
+  
+  .cta-button {
+    padding: 16px 36px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .event-year {
+    padding-left: 24px;
+  }
+  
+  .event-year li {
+    padding-left: 16px;
+  }
+  
+  .cta-button {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Compact layout: keeps long lists scannable instead of one very tall column */
+
+.events-list {
+  display: block;
+}
+
+/* One row per year, so the timeline reads straight down */
+.event-year,
+.event-year:hover {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  column-gap: 24px;
+  padding: 20px 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.event-year::before,
+.event-year li::before {
+  display: none;
+}
+
+.event-year h3 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+.event-year ul {
+  columns: 2;
+  column-gap: 32px;
+}
+
+.event-year li {
+  padding: 4px 0;
+  line-height: 1.45;
+  border-bottom: 0;
+  break-inside: avoid;
+}
+
+.cta-section p {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+
+  .event-year,
+  .event-year:hover {
+    grid-template-columns: 1fr;
+    padding: 16px 0;
+  }
+
+  .event-year h3 {
+    margin-bottom: 6px;
+  }
+
+  .event-year ul {
+    columns: 1;
+  }
+}
+
+.outreach-number strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.outreach-number span {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.event-year,
+.event-year:hover {
+  border-top: 1px solid #c9cdd3;
+}
+
+.event-year:first-child {
+  border-top: 1px solid #c9cdd3;
+}
+
+.event-year li {
+  color: var(--text);
+  font-size: 1.0625rem;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Soundtrack, { TRACKS } from './Soundtrack';
+import Soundtrack from './Soundtrack';
+import { TRACKS } from '../content/soundtrack';
 
 const player = {
   playVideo: jest.fn(),

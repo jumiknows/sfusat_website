@@ -31,11 +31,11 @@ const NOISE = `
 `;
 
 const SPHERE_VERTEX = `
-  varying vec3 vObject;
+  varying vec2 vUv;
   varying vec3 vNormal;
   varying vec3 vView;
   void main() {
-    vObject = normalize(position);
+    vUv = uv;
     vec4 world = modelMatrix * vec4(position, 1.0);
     vNormal = normalize(mat3(modelMatrix) * normal);
     vView = normalize(cameraPosition - world.xyz);
@@ -43,27 +43,68 @@ const SPHERE_VERTEX = `
   }
 `;
 
-const EARTH_FRAGMENT = `
-  uniform vec3 sun;
-  uniform vec3 sunGlow;
-  uniform float time;
-  varying vec3 vObject;
-  varying vec3 vNormal;
-  varying vec3 vView;
+// The surfaces are painted once into textures at startup, because recalculating this noise for
+// every pixel on every frame is what made scrolling slow. Colours are stored as square roots
+// so the dark oceans keep their detail in an 8-bit texture.
+const BAKE_VERTEX = `
+  varying vec2 vUv;
+  void main() {
+    vUv = uv;
+    gl_Position = vec4(position.xy, 0.0, 1.0);
+  }
+`;
+
+const BAKE_DIRECTION = `
+  varying vec2 vUv;
+  vec3 surfaceDirection() {
+    float theta = (1.0 - vUv.y) * 3.14159265;
+    float phi = vUv.x * 6.2831853;
+    return vec3(-cos(phi) * sin(theta), cos(theta), sin(phi) * sin(theta));
+  }
+`;
+
+const EARTH_BAKE = `
+  ${BAKE_DIRECTION}
   ${NOISE}
   void main() {
-    vec3 normal = normalize(vNormal);
-    float continents = fbm(vObject * 9.0 + vec3(4.0, 1.0, 7.0));
+    vec3 direction = surfaceDirection();
+    float continents = fbm(direction * 9.0 + vec3(4.0, 1.0, 7.0));
     float land = smoothstep(0.48, 0.53, continents);
-    float detail = fbm(vObject * 60.0);
+    float detail = fbm(direction * 60.0);
     vec3 surface = mix(mix(vec3(0.004, 0.018, 0.05), vec3(0.008, 0.04, 0.09), detail), mix(vec3(0.03, 0.05, 0.03), vec3(0.11, 0.09, 0.06), detail), land);
+    float clouds = smoothstep(0.52, 0.72, fbm(direction * 24.0));
+    gl_FragColor = vec4(sqrt(surface), clouds);
+  }
+`;
 
-    float clouds = fbm(vObject * 24.0 + vec3(time * 0.003, 0.0, 0.0));
-    clouds = smoothstep(0.52, 0.72, clouds);
+const MARS_BAKE = `
+  ${BAKE_DIRECTION}
+  ${NOISE}
+  void main() {
+    vec3 direction = surfaceDirection();
+    float large = fbm(direction * 2.4 + vec3(2.0, 5.0, 1.0));
+    float fine = fbm(direction * 26.0);
+    vec3 color = mix(vec3(0.27, 0.10, 0.05), vec3(0.72, 0.36, 0.18), smoothstep(0.32, 0.68, large));
+    color *= 0.82 + fine * 0.36;
+    color = mix(color, vec3(0.92, 0.88, 0.84), smoothstep(0.9, 0.97, abs(direction.y + (fine - 0.5) * 0.08)));
+    gl_FragColor = vec4(sqrt(color), 1.0);
+  }
+`;
 
+const EARTH_FRAGMENT = `
+  uniform sampler2D map;
+  uniform vec3 sun;
+  uniform vec3 sunGlow;
+  varying vec2 vUv;
+  varying vec3 vNormal;
+  varying vec3 vView;
+  void main() {
+    vec3 normal = normalize(vNormal);
+    vec4 baked = texture2D(map, vUv);
+    vec3 surface = baked.rgb * baked.rgb;
     float light = dot(normal, sun);
     float day = smoothstep(-0.08, 0.5, light);
-    vec3 color = mix(surface, vec3(0.62, 0.66, 0.72), clouds * 0.7) * day;
+    vec3 color = mix(surface, vec3(0.62, 0.66, 0.72), baked.a * 0.7) * day;
 
     float rim = pow(1.0 - max(dot(normal, vView), 0.0), 8.0);
     float dawn = smoothstep(-0.25, 0.1, light);
@@ -96,21 +137,17 @@ const ATMOSPHERE_FRAGMENT = `
 `;
 
 const MARS_FRAGMENT = `
+  uniform sampler2D map;
   uniform vec3 sun;
-  varying vec3 vObject;
+  varying vec2 vUv;
   varying vec3 vNormal;
   varying vec3 vView;
-  ${NOISE}
   void main() {
     vec3 normal = normalize(vNormal);
-    float large = fbm(vObject * 2.4 + vec3(2.0, 5.0, 1.0));
-    float fine = fbm(vObject * 26.0);
-    vec3 color = mix(vec3(0.27, 0.10, 0.05), vec3(0.72, 0.36, 0.18), smoothstep(0.32, 0.68, large));
-    color *= 0.82 + fine * 0.36;
-    color = mix(color, vec3(0.92, 0.88, 0.84), smoothstep(0.9, 0.97, abs(vObject.y + (fine - 0.5) * 0.08)));
+    vec3 baked = texture2D(map, vUv).rgb;
     float light = smoothstep(-0.04, 0.55, dot(normal, sun));
     float rim = pow(1.0 - max(dot(normal, vView), 0.0), 4.0);
-    gl_FragColor = vec4(color * light * 1.1 + vec3(0.95, 0.5, 0.28) * rim * light * 0.55, 1.0);
+    gl_FragColor = vec4(baked * baked * light * 1.1 + vec3(0.95, 0.5, 0.28) * rim * light * 0.55, 1.0);
   }
 `;
 
@@ -267,6 +304,35 @@ const buildSunGlow = () => {
   );
 };
 
+const bakeTexture = (renderer: THREE.WebGLRenderer, fragmentShader: string, width: number) => {
+  const target = new THREE.WebGLRenderTarget(width, width / 2, {
+    depthBuffer: false,
+    generateMipmaps: true,
+    minFilter: THREE.LinearMipmapLinearFilter,
+    wrapS: THREE.RepeatWrapping,
+    anisotropy: renderer.capabilities.getMaxAnisotropy()
+  });
+  const material = new THREE.ShaderMaterial({
+    vertexShader: BAKE_VERTEX,
+    fragmentShader,
+    blending: THREE.NoBlending,
+    depthTest: false
+  });
+  const geometry = new THREE.PlaneGeometry(2, 2);
+  const scene = new THREE.Scene();
+  scene.add(new THREE.Mesh(geometry, material));
+
+  renderer.setRenderTarget(target);
+  renderer.render(scene, new THREE.Camera());
+  renderer.setRenderTarget(null);
+  geometry.dispose();
+  material.dispose();
+  return target;
+};
+
+// Sharpness steps, used in order when a device cannot keep up
+const QUALITY_STEPS = [1.5, 1, 0.75, 0.6];
+
 export interface MissionScene {
   setProgress: (progress: number) => void;
   dispose: () => void;
@@ -274,7 +340,9 @@ export interface MissionScene {
 
 export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean): MissionScene => {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 800 ? 1.5 : 2));
+  let qualityStep = QUALITY_STEPS.findIndex((step) => step <= window.devicePixelRatio);
+  qualityStep = Math.max(qualityStep, 0);
+  renderer.setPixelRatio(QUALITY_STEPS[qualityStep]);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
@@ -295,13 +363,17 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
   const uniforms = {
     sun: { value: sun },
     sunGlow: { value: sunGlow },
-    center: { value: new THREE.Vector3(0, -60, 0) },
-    time: { value: 0 }
+    center: { value: new THREE.Vector3(0, -60, 0) }
   };
 
+  const isSmallScreen = window.innerWidth < 800;
+  const textureLimit = renderer.capabilities.maxTextureSize;
+  const earthTexture = bakeTexture(renderer, EARTH_BAKE, Math.min(isSmallScreen ? 2048 : 4096, textureLimit));
+  const marsTexture = bakeTexture(renderer, MARS_BAKE, Math.min(2048, textureLimit));
+
   const earth = new THREE.Mesh(
-    new THREE.SphereGeometry(60, 256, 256),
-    new THREE.ShaderMaterial({ uniforms, vertexShader: SPHERE_VERTEX, fragmentShader: EARTH_FRAGMENT })
+    new THREE.SphereGeometry(60, 128, 128),
+    new THREE.ShaderMaterial({ uniforms: { ...uniforms, map: { value: earthTexture.texture } }, vertexShader: SPHERE_VERTEX, fragmentShader: EARTH_FRAGMENT })
   );
   earth.position.set(0, -60, 0);
   scene.add(earth);
@@ -322,8 +394,8 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
   scene.add(atmosphere);
 
   const mars = new THREE.Mesh(
-    new THREE.SphereGeometry(16, 128, 128),
-    new THREE.ShaderMaterial({ uniforms, vertexShader: SPHERE_VERTEX, fragmentShader: MARS_FRAGMENT })
+    new THREE.SphereGeometry(16, 64, 64),
+    new THREE.ShaderMaterial({ uniforms: { ...uniforms, map: { value: marsTexture.texture } }, vertexShader: SPHERE_VERTEX, fragmentShader: MARS_FRAGMENT })
   );
   mars.position.set(-70, 10, 30);
   scene.add(mars);
@@ -397,7 +469,7 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
   });
   observer.observe(canvas);
 
-  // Drops the resolution if this device cannot keep the flight smooth
+  // Lowers sharpness step by step if this device cannot keep the flight smooth
   let frames = 0;
   let measuredFrom = 0;
   const adaptQuality = (now: number) => {
@@ -405,31 +477,42 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
       measuredFrom = now;
     }
     frames += 1;
-    if (frames === 45) {
-      if ((now - measuredFrom) / 44 > 28 && renderer.getPixelRatio() > 1) {
-        renderer.setPixelRatio(1);
+    if (frames === 30) {
+      if ((now - measuredFrom) / 29 > 26 && qualityStep < QUALITY_STEPS.length - 1) {
+        qualityStep += 1;
+        renderer.setPixelRatio(QUALITY_STEPS[qualityStep]);
         resize();
       }
       frames = 0;
     }
   };
 
+  let lastFrame = 0;
+  let idleFrame = false;
   const render = (now = 0) => {
     frame = requestAnimationFrame(render);
     if (!visible) {
       frames = 0;
+      lastFrame = 0;
+      return;
+    }
+
+    const delta = target - current;
+    const isMoving = Math.abs(delta) > 0.0002;
+    // Half the frame rate while nothing but the satellite is moving
+    idleFrame = !idleFrame;
+    if (!isMoving && idleFrame && !needsRender) {
       return;
     }
     adaptQuality(now);
-    const delta = target - current;
-    const moving = Math.abs(delta) > 0.0002;
-    current = animate ? current + delta * 0.09 : target;
-    if (!animate && !moving && !needsRender) {
-      return;
-    }
+
+    // Same glide on every device, whatever its frame rate
+    const seconds = lastFrame ? Math.min((now - lastFrame) / 1000, 0.1) : 0.016;
+    lastFrame = now;
+    current = animate ? current + delta * (1 - Math.exp(-seconds * 9)) : target;
+
     const elapsed = clock.getElapsedTime();
     if (animate) {
-      uniforms.time.value = elapsed;
       cubesat.rotation.y = 0.6 + elapsed * 0.14;
       cubesat.rotation.x = 0.45 + Math.sin(elapsed * 0.2) * 0.1;
       balloon.position.y = 2.55 + Math.sin(elapsed * 0.5) * 0.015;
@@ -440,6 +523,7 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
     renderer.render(scene, camera);
     needsRender = false;
   };
+  (window as any).__s = { scene, renderer, camera };
   frame = requestAnimationFrame(render);
 
   return {
@@ -451,6 +535,8 @@ export const createMissionScene = (canvas: HTMLCanvasElement, animate: boolean):
       cancelAnimationFrame(frame);
       observer.disconnect();
       window.removeEventListener('resize', resize);
+      earthTexture.dispose();
+      marsTexture.dispose();
       renderer.dispose();
     }
   };

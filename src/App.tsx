@@ -1,32 +1,31 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Projects from './components/Projects';
-import Sponsors from './components/Sponsors';
-import Outreach from './components/Outreach';
-import About from './components/About';
-import Contact from './components/Contact';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Sponsors from './pages/Sponsors';
+import Outreach from './pages/Outreach';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import PageTitle from './components/PageTitle';
-import NotFound from './components/NotFound';
-import Join from './components/Join';
-import Rover from './components/Rover';
-import AleasatPage from './components/pages/Aleasat';
-import Balloon3Page from './components/pages/Balloon3';
-import CSDC5Page from './components/pages/CSDC5';
-import CCP1Page from './components/pages/CCP1';
-import Balloon2Page from './components/pages/Balloon2';
-import CSDC4Page from './components/pages/CSDC4';
-import Balloon1Page from './components/pages/Balloon1';
+import BackToTop from './components/BackToTop';
+import ProjectNav from './components/ProjectNav';
+import NotFound from './pages/NotFound';
+import Join from './pages/Join';
+import Rover from './pages/Rover';
+import AleasatPage from './pages/Aleasat';
+import Balloon3Page from './pages/Balloon3';
+import ProjectPage from './pages/ProjectPage';
+import { PROJECT_PAGES } from './content/projects';
 import './App.css';
 // Imported here, not in the lazy page, so theme.css always loads after it and wins
-import './components/RoverApply.css';
+import './pages/RoverApply.css';
 import './theme.css';
 
 // Holds the 3D rover and the game, so other pages do not download them
-const RoverApply = lazy(() => import('./components/RoverApply'));
+const RoverApply = lazy(() => import('./pages/RoverApply'));
 
 const App: React.FC = () => {
   return (
@@ -45,11 +44,9 @@ const App: React.FC = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/aleasat" element={<AleasatPage />} />
             <Route path="/projects/balloon3" element={<Balloon3Page />} />
-            <Route path="/projects/csdc5" element={<CSDC5Page />} />
-            <Route path="/projects/ccp1" element={<CCP1Page />} />
-            <Route path="/projects/balloon2" element={<Balloon2Page />} />
-            <Route path="/projects/csdc4" element={<CSDC4Page />} />
-            <Route path="/projects/balloon1" element={<Balloon1Page />} />
+            {PROJECT_PAGES.map((project) => (
+              <Route key={project.slug} path={`/projects/${project.slug}`} element={<ProjectPage project={project} />} />
+            ))}
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/outreach" element={<Outreach />} />
             <Route path="/about" element={<About />} />
@@ -57,8 +54,10 @@ const App: React.FC = () => {
             <Route path="/join" element={<Join />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ProjectNav />
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </Router>
   );

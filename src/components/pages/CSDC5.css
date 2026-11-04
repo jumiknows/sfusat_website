@@ -1,8 +1,0 @@
-/* Larger hero heading for CSDC5, between h1 and h2 */
-.hero-text .hero-heading {
-	font-size: 2.3rem;
-	font-weight: 800;
-	margin: 0 0 1rem 0;
-	letter-spacing: -0.025em;
-}
-@import './Aleasat.css';

@@ -1,0 +1,64 @@
+.projects-page {
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  margin-top: 25px;
+}
+
+.project-card {
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.2s;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+.project-card a {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 100%; /* Set a fixed height for images */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  display: block;
+}
+
+.project-details {
+  text-align: left;
+}
+
+/* Ensures links have no underline and are black */
+.project-card a {
+  text-decoration: none; /* Remove underline */ /* Set link color to black */
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+
+  .projects-grid {
+    margin-top: 20px;
+  }
+
+  .project-details {
+    text-align: left;
+  }
+}
+.project-card a,
+.project-card a:hover {
+  color: #fff;
+  transform: none;
+}
+.project-image {
+  aspect-ratio: 16 / 10;
+  height: auto;
+}
+.project-card a:hover .project-image {
+  outline: 2px solid #fff;
+}
+.project-details {
+  padding: 20px 0 0;
+}
